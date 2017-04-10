@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/10 17:18:37 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/10 19:35:37 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct		s_node
 	struct s_node	*prev;
 }					t_node;
 
-int		ft_exit_ck(t_node **node);
+int		ft_exit_pushswap(t_node **node);
 int		ft_fill_node(t_node **node, char *ints);
+int		ft_exit_pushswap(t_node **node);
+void	ft_putnode(t_node *node);
 t_node	*ft_new_node(char *integer, int *pi, t_node *prev);
