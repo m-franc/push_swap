@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/10 14:44:39 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/10 16:10:23 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,11 @@ $(NAME): lib
 	$(CC) -o $@ -c $< $(ALL_INC)
 
 clean:
+	@make clean -C $(LIBFT)
 	rm -f $(OBJS)
 
 fclean: clean
+	@make fclean -C $(LIBFT)
 	rm -f $(NAME)
 
 re: fclean all

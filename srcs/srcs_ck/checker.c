@@ -6,11 +6,22 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/10 15:06:18 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/10 17:27:05 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_putnode(t_node *node)
+{
+	ft_printf("data : {grey}%d{eoc} - data->prev : {cyan}NULL{eoc}\n", node->data);
+	node = node->next;
+	while (node)
+	{
+		ft_printf("data : {grey}%d{eoc} - data->prev : {cyan}%d{eoc}\n", node->data, node->prev->data);
+		node = node->next;
+	}
+}
 
 int	ft_exit_ck(t_node **node)
 {
@@ -27,6 +38,8 @@ t_node	*ft_new_node(char *integer, int *pi, t_node *prev)
 	if (!(node = (t_node*)malloc(sizeof(t_node))))
 		return (NULL);
 	node->data = ft_atoi(integer);
+	if (node->data < INT_MAX || node->data < INT_MIN)
+		return (NULL);
 	*pi += ft_ilen(node->data, 10);
 	node->next = NULL;
 	node->prev = prev;
@@ -40,26 +53,32 @@ int	ft_fill_node(t_node **node, char *ints)
 	int		i;
 	int		*pi;
 
-	tmp = *node;
+	tmp = NULL;
 	i = 0;
-	pi = &i;
-	while (ints[i] && ft_isdigit(ints[i]) == 0)
-		i++;
-	if (ints[i] == '\0')
-		return (ft_exit_ck(node));
-	if (!(tmp = ft_new_node(ints + i, pi, NULL)))
-		return (ft_exit_ck(node));
+	pi = &i;	
+	while (ints[i] && ft_isdigit(ints[i]) == ' ')
+		i++;	
+	if (ints[i] == '\0' || ft_isdigit(ints[i]) == 0)
+		return (-1);
+	if (!(*node = ft_new_node(ints + i, pi, NULL)))
+		return (-1);
+	tmp = *node;
 	while (ints[i])
 	{
-		if (ft_isfigit(ints[i]))
+		if (ints[i] != ' ' || ft_isdigit(ints[i]) == 0)
+			return (-1);
+		else if (ft_isdigit(ints[i]))
 		{
 			prev = tmp;
-			if (!(tmp->next = ft_fill_node(ints + i, pi, prev)))
-				return (ft_exit_ck(node));
+			if (!(tmp->next = ft_new_node(ints + i, pi, prev)))
+				return (-1);
 			tmp = tmp->next;
 		}
+		else
+			i++;
 	}
-	return (new);
+	ft_putnode(*node);
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -72,6 +91,5 @@ int	main(int ac, char **av)
 	node = NULL;
 	if ((ft_fill_node(&node, av[1])) == -1)		
 		return (ft_exit_ck(&node));
-	ft_printf("Liste : {green}%s{eoc}\n", av[1]);
 	return (0);
 }
