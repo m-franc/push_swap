@@ -9,4 +9,5 @@ typedef struct		s_node
 	struct s_node	*previous;
 }			t_node;
 
-int	ft_exit_ck(char *error, t_node **node);
+int		ft_exit_ck(t_node **node);
+int		ft_fill_node(t_node **node, char *ints, int *pi, t_node *prev);
