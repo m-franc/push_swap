@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/11 14:32:52 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/11 18:29:40 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,4 @@ t_node	*ft_new_node(char *integer, int *pi, t_node *prev);
 
 // OPERATIONS FUNCTIONS
 int		ft_s(t_node **node);
+int		ft_p(t_node **src, t_node **dest);

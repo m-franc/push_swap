@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/10 19:49:36 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/11 16:22:02 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_node		*ft_new_node(char *integer, int *pi, t_node *prev)
 
 int			ft_fill_first(t_node **node, char *ints, int *pi)
 {	
-	while (ints[*pi] && ft_isdigit(ints[*pi]) == ' ')
+	while (ints[*pi] && ints[*pi] == ' ')
 		*pi += 1;
 	if (ints[*pi] == '\0')
 		return (-1);
@@ -52,9 +52,9 @@ int			ft_fill_node(t_node **node, char *ints)
 	tmp = *node;
 	while (ints[i])
 	{
-		if (ints[i] != ' ' && ft_isdigit(ints[i]) == 0)
+		if (ft_isdigit(ints[i]) == 0 && ints[i] != ' ' && ints[i] != '-')
 			return (-1);
-		else if (ft_isdigit(ints[i]))
+		else if (ft_isdigit(ints[i]) || ints[i] == '-')
 		{
 			prev = tmp;
 			if (!(tmp->next = ft_new_node(ints + i, pi, prev)))

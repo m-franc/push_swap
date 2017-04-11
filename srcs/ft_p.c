@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s.c                                             :+:      :+:    :+:   */
+/*   ft_p.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 11:48:21 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/11 15:26:41 by mfranc           ###   ########.fr       */
+/*   Created: 2017/04/11 17:43:52 by mfranc            #+#    #+#             */
+/*   Updated: 2017/04/11 18:43:06 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			ft_s(t_node **node)
+int		ft_p(t_node **src, t_node **dest)
 {
-	t_node	*first;
-	t_node	*second;
-
-	if (!*node)
-		return (-1);
-	if (!(*node)->next)
-		return (0);
-	first = (*node);
-	second = (*node)->next;
-	second->prev = NULL;
-	first->prev = second;
-	first->next = second->next;
-	second->next = second;
-	(*node) = second;
-	(*node)->next = first;
-	(*node)->next->next->prev = (*node)->next;
+	if ((*src)->next)
+	{
+		*dest = *src;
+		(*src)->next->prev = NULL;
+		*src = (*src)->next;
+	}
+	(*dest)->next = *dest;
+	*dest = *src;
+	(*dest)->prev = NULL;
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/11 12:06:11 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/11 18:30:14 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS = checker.c				\
 	   ../ft_init_node.c		\
 	   ../ft_putnode.c			\
 	   ../ft_exit_pushswap.c	\
-	   ../ft_s.c			
+	   ../ft_s.c				\
+	   ../ft_p.c
 OBJS = $(SRCS:%.c=%.o)
 
 .PHONY: all clean flcean re
