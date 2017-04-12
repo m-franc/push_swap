@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/11 16:22:02 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 16:25:12 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,33 @@ int			ft_fill_first(t_node **node, char *ints, int *pi)
 	return (1);
 }
 
-int			ft_fill_node(t_node **node, char *ints)
+int			ft_fill_next(t_node **node, t_ctl **a_ctl, char *ints, int *pi)
 {
 	t_node	*tmp;
 	t_node	*prev;
+
+	tmp = *node;
+	while (ints[*pi])
+	{
+		if (ft_isdigit(ints[*pi]) == 0 && ints[*pi] != ' ' && ints[*pi] != '-')
+			return (-1);
+		else if (ft_isdigit(ints[*pi]) || ints[*pi] == '-')
+		{
+			prev = tmp;
+			if (!(tmp->next = ft_new_node(ints + *pi, pi, prev)))
+				return (-1);
+			tmp = tmp->next;
+			(*a_ctl)->size++;
+			(*a_ctl)->last = tmp;
+		}
+		else
+			*pi += 1;
+	}
+	return (1);
+}
+
+int			ft_fill_node(t_node **node, t_ctl **a_ctl, char *ints)
+{
 	int		i;
 	int		*pi;
 
@@ -49,20 +72,9 @@ int			ft_fill_node(t_node **node, char *ints)
 	pi = &i;
 	if ((ft_fill_first(node, ints, pi)) == -1)
 		return (-1);
-	tmp = *node;
-	while (ints[i])
-	{
-		if (ft_isdigit(ints[i]) == 0 && ints[i] != ' ' && ints[i] != '-')
-			return (-1);
-		else if (ft_isdigit(ints[i]) || ints[i] == '-')
-		{
-			prev = tmp;
-			if (!(tmp->next = ft_new_node(ints + i, pi, prev)))
-				return (-1);
-			tmp = tmp->next;
-		}
-		else
-			i++;
-	}
+	(*a_ctl)->first = *node;
+	(*a_ctl)->size++;
+	if ((ft_fill_next(node, a_ctl, ints + i, pi)) == -1)
+		return (-1);
 	return (1);
 }
