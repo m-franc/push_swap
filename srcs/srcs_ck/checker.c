@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 15:57:41 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 19:47:10 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			main(int ac, char **av)
 	b_ctl = NULL;
 	if ((ft_init_ctl(&a_ctl, &b_ctl)) == -1)
 		return (-1);
-	if ((ft_fill_node(&a, &a_ctl, av[1])) == -1)		
+	if ((ft_fill_node(&a, &a_ctl, av)) == -1)		
 		return (ft_exit_pushswap(&a));
 //	gnl = get_next_line(1, &line);
 //	if (gnl == -1)

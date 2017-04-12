@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 16:26:23 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 19:47:39 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ typedef struct		s_ctl
 
 // 		COMMON FUNCTIONS
 int		ft_exit_pushswap(t_node **node);
-int		ft_fill_node(t_node **node, t_ctl **a_ctl, char *ints);
-int		ft_fill_first(t_node **node, char *ints, int *pi);
-int		ft_fill_next(t_node **node, t_ctl **a_ctl, char *ints, int *pi);
+int		ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints);
+t_node	*ft_new_node(char *integer, t_node *prev);
 void	ft_putnode(t_node *node);
 int		ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
-t_node	*ft_new_node(char *integer, int *pi, t_node *prev);
 
 // OPERATIONS FUNCTIONS
 int		ft_s(t_node **node);
