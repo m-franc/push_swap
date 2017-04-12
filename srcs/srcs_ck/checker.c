@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 19:47:10 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 20:34:00 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int			main(int ac, char **av)
 	ft_printf("taille de ma liste : {green}%zu{eoc}\n", a_ctl->size);
 	ft_printf("dernier element de ma liste : {green}%d{eoc}\n", a_ctl->last->data);
 	ft_putnode(a_ctl->first);
+	ft_s(&a_ctl);
 //	ft_p(&a, &b);
-//	ft_p(&a, &b);
-//	ft_putstrcolor("Apres le push : \n", YELLOW);
-//	ft_putstrcolor("node a : \n", GREEN);
-//	ft_putnode();
+	ft_putstrcolor("Apres le push : \n", YELLOW);
+	ft_putstrcolor("node a : \n", GREEN);
+	ft_putnode(a_ctl->first);
 //	ft_putstrcolor("node b : \n", GREEN);
 //	ft_putnode(b);
 	// make operations
