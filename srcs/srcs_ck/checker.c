@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 22:33:33 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 22:48:42 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			main(int ac, char **av)
 	ft_p(&a_ctl, &b_ctl);
 	ft_p(&a_ctl, &b_ctl);
 	ft_p(&a_ctl, &b_ctl);
-//	ft_p(&a_ctl, &b_ctl);
+	ft_p(&a_ctl, &b_ctl);
 	ft_putstrcolor("Apres le push : \n", YELLOW);
 	ft_putstrcolor("node a : \n", GREEN);
 	ft_putnode(a_ctl->first);
