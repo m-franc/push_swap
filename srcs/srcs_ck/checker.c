@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 10:56:24 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 11:41:20 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int			main(int ac, char **av)
 {
 	t_node	*a;
+	t_ctl	*a_ctl;
 	t_node	*b;
+	t_ctl	*b_ctl;
 
 	(void)av;
 	if (ac == 1)

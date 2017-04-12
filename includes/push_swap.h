@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/11 18:29:40 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 11:26:40 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ typedef struct		s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
+
+typedef struct		s_ctl
+{
+	int				size;
+	t_node			*first;
+	t_node			*last;
+}					t_ctl;
 
 // 		COMMON FUNCTIONS
 int		ft_exit_pushswap(t_node **node);
