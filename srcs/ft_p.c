@@ -6,28 +6,34 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 17:43:52 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/11 20:30:34 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 10:56:23 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_p(t_node **src, t_node **dest)
+int			ft_p(t_node **src, t_node **dest)
 {
-	if (*dest)	
+	t_node	*tmpsrc;
+	t_node	*tmpdest;
+
+	tmpsrc = *src;
+	*src = (*src)->next;
+	if ((*src)->next)
+		(*src)->next->prev = *src;
+	(*src)->prev = NULL;
+	if (*dest)
 	{
-		(*dest)->next = *dest;
-		*dest = *src;
+		tmpdest = *dest;
+		*dest = tmpsrc;
+		(*dest)->next = tmpdest;
 		(*dest)->next->prev = *dest;
 	}
 	else
 	{
-		*dest = *src;
+		*dest = tmpsrc;
 		(*dest)->next = NULL;
+		(*dest)->prev = NULL;
 	}
-	(*dest)->prev = NULL;
-	(*src)->next->prev = *src;
-	*src = (*src)->next;
-	(*src)->prev = NULL;
 	return (1);
 }
