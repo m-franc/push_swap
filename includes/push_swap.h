@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 20:33:58 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/12 21:46:20 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,4 @@ int		ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 
 // OPERATIONS FUNCTIONS
 int		ft_s(t_ctl **a_ctl);
-int		ft_p(t_node **src, t_node **dest);
+int		ft_p(t_ctl **src_ctl, t_ctl **dest_ctl);
