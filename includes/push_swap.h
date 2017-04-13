@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 21:46:20 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/13 19:12:26 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ typedef struct		s_ctl
 }					t_ctl;
 
 // 		COMMON FUNCTIONS
-int		ft_exit_pushswap(t_node **node);
-int		ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints);
-t_node	*ft_new_node(char *integer, t_node *prev);
-void	ft_putnode(t_node *node);
-int		ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
+int					ft_exit_pushswap(t_node **node);
+int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints);
+t_node				*ft_new_node(char *integer, t_node *prev);
+void				ft_putnode(t_node *node);
+int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 
 // OPERATIONS FUNCTIONS
-int		ft_s(t_ctl **a_ctl);
-int		ft_p(t_ctl **src_ctl, t_ctl **dest_ctl);
+int					ft_s(t_ctl **a_ctl);
+int					ft_p(t_ctl **src_ctl, t_ctl **dest_ctl);
+int					ft_r(t_ctl **ctl);
+int					ft_rr(t_ctl **ctl);

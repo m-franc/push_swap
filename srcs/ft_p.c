@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 17:43:52 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 22:56:12 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/13 16:59:35 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int			ft_p(t_ctl **src_ctl, t_ctl **dest_ctl)
 	t_node	*tmpsrc;
 	t_node	*tmpdest;
 
+	if ((*src_ctl)->size == 0)
+		return (0);
 	tmpsrc = (*src_ctl)->first;
 	(*src_ctl)->first = (*src_ctl)->first->next;
 	(*src_ctl)->size--;

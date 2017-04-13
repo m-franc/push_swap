@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/12 14:50:43 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/13 18:06:15 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRCS = checker.c				\
 	   ../ft_exit_pushswap.c	\
 	   ../ft_s.c				\
 	   ../ft_p.c				\
-	   ../ft_init_ctl.c
+	   ../ft_init_ctl.c			\
+	   ../ft_r.c				\
+	   ../ft_rr.c
 
 OBJS = $(SRCS:%.c=%.o)
 
