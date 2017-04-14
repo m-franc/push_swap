@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 16:59:56 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/13 19:53:26 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/14 12:14:23 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,9 @@ int		ft_rr(t_ctl **ctl)
 	tmplast = (*ctl)->last;
 	tmpfirst = (*ctl)->first;
 	(*ctl)->last = (*ctl)->last->prev;
+	(*ctl)->last->next = NULL;
+	(*ctl)->first = tmplast;
+	(*ctl)->first->next = tmpfirst;
+	(*ctl)->first->next->prev = (*ctl)->first;
 	return (1);
 }
