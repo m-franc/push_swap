@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rr.c                                            :+:      :+:    :+:   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 16:59:56 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/14 12:14:23 by mfranc           ###   ########.fr       */
+/*   Created: 2017/04/14 16:31:41 by mfranc            #+#    #+#             */
+/*   Updated: 2017/04/14 16:57:26 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_rr(t_ctl **ctl)
+void		ft_rrotate(t_ctl **a, t_ctl **b)
 {
-	t_node	*tmplast;
+	ft_rotate(a);
+	ft_rotate(b);
+}
+
+void		ft_rotate(t_ctl **ctl)
+{
 	t_node	*tmpfirst;
+	t_node	*tmplast;
 
 	if ((*ctl)->size < 2)
-		return (0);
-	tmplast = (*ctl)->last;
+		return ;
 	tmpfirst = (*ctl)->first;
-	(*ctl)->last = (*ctl)->last->prev;
+	tmplast = (*ctl)->last;
+	(*ctl)->first->next->prev = NULL;
+	(*ctl)->first = (*ctl)->first->next;
+	(*ctl)->last->next = tmpfirst;
+	(*ctl)->last = (*ctl)->last->next;
+	(*ctl)->last->prev = tmplast;
 	(*ctl)->last->next = NULL;
-	(*ctl)->first = tmplast;
-	(*ctl)->first->next = tmpfirst;
-	(*ctl)->first->next->prev = (*ctl)->first;
-	return (1);
 }

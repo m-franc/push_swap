@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s.c                                             :+:      :+:    :+:   */
+/*   ft_verif_pushswap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 11:48:21 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/13 16:56:56 by mfranc           ###   ########.fr       */
+/*   Created: 2017/04/14 17:14:05 by mfranc            #+#    #+#             */
+/*   Updated: 2017/04/14 19:08:08 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			ft_s(t_ctl **a_ctl)
+size_t		ft_verif_pushswap(t_ctl **ctl)
 {
-	t_node	*first;
-	t_node	*second;
+	t_ctl	*stack;
+	size_t	count;
 
-	if ((*a_ctl)->size == 0 || (*a_ctl)->size == 1)
-		return (0);
-	first = (*a_ctl)->first;
-	second = (*a_ctl)->first->next;
-	second->prev = NULL;
-	first->prev = second;
-	first->next = second->next;
-	second->next = second;
-	(*a_ctl)->first = second;
-	(*a_ctl)->first->next = first;
-	(*a_ctl)->first->next->next->prev = (*a_ctl)->first->next;
-	return (1);
+	stack = *ctl;
+	stack->first = stack->first->next;
+	count = 1;
+	while (stack)
+	{
+		if (stack->first->data < stack->first->prev->data)
+			return (count);
+		stack->first = stack->first->next;
+		count++;
+	}
+	return (count);
 }
