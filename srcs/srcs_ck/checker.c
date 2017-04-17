@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/14 19:22:27 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/17 21:45:28 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	int		gnl;
 	char	*line;
 
-	while ((gnl = get_next_line(1, &line)) == 1)
-	{
+	while ((gnl = get_next_line(0, &line)) == 1)
+	{	
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
 			return (ft_exit_pushswap(a_ctl, b_ctl, line));
 		ft_strdel(&line);
@@ -82,22 +82,5 @@ int			main(int ac, char **av)
 		return (ft_exit_pushswap(&a_ctl, &b_ctl, NULL));
 	if ((ft_checker(&a_ctl, &b_ctl)))
 		return (-1);
-	//	ft_putstrcolor("Avant le push: \n", YELLOW);
-	//	ft_printf("taille de ma liste : {green}%zu{eoc}\n", a_ctl->size);
-	//	ft_printf("dernier element de ma liste : {green}%d{eoc}\n", a_ctl->last->data);
-	//	ft_rr(&a_ctl);
-	//	ft_p(&a_ctl, &b_ctl);
-	//	ft_p(&a_ctl, &b_ctl);
-	//	ft_p(&a_ctl, &b_ctl);
-	//	ft_p(&a_ctl, &b_ctl);
-	//	ft_p(&a_ctl, &b_ctl);
-	//	ft_p(&a_ctl, &b_ctl);
-	//	ft_putstrcolor("Apres le push : \n", YELLOW);
-	//	ft_putstrcolor("node a : \n", GREEN);
-	//	ft_putnode(a_ctl->first);
-	//	ft_putstrcolor("node b : \n", GREEN);
-	//	ft_putnode(b_ctl->first);
-	// make operations
-	// check result
 	return (0);
 }
