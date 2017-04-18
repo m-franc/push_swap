@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 21:32:08 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/18 12:36:10 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints)
 	int		i;
 	t_node	*tmp;
 	t_node	*prev;
+	t_node	*repeat;
 
 	i = 1;
 	if (!(*node = ft_new_node(ints[i++], NULL)))
@@ -44,9 +45,17 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints)
 	(*a_ctl)->first = *node;
 	(*a_ctl)->size++;
 	tmp = *node;
+	repeat = *node;
 	while (ints[i])
 	{
 		prev = tmp;
+		while (repeat)
+		{
+			if (ft_atoi(*ints + i) == repeat->data)
+				return (-1);
+			repeat = repeat->next;
+		}
+		repeat = *node;
 		if (!(tmp->next = ft_new_node(ints[i++], prev)))
 			return (-1);
 		tmp = tmp->next;
