@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/18 16:51:47 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/18 17:01:00 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ size_t				ft_verif_pushswap(t_ctl **ctl);
  */
 int					ft_checker(t_ctl **a_ctl, t_ctl **b_ctl);
 int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
+
+/*
+ ** 				PUSHSWAP FUNCTIONS
+ */
+
 
 /*
  **					OPERATIONS FUNCTIONS

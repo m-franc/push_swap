@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:14:05 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/14 19:08:08 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/18 20:17:30 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t		ft_verif_pushswap(t_ctl **ctl)
 	stack = *ctl;
 	stack->first = stack->first->next;
 	count = 1;
-	while (stack)
+	while (stack->first)
 	{
 		if (stack->first->data < stack->first->prev->data)
 			return (count);

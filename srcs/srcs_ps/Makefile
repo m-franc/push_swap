@@ -6,18 +6,18 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/18 19:30:06 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/18 19:29:49 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = checker
+NAME = push_swap
 FLAGS = -Wall -Wextra -Werror -fsanitize=address
 CC = clang $(FLAGS)
 INC = ../../includes
 LIBFT = ../../libft/
 INC_LIB = ../../libft/includes
 ALL_INC = -I $(INC) -I $(INC_LIB)
-SRCS = checker.c					\
+SRCS = push_swap.c					\
 	   ../ft_init_node.c			\
 	   ../ft_putnode.c				\
 	   ../ft_exit_pushswap.c		\

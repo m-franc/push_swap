@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/18 16:47:25 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/18 20:30:36 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	if (gnl == -1)
 		return (ft_exit_pushswap(a_ctl, b_ctl, NULL));
 	if (ft_verif_pushswap(a_ctl) == (*a_ctl)->size)
-		ft_printf("{red}OK %S{eoc}\n", 0x1F60E);
+		ft_putstrcolor("OK !\n", GREEN);
 	else
-		ft_printf("{green}KO %S{eoc}\n", 0x1F61E);
+		ft_putstrcolor("KO !\n", RED);
 	return (1);
 }
 
