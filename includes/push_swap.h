@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/14 19:20:52 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/18 16:51:47 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_ctl
 int					ft_exit_pushswap(t_ctl **a, t_ctl **b, char *line);
 int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints);
 t_node				*ft_new_node(char *integer, t_node *prev);
+int					ft_check_duplicate(t_node *diplicate, char *ints);
 void				ft_putnode(t_node *node);
 int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 size_t				ft_verif_pushswap(t_ctl **ctl);
@@ -58,7 +59,7 @@ int					ft_checker(t_ctl **a_ctl, t_ctl **b_ctl);
 int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
 
 /*
- **					CHECKER OPERATIONS FUNCTIONS
+ **					OPERATIONS FUNCTIONS
  */
 void				ft_swap(t_ctl **ctl);
 void				ft_sswap(t_ctl **a, t_ctl **b);
