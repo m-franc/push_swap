@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/18 20:30:36 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/19 16:34:05 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,22 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 {
 	int		gnl;
 	char	*line;
+	int		i = 0;
 
 	while ((gnl = get_next_line(0, &line)) == 1)
 	{	
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
 			return (ft_exit_pushswap(a_ctl, b_ctl, line));
 		ft_strdel(&line);
-		ft_putstrcolor("STACK A : \n", GREEN);
-		ft_putnode((*a_ctl)->first);
-		ft_putstrcolor("STACK B : \n", GREEN);
-		ft_putnode((*b_ctl)->first);
+	//	ft_putstrcolor("STACK A : \n", GREEN);
+	//	ft_putnode((*a_ctl)->first);
+	//	ft_putstrcolor("STACK B : \n", GREEN);
+	//	ft_putnode((*b_ctl)->first);
+		i++;
 	}
 	if (gnl == -1)
 		return (ft_exit_pushswap(a_ctl, b_ctl, NULL));
+	ft_printf("{grey}%i{eoc} operations.\n", i);
 	if (ft_verif_pushswap(a_ctl) == (*a_ctl)->size)
 		ft_putstrcolor("OK !\n", GREEN);
 	else
