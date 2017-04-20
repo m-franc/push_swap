@@ -14,26 +14,25 @@
 
 void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
 {
-	t_node	*a;
-	t_node	*b;
+//	t_node	*a;
+//	t_node	*b;
 
 	if (a_ctl)
 	{
-		a = (*a_ctl)->first;
+	/*	a = (*a_ctl)->first;
 		if (a)
 		{
 			while (a)
-			{
-				
+			{	
 				free(a);
 				a = a->next;
 			}
 		}
-		free(a_ctl);
+	*/	free(*a_ctl);
 	}
 	if (b_ctl)
 	{
-		b = (*b_ctl)->first;
+	/*	b = (*b_ctl)->first;
 		if (b)
 		{
 			while (b)
@@ -42,7 +41,7 @@ void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
 				b = b->next;
 			}
 		}
-		free(b_ctl);
+	*/	free(*b_ctl);
 	}
 }
 
