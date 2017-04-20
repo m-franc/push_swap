@@ -46,6 +46,7 @@ typedef struct		s_ctl
 */
 int					ft_exit_pushswap(t_ctl **a, t_ctl **b, char *line);
 int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints);
+int					ft_parse_arg(t_node **a, t_ctl **a_ctl, char **av);
 t_node				*ft_new_node(char *integer, t_node *prev);
 int					ft_check_duplicate(t_node *diplicate, char *ints);
 void				ft_putnode(t_node *node);

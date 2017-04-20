@@ -26,7 +26,8 @@ SRCS = checker.c					\
 	   ../ft_init_ctl.c				\
 	   ../ft_rotate.c				\
 	   ../ft_reverse_rotate.c		\
-	   ../ft_verif_pushswap.c
+	   ../ft_verif_pushswap.c		\
+	   ../ft_parse_arg.c				\
 
 OBJS = $(SRCS:%.c=%.o)
 

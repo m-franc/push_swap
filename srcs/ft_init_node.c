@@ -50,9 +50,14 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints)
 	t_node	*prev;
 	t_node	*duplicate;
 
-	i = 1;
-	if (!(*node = ft_new_node(ints[i++], NULL)))
-		return (-1);
+	if (!*node)
+	{
+		i = 0;
+		if (!(*node = ft_new_node(ints[i++], NULL)))
+			return (-1);
+	}
+	else
+		i = 2;
 	(*a_ctl)->first = *node;
 	(*a_ctl)->size++;
 	tmp = *node;
