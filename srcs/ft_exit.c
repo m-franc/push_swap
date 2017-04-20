@@ -12,12 +12,61 @@
 
 #include "push_swap.h"
 
-int			ft_exit_pushswap(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
+void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
 {
-	//free if exist
+	if (a_ctl)
+	{
+		if ((*a_ctl)->first)
+		{
+			while ((*a_ctl)->first)
+			{
+				ft_memdel((void**)(&(*a_ctl)->first));
+				(*a_ctl)->first = (*a_ctl)->first->next;
+			}
+		}
+		free(a_ctl);
+	}
+	if (b_ctl)
+	{
+		if ((*a_ctl)->first)
+		{
+			while ((*a_ctl)->first)
+			{
+				ft_memdel((void**)(&(*a_ctl)->first));
+				(*a_ctl)->first = (*a_ctl)->first->next;
+			}
+		}
+		free(b_ctl);
+	}
+}
+
+int			ft_exit_begin(t_ctl **a_ctl, t_ctl **b_ctl)
+{
+//	ft_delcontroller(a_ctl, b_ctl);
 	(void)a_ctl;
 	(void)b_ctl;
-	(void)line;
+	ft_putstrcolor("Error\n", RED);
+	return (-1);
+}
+
+int			ft_exit_parsing(t_ctl **a_ctl, t_ctl **b_ctl, char **tab)
+{
+//	ft_delcontroller(a_ctl, b_ctl);
+	(void)a_ctl;
+	(void)b_ctl;
+	if (ft_tablen(tab) != 0)
+		ft_tabdel(tab);
+	ft_putstrcolor("Error\n", RED);
+	return (-1);
+}
+
+int			ft_exit_checker(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
+{
+//	ft_delcontroller(a_ctl, b_ctl);
+	(void)a_ctl;
+	(void)b_ctl;
+	if (line)
+		ft_strdel(&line);
 	ft_putstrcolor("Error\n", RED);
 	return (-1);
 }

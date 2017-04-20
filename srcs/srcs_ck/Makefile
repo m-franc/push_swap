@@ -20,14 +20,13 @@ ALL_INC = -I $(INC) -I $(INC_LIB)
 SRCS = checker.c					\
 	   ../ft_init_node.c			\
 	   ../ft_putnode.c				\
-	   ../ft_exit_pushswap.c		\
+	   ../ft_exit.c		\
 	   ../ft_swap.c					\
 	   ../ft_push.c					\
 	   ../ft_init_ctl.c				\
 	   ../ft_rotate.c				\
 	   ../ft_reverse_rotate.c		\
-	   ../ft_verif_pushswap.c		\
-	   ../ft_parse_arg.c				\
+	   ../ft_verif_pushswap.c
 
 OBJS = $(SRCS:%.c=%.o)
 

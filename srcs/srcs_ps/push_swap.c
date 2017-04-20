@@ -24,8 +24,8 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	if ((ft_init_ctl(&a, &b)) == -1)
-		return (-1);
+		return (ft_exit_begin(&a, &b));
 	if ((ft_parse_arg(&stack_a, &a, av)) == -1)
-		return (ft_exit_pushswap(&a, &b, NULL));
+		return (-1);
 	return (0);
 }

@@ -50,14 +50,14 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	while ((gnl = get_next_line(0, &line)) == 1)
 	{	
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
-			return (ft_exit_pushswap(a_ctl, b_ctl, line));
+			return (ft_exit_checker(a_ctl, b_ctl, line));
 		ft_strdel(&line);
 	//	ft_putstrcolor("STACK B : \n", GREEN);
 	//	ft_putnode((*b_ctl)->first);
 		i++;
 	}
 	if (gnl == -1)
-		return (ft_exit_pushswap(a_ctl, b_ctl, NULL));
+		return (ft_exit_checker(a_ctl, b_ctl, NULL));
 	ft_putstrcolor("STACK A : \n", GREEN);
 	ft_putnode((*a_ctl)->first);
 	ft_printf("{grey}%i{eoc} operations.\n", i);
@@ -78,11 +78,11 @@ int			main(int ac, char **av)
 	a_ctl = NULL;
 	b_ctl = NULL;
 	if (ac == 1)
-		return (ft_exit_pushswap(&a_ctl, &b_ctl, NULL));
+		return (0);
 	if ((ft_init_ctl(&a_ctl, &b_ctl)) == -1)
-		return (-1);
+		return (ft_exit_begin(&a_ctl, &b_ctl));
 	if ((ft_parse_arg(&a, &a_ctl, av)) == -1)		
-		return (ft_exit_pushswap(&a_ctl, &b_ctl, NULL));
+		return (-1);
 	if ((ft_checker(&a_ctl, &b_ctl)))
 		return (-1);
 	return (0);

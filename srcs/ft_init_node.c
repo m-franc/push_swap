@@ -76,3 +76,28 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints)
 	}
 	return (1);
 }
+
+int		ft_parse_arg(t_node **a, t_ctl **a_ctl, char **av)
+{
+	int	nb_args;
+	char	**ints;
+
+	if (!(ints = ft_strsplit(av[1], ' ')))
+		return (ft_exit_parsing(a_ctl, NULL, ints));
+	nb_args = ft_tablen(ints);
+	if (nb_args == 1)
+	{
+		if (!(*a = ft_new_node(ints[0], NULL)))
+			return (ft_exit_parsing(a_ctl, NULL, ints));
+		ft_tabdel(ints);
+		if ((ft_fill_node(a, a_ctl, av)) == -1)
+			return (ft_exit_begin(a_ctl, NULL));
+	}
+	else
+	{
+		if ((ft_fill_node(a, a_ctl, ints)) == -1)
+			return (ft_exit_parsing(a_ctl, NULL, ints));
+		ft_tabdel(ints);
+	}
+	return (1);
+}
