@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/18 17:01:00 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/21 15:59:07 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int					ft_exit_pushswap(t_ctl **a, t_ctl **b, char *line);
 int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints);
 t_node				*ft_new_node(char *integer, t_node *prev);
 int					ft_check_duplicate(t_node *diplicate, char *ints);
-void				ft_putnode(t_node *node);
+void				ft_putnode(t_node *a, t_node *b);
 int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 size_t				ft_verif_pushswap(t_ctl **ctl);
 

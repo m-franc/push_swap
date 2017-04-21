@@ -6,23 +6,37 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:32:37 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 22:48:37 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/21 16:33:36 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		ft_putnode(t_node *node)
+void		ft_putnode(t_node *a, t_node *b)
 {
-	if (!node)
-		return ;
-	ft_printf("data : {grey}%d{eoc} - data->prev : {cyan}NULL{eoc}\n",
-			node->data);
-	node = node->next;
-	while (node)
+	ft_printf("|{grey}%s{eoc}|  |{grey}%s{eoc}|\n", "A", "B");
+	while (a && b)
 	{
-		ft_printf("data : {grey}%d{eoc} - data->prev : {cyan}%d{eoc}\n",
-				node->data, node->prev->data);
-		node = node->next;
+		ft_printf("|{cyan}%d{eoc}|  |{purple}%d{eoc}|\n", a->data, b->data);
+		a = a->next;
+		b = b->next;
 	}
+	if (a)
+	{	
+		while (a)
+		{
+			ft_printf("|{cyan}%d{eoc}|\n", a->data);
+			a = a->next;
+		}
+	
+	}
+	if (b)
+	{	
+		while (b)
+		{
+			ft_printf("     |{purple}%d{eoc}|\n", b->data);
+			b = b->next;
+		}
+	}
+	ENDL
 }

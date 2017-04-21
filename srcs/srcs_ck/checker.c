@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/19 16:34:05 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/21 17:30:32 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int			ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
 		ft_reverse_rotate(b_ctl);
 	else if (ft_strnstr(RRR, line, 3))
 		ft_rreverse_rotate(a_ctl, b_ctl);
-	else
-		return (-1);
+//	else
+//		return (-1);
 	return (1);
 }
 
@@ -52,10 +52,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
 			return (ft_exit_pushswap(a_ctl, b_ctl, line));
 		ft_strdel(&line);
-	//	ft_putstrcolor("STACK A : \n", GREEN);
-	//	ft_putnode((*a_ctl)->first);
-	//	ft_putstrcolor("STACK B : \n", GREEN);
-	//	ft_putnode((*b_ctl)->first);
+		ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 		i++;
 	}
 	if (gnl == -1)
