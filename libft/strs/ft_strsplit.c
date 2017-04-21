@@ -45,7 +45,7 @@ char			**ft_strsplit(char const *s, char c)
 	int		j;
 
 	if ((!s) || !(tab = (char **)malloc(sizeof(*tab)
-					* (ft_word_count(s, c)))))
+					* (ft_word_count(s, c) + 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -55,10 +55,10 @@ char			**ft_strsplit(char const *s, char c)
 			i++;
 		if (s[i] != c && s[i])
 		{
-			if (!(tab[j] = (char*)malloc(sizeof(tab[j]) *
-							(ft_slen_untilc(s + i, c)))))
+			if (!(tab[j] = ft_strnew(ft_slen_untilc(s + i, c))))
 				return (NULL);
-			tab[j++] = ft_strsub(s, i, ft_slen_untilc(s + i, c));
+			if (!(tab[j++] = ft_strsub(s, i, ft_slen_untilc(s + i, c))))
+				return (NULL);
 			while (s[i] != c && s[i])
 				i++;
 		}

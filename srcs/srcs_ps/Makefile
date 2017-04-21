@@ -20,7 +20,7 @@ ALL_INC = -I $(INC) -I $(INC_LIB)
 SRCS = push_swap.c					\
 	   ../ft_init_node.c			\
 	   ../ft_putnode.c				\
-	   ../ft_exit_pushswap.c		\
+	   ../ft_exit.c		\
 	   ../ft_swap.c					\
 	   ../ft_push.c					\
 	   ../ft_init_ctl.c				\

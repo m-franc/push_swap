@@ -182,7 +182,9 @@ SRCS = 	mems/ft_memset.c				\
 		ft_printf/customs/ft_blink.c	\
 		ft_printf/customs/ft_reverse.c	\
 		ft_printf/customs/ft_hidden.c	\
-		ft_printf/customs/ft_italic.c
+		ft_printf/customs/ft_italic.c	\
+		strs/ft_tablen.c		\
+		strs/ft_tabdel.c		
 
 OBJECTS = $(SRCS:%.c=%.o)
 

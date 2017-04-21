@@ -50,9 +50,14 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints)
 	t_node	*prev;
 	t_node	*duplicate;
 
-	i = 1;
-	if (!(*node = ft_new_node(ints[i++], NULL)))
-		return (-1);
+	if (!*node)
+	{
+		i = 0;
+		if (!(*node = ft_new_node(ints[i++], NULL)))
+			return (-1);
+	}
+	else
+		i = 2;
 	(*a_ctl)->first = *node;
 	(*a_ctl)->size++;
 	tmp = *node;
@@ -68,6 +73,31 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints)
 		tmp = tmp->next;
 		(*a_ctl)->size++;
 		(*a_ctl)->last = tmp;
+	}
+	return (1);
+}
+
+int		ft_parse_arg(t_node **a, t_ctl **a_ctl, char **av)
+{
+	int	nb_args;
+	char	**ints;
+
+	if (!(ints = ft_strsplit(av[1], ' ')))
+		return (ft_exit_parsing(a_ctl, NULL, ints));
+	nb_args = ft_tablen(ints);
+	if (nb_args == 1)
+	{
+		if (!(*a = ft_new_node(ints[0], NULL)))
+			return (ft_exit_parsing(a_ctl, NULL, ints));
+		ft_tabdel(ints);
+		if ((ft_fill_node(a, a_ctl, av)) == -1)
+			return (ft_exit_begin(a_ctl, NULL));
+	}
+	else
+	{
+		if ((ft_fill_node(a, a_ctl, ints)) == -1)
+			return (ft_exit_parsing(a_ctl, NULL, ints));
+		ft_tabdel(ints);
 	}
 	return (1);
 }
