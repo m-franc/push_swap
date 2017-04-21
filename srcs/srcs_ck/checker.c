@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/21 19:03:39 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/21 20:42:33 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	}
 	if (gnl == -1)
 		return (ft_exit_checker(a_ctl, b_ctl, NULL));
-	ft_putstrcolor("STACK A : \n", GREEN);
-	ft_putnode((*a_ctl)->first);
+	ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 	ft_printf("{grey}%i{eoc} operations.\n", i);
 	if (ft_verif_pushswap(a_ctl) == (*a_ctl)->size)
 		ft_putstrcolor("OK !\n", GREEN);
