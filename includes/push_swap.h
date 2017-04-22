@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/21 15:59:07 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/22 15:23:58 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ typedef struct		s_ctl
 	t_node			*first;
 	t_node			*last;
 }					t_ctl;
+
+# define FIRST(x) (x->first)
+# define NEXT(x) (x->first->next)
+# define PREV(x) (x->first->prev)
+# define LAST(x) (x->last)
+# define SIZE(x) (x->size)
+# define DATA(x) (x->data)
+# define NEXT_DATA(x) (x->next->data)
+# define PREV_DATA(x) (x->prev->data)
 
 # define SA "sa"
 # define SB "sb"
@@ -77,9 +86,20 @@ int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
  **					OPERATIONS FUNCTIONS
  */
 void				ft_swap(t_ctl **ctl);
-void				ft_sswap(t_ctl **a, t_ctl **b);
+void				ft_sa(t_ctl **ctl);
+void				ft_sb(t_ctl **ctl);
+void				ft_ss(t_ctl **a, t_ctl **b);
+
 void				ft_push(t_ctl **src_ctl, t_ctl **dest_ctl);
+void				ft_pa(t_ctl **src_ctl, t_ctl **dest_ctl);
+void				ft_pb(t_ctl **src_ctl, t_ctl **dest_ctl);
+
 void				ft_rotate(t_ctl **ctl);
-void				ft_rrotate(t_ctl **a, t_ctl **b);
+void				ft_ra(t_ctl **ctl);
+void				ft_rb(t_ctl **ctl);
+void				ft_rr(t_ctl **a, t_ctl **b);
+
 void				ft_reverse_rotate(t_ctl **ctl);
-void				ft_rreverse_rotate(t_ctl **a, t_ctl **b);
+void				ft_rra(t_ctl **ctl);
+void				ft_rrb(t_ctl **ctl);
+void				ft_rrr(t_ctl **a, t_ctl **b);

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/21 20:42:33 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/22 15:19:10 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 int			ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
 {
 	if (ft_strnstr(SA, line, 2))
-		ft_swap(a_ctl);
+		ft_sa(a_ctl);
 	else if (ft_strnstr(SB, line, 2))
-		ft_swap(b_ctl);
+		ft_sb(b_ctl);
 	else if (ft_strnstr(SS, line, 2))
-		ft_sswap(a_ctl, b_ctl);
+		ft_ss(a_ctl, b_ctl);
 	else if (ft_strnstr(PA, line, 2))
-		ft_push(b_ctl, a_ctl);
+		ft_pa(b_ctl, a_ctl);
 	else if (ft_strnstr(PB, line, 2))
-		ft_push(a_ctl, b_ctl);
+		ft_pb(a_ctl, b_ctl);
 	else if (ft_strnstr(RA, line, 2))
-		ft_rotate(a_ctl);
+		ft_ra(a_ctl);
 	else if (ft_strnstr(RB, line, 2))
-		ft_rotate(b_ctl);
+		ft_rb(b_ctl);
 	else if (ft_strnstr(RR, line, 2))
-		ft_rrotate(a_ctl, b_ctl);
+		ft_rr(a_ctl, b_ctl);
 	else if (ft_strnstr(RRA, line, 3))
-		ft_reverse_rotate(a_ctl);
+		ft_rra(a_ctl);
 	else if (ft_strnstr(RRB, line, 3))
-		ft_reverse_rotate(b_ctl);
+		ft_rrb(b_ctl);
 	else if (ft_strnstr(RRR, line, 3))
-		ft_rreverse_rotate(a_ctl, b_ctl);
+		ft_rrr(a_ctl, b_ctl);
 //	else
 //		return (-1);
 	return (1);

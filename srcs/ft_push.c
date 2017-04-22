@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:19:39 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/19 12:26:46 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/22 14:37:55 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,16 @@ void		ft_push(t_ctl **src_ctl, t_ctl **dest_ctl)
 	(*dest_ctl)->first = tmpsrc;
 	(*dest_ctl)->last = (*dest_ctl)->first;
 	(*dest_ctl)->first->next = NULL;
+}
+
+void	ft_pa(t_ctl **src_ctl, t_ctl **dest_ctl)
+{
+	ft_push(src_ctl, dest_ctl);
+	ft_putendl(PA);
+}
+
+void	ft_pb(t_ctl **src_ctl, t_ctl **dest_ctl)
+{
+	ft_push(src_ctl, dest_ctl);
+	ft_putendl(PB);
 }
