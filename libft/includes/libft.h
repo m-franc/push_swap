@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 18:04:22 by mfranc            #+#    #+#             */
-/*   Updated: 2017/03/30 18:33:27 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/22 18:26:57 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ char				*ft_vtob(const void *c, size_t size);
 int					ft_isword(char c);
 int					ft_countword(char const *s);
 void				**ft_tabnew(size_t n);
+void				ft_sort_int_tab(int *tab, unsigned int size);
+int					ft_get_median(int *tab, unsigned int size);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lststrnew(void const *content, size_t content_size);

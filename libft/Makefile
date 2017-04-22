@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/04 18:43:40 by mfranc            #+#    #+#              #
-#    Updated: 2017/03/30 18:33:04 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/22 18:36:28 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -184,7 +184,9 @@ SRCS = 	mems/ft_memset.c				\
 		ft_printf/customs/ft_hidden.c	\
 		ft_printf/customs/ft_italic.c	\
 		strs/ft_tablen.c		\
-		strs/ft_tabdel.c		
+		strs/ft_tabdel.c		\
+		maths/ft_sort_int_tab.c	\
+		maths/ft_get_median.c
 
 OBJECTS = $(SRCS:%.c=%.o)
 

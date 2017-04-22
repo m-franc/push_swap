@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_list_to_inttab.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:50:50 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/22 18:18:04 by mfranc           ###   ########.fr       */
+/*   Created: 2017/04/22 17:48:24 by mfranc            #+#    #+#             */
+/*   Updated: 2017/04/22 18:41:25 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_sqrt(int nb)
+int		*ft_list_to_inttab(t_ctl **cpy)
 {
-	int	i;
+	int		*tab;
+	int		i;
+	t_node	*cursor;
+	int		size_tab;
 
-	i = 0;
-	while (i < nb / 2)
-	{
-		if (i * i == nb)
-		{
-			if (nb % i == 0)
-				return (i);
-		}
-		i++;
+	size_tab = SIZE((*cpy));
+	if (!(tab = (int*)malloc(sizeof(int) * (size_tab + 1))))
+		return (NULL);
+	cursor = FIRST((*cpy));
+	i = -1;
+	while (++i <= size_tab && cursor)
+	{	
+		tab[i] = DATA(cursor);
+		cursor = cursor->next;
 	}
-	return (0);
+	return (tab);
 }

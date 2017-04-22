@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:50:50 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/22 18:18:04 by mfranc           ###   ########.fr       */
+/*   Created: 2017/04/22 17:47:29 by mfranc            #+#    #+#             */
+/*   Updated: 2017/04/22 18:30:53 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_sqrt(int nb)
+void	ft_sort_int_tab(int *tab, unsigned int size)
 {
-	int	i;
+	unsigned int	i;
+	int				tmp;
 
 	i = 0;
-	while (i < nb / 2)
+	while (i < size)
 	{
-		if (i * i == nb)
+		while (tab[i] > tab[i + 1])
 		{
-			if (nb % i == 0)
-				return (i);
+			tmp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = tmp;
+			i = 0;
 		}
 		i++;
 	}
-	return (0);
 }
