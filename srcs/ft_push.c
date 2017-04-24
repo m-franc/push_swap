@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:19:39 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/22 17:26:33 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/24 09:39:51 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void		ft_push(t_ctl **src_ctl, t_ctl **dest_ctl)
 	t_node	*tmpsrc;
 	t_node	*tmpdest;
 
-	ft_putendl("========================");
 	if ((*src_ctl)->size == 0)
 		return ;
 	tmpsrc = (*src_ctl)->first;
