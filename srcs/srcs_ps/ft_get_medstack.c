@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_median.c                                    :+:      :+:    :+:   */
+/*   ft_get_medstack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/22 18:20:07 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/22 18:28:08 by mfranc           ###   ########.fr       */
+/*   Created: 2017/04/24 10:58:46 by mfranc            #+#    #+#             */
+/*   Updated: 2017/04/24 14:28:02 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int			ft_get_median(int *tab, unsigned int size)
+int		ft_get_medstack(t_ctl **ctl)
 {
-	size_t	i;
+	int		median;
+	int		*tab;
 
-	i = 0;
-	while (i < (size / 2))
-		i++;
-	return (tab[i]);
+	if (!(tab = ft_list_to_inttab(ctl)))
+		return (INT_MIN);
+	ft_sort_int_tab(tab, SIZE((*ctl)));
+	median = ft_get_median(tab, SIZE((*ctl)));
+	return (median);
 }
