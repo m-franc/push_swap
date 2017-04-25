@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/25 12:29:14 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 17:39:13 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int	main(int ac, char **av)
 		return (0);
 	if ((ft_init_ctl(&a, &b)) == -1)
 		return (ft_exit_begin(&a, &b));
-	if ((ft_parse_arg(&stack_a, &a, av)) == -1)
+	if ((ft_fill_node(&stack_a, &a, av)) == -1)
 		return (-1);
 	if ((ft_sort(a, b)) == -1)
 		return (-1);
-//	ft_putnode(a->first, b->first);
+	ft_putnode(a->first, b->first);
 	return (0);
 }

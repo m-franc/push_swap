@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/25 12:04:01 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 17:39:34 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			main(int ac, char **av)
 		return (0);
 	if ((ft_init_ctl(&a_ctl, &b_ctl)) == -1)
 		return (ft_exit_begin(&a_ctl, &b_ctl));
-	if ((ft_parse_arg(&a, &a_ctl, av)) == -1)		
+	if ((ft_fill_node(&a, &a_ctl, av)) == -1)
 		return (-1);
 	if ((ft_checker(&a_ctl, &b_ctl)))
 		return (-1);
