@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/25 18:13:29 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 19:13:59 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_node		*ft_new_node(t_node *check, char *integer, t_node *prev)
 	node->data = num;
 	node->next = NULL;
 	node->prev = prev;
-	integer += ft_ilen(num, 10);
 	return (node);
 }
 
@@ -97,6 +96,7 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
 				check = *node;
 				ints++;
 			}
+			ft_tabdel(ints);
 		}
 		else
 		{
