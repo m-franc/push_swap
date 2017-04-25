@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/24 14:26:45 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 10:35:41 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct		s_node
 {
 	int				data;
+	int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;

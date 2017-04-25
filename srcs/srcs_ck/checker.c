@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/24 18:55:59 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 11:38:57 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,15 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 {
 	int		gnl;
 	char	*line;
-	int		i = 0;
+	int		i;
 
+	i = 0;
 	while ((gnl = get_next_line(0, &line)) == 1)
 	{	
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
 			return (ft_exit_checker(a_ctl, b_ctl, line));
 		ft_strdel(&line);
-		ft_putnode((*a_ctl)->first, (*b_ctl)->first);
+//		ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 		i++;
 	}
 	if (gnl == -1)
