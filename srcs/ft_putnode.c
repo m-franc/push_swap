@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:32:37 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/21 16:33:36 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 12:47:31 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_putnode(t_node *a, t_node *b)
 	ft_printf("|{grey}%s{eoc}|  |{grey}%s{eoc}|\n", "A", "B");
 	while (a && b)
 	{
-		ft_printf("|{cyan}%d{eoc}|  |{purple}%d{eoc}|\n", a->data, b->data);
+		ft_printf("index : {red}%d{eoc} index : |{cyan}%d{eoc}|  |{purple}%d{eoc}|\n", a->index, a->data, b->index, b->data);
 		a = a->next;
 		b = b->next;
 	}
@@ -25,7 +25,7 @@ void		ft_putnode(t_node *a, t_node *b)
 	{	
 		while (a)
 		{
-			ft_printf("|{cyan}%d{eoc}|\n", a->data);
+			ft_printf("index : {red}%d{eoc} |{cyan}%d{eoc}|\n", a->index, a->data);
 			a = a->next;
 		}
 	
@@ -34,7 +34,7 @@ void		ft_putnode(t_node *a, t_node *b)
 	{	
 		while (b)
 		{
-			ft_printf("     |{purple}%d{eoc}|\n", b->data);
+			ft_printf("     index : {red}%d{eoc} |{purple}%d{eoc}|\n",b->index, b->data);
 			b = b->next;
 		}
 	}

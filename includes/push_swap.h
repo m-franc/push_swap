@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/25 10:35:41 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 12:28:29 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_ctl
 # define LAST(x) (x->last)
 # define SIZE(x) (x->size)
 # define DATA(x) (x->data)
+# define INDEX(x) (x->index)
 
 # define SA "sa"
 # define SB "sb"
@@ -56,7 +57,7 @@ int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **ints);
 int					ft_parse_arg(t_node **a, t_ctl **a_ctl, char **av);
 t_node				*ft_new_node(char *integer, t_node *prev);
 int					ft_check_duplicate(t_node *diplicate, char *ints);
-void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl);
+void				ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl);
 void				ft_putnode(t_node *a, t_node *b);
 int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 size_t				ft_verif_pushswap(t_ctl **ctl);

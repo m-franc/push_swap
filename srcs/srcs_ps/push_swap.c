@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/25 11:55:02 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 12:29:14 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		ft_sort(t_ctl *a, t_ctl *b)
 	size_a = SIZE(a);
 	if ((median = ft_get_medstack(&a)) == INT_MIN)
 		return (-1);
-	ft_printf("sa\n");
 	(void)b;
 /*	while (FIRST(a_cpy) && i < size_a)
 	{

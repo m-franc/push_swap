@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/25 11:38:57 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/25 12:04:01 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	char	*line;
 	int		i;
 
+	// MODIFIER LA MANIERE DE COMPTER LES OPERATIONS
 	i = 0;
 	while ((gnl = get_next_line(0, &line)) == 1)
 	{	
