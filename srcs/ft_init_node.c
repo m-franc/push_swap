@@ -6,13 +6,13 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/25 19:13:59 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/26 15:29:11 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node		*ft_new_node(t_node *check, char *integer, t_node *prev)
+t_node		*ft_new_node(t_node *check, char *integer)
 {
 	t_node		*node;
 	long long 	num;
@@ -30,7 +30,6 @@ t_node		*ft_new_node(t_node *check, char *integer, t_node *prev)
 		return (NULL);
 	node->data = num;
 	node->next = NULL;
-	node->prev = prev;
 	return (node);
 }
 
@@ -68,75 +67,91 @@ void		ft_init_index(t_node *check, t_node *new)
 	INDEX(new) = i;
 }
 
+void		ft_push_back(t_node **node, t_node *new)
+{
+	t_node	*tmp;
+	t_node	*prev;
+
+	if (!*node)
+	{
+		*node = new;
+		(*node)->prev = NULL;
+	}
+	else
+	{
+		tmp = *node;
+		while (tmp)
+		{
+			prev = tmp;
+			tmp = tmp->next;	
+		}
+		new->prev = prev;
+		tmp->next = new;
+	}
+}
+
+int			ft_arg_got_many_int(t_ctl **a_ctl, t_node **node, char *arg)
+{
+	char	**ints;
+	t_node	*new;
+	t_node	*check;
+	int		i;
+
+	i = -1;
+	if (!(ints = ft_strsplit(arg, ' ')))
+		return (-1);
+	while (ints[++i])
+	{
+		check = *node;
+		if (!(new = ft_new_node(check, ints[i])))
+			return (ft_exit_parsing(a_ctl, NULL, ints));
+		check = *node;
+		ft_init_index(check, new);
+		check = *node;
+		ft_push_back(&check, new);
+		(*a_ctl)->size++;
+		(*a_ctl)->last = new;
+	}
+	ft_tabdel(ints);
+	return (1);
+}
+
+int			ft_arg_got_one_int(t_ctl **a_ctl, t_node **node, char *arg)
+{
+	t_node	*check;
+	t_node	*new;
+
+	check = *node;
+	if (!(new = ft_new_node(check, arg)))
+		return (ft_exit_begin(a_ctl, NULL));
+	check = *node;
+	ft_init_index(check, new);
+	check = *node;
+	ft_push_back(&check, new);
+	(*a_ctl)->size++;
+	(*a_ctl)->last = new;
+	return (1);
+}
+
 int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
 {
 	int		i;
-	t_node	*prev;
-	t_node	*tmp;
-	t_node	*check;
-	char	**ints;
 
 	i = 1;
-	tmp = *node;
+	*node = (*a_ctl)->first;
 	while (args[i])
 	{
-		prev = tmp;
 		if (ft_strchr(args[i], ' '))
 		{
-			if (!(ints = ft_strsplit(args[i], ' ')))
+			if ((ft_arg_got_many_int(a_ctl, node, args[i])) == -1)
 				return (-1);
-			while (ints)
-			{
-				check = *node;
-				if (!(tmp->next = ft_new_node(check, *ints, prev)))
-					return (-1);
-				check = *node;
-				tmp = tmp->next;
-				ft_init_index(check, tmp);
-				check = *node;
-				ints++;
-			}
-			ft_tabdel(ints);
 		}
 		else
 		{
-			check = *node;
-			if (!(tmp->next = ft_new_node(check, args[i], prev)))
+			if ((ft_arg_got_one_int(a_ctl, node, args[i])) == -1)
 				return (-1);
-			check = *node;
-			tmp = tmp->next;
-			ft_init_index(check, tmp);
-			check = *node;
 		}
-		(*a_ctl)->size++;
-		(*a_ctl)->last = tmp;
 		i++;
 	}
 	return (1);
 }
-
-/*
-   int		ft_parse_arg(t_node **a, t_ctl **a_ctl, char **av)
-   {
-   int	nb_args;
-   char	**ints;
-
-   if (!(ints = ft_strsplit(av[1], ' ')))
-   return (ft_exit_parsing(a_ctl, NULL, ints));
-   nb_args = ft_tablen(ints);
-   if (nb_args == 1)
-   {
-   if (!(*a = ft_new_node(ints[0], NULL)))
-   return (ft_exit_parsing(a_ctl, NULL, ints));
-   ft_tabdel(ints);
-   if ((ft_fill_node(a, a_ctl, av)) == -1)
-   return (ft_exit_begin(a_ctl, NULL));
-   }
-   else
-   {
-   if ((ft_fill_node(a, a_ctl, ints)) == -1)
-   return (ft_exit_parsing(a_ctl, NULL, ints));
-   ft_tabdel(ints);
-   }
-   return (1);
-   }*/
