@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/26 15:29:11 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/26 16:51:41 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void		ft_push_back(t_node **node, t_node *new)
 	}
 }
 
-int			ft_arg_got_many_int(t_ctl **a_ctl, t_node **node, char *arg)
+int			ft_arg_got_many_int(t_ctl **a_ctl, char *arg)
 {
 	char	**ints;
 	t_node	*new;
@@ -102,34 +102,34 @@ int			ft_arg_got_many_int(t_ctl **a_ctl, t_node **node, char *arg)
 		return (-1);
 	while (ints[++i])
 	{
-		check = *node;
+		check = FIRST((*a_ctl));
 		if (!(new = ft_new_node(check, ints[i])))
 			return (ft_exit_parsing(a_ctl, NULL, ints));
-		check = *node;
+		check = FIRST((*a_ctl));
 		ft_init_index(check, new);
-		check = *node;
+		check = FIRST((*a_ctl));
 		ft_push_back(&check, new);
-		(*a_ctl)->size++;
-		(*a_ctl)->last = new;
+		SIZE((*a_ctl))++;
+		LAST((*a_ctl)) = new;
 	}
 	ft_tabdel(ints);
 	return (1);
 }
 
-int			ft_arg_got_one_int(t_ctl **a_ctl, t_node **node, char *arg)
+int			ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
 {
 	t_node	*check;
 	t_node	*new;
 
-	check = *node;
+	check = FIRST((*a_ctl));
 	if (!(new = ft_new_node(check, arg)))
 		return (ft_exit_begin(a_ctl, NULL));
-	check = *node;
+	check = FIRST((*a_ctl));
 	ft_init_index(check, new);
-	check = *node;
+	check = FIRST((*a_ctl));
 	ft_push_back(&check, new);
-	(*a_ctl)->size++;
-	(*a_ctl)->last = new;
+	SIZE((*a_ctl))++;
+	LAST((*a_ctl)) = new;
 	return (1);
 }
 
@@ -138,17 +138,17 @@ int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
 	int		i;
 
 	i = 1;
-	*node = (*a_ctl)->first;
+	FIRST((*a_ctl)) = *node;
 	while (args[i])
 	{
 		if (ft_strchr(args[i], ' '))
 		{
-			if ((ft_arg_got_many_int(a_ctl, node, args[i])) == -1)
+			if ((ft_arg_got_many_int(a_ctl, args[i])) == -1)
 				return (-1);
 		}
 		else
 		{
-			if ((ft_arg_got_one_int(a_ctl, node, args[i])) == -1)
+			if ((ft_arg_got_one_int(a_ctl, args[i])) == -1)
 				return (-1);
 		}
 		i++;
