@@ -6,13 +6,13 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/26 16:51:41 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/26 19:29:31 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node		*ft_new_node(t_node *check, char *integer)
+t_node			*ft_new_node(t_node *check, char *integer)
 {
 	t_node		*node;
 	long long 	num;
@@ -33,7 +33,7 @@ t_node		*ft_new_node(t_node *check, char *integer)
 	return (node);
 }
 
-int			ft_check_duplicate(t_node *duplicate, char *ints)
+int				ft_check_duplicate(t_node *duplicate, char *ints)
 {
 	while (duplicate)
 	{
@@ -44,10 +44,10 @@ int			ft_check_duplicate(t_node *duplicate, char *ints)
 	return (0);
 }
 
-void		ft_init_index(t_node *check, t_node *new)
+void			ft_init_index(t_node *check, t_node *new)
 {
-	int		i;
-	t_node	*tmp;
+	int			i;
+	t_node		*tmp;
 
 	tmp = check;
 	i = 0;
@@ -67,10 +67,10 @@ void		ft_init_index(t_node *check, t_node *new)
 	INDEX(new) = i;
 }
 
-void		ft_push_back(t_node **node, t_node *new)
+void			ft_push_back(t_node **node, t_node *new)
 {
-	t_node	*tmp;
-	t_node	*prev;
+	t_node		*tmp;
+	t_node		*prev;
 
 	if (!*node)
 	{
@@ -90,19 +90,19 @@ void		ft_push_back(t_node **node, t_node *new)
 	}
 }
 
-int			ft_arg_got_many_int(t_ctl **a_ctl, char *arg)
+int				ft_arg_got_many_int(t_ctl **a_ctl, char *arg)
 {
-	char	**ints;
-	t_node	*new;
-	t_node	*check;
-	int		i;
+	char		**ints;
+	t_node		*new;
+	t_node		*check;
+	int			i;
 
 	i = -1;
 	if (!(ints = ft_strsplit(arg, ' ')))
 		return (-1);
+	check = FIRST((*a_ctl));
 	while (ints[++i])
 	{
-		check = FIRST((*a_ctl));
 		if (!(new = ft_new_node(check, ints[i])))
 			return (ft_exit_parsing(a_ctl, NULL, ints));
 		check = FIRST((*a_ctl));
@@ -116,10 +116,10 @@ int			ft_arg_got_many_int(t_ctl **a_ctl, char *arg)
 	return (1);
 }
 
-int			ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
+int				ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
 {
-	t_node	*check;
-	t_node	*new;
+	t_node		*check;
+	t_node		*new;
 
 	check = FIRST((*a_ctl));
 	if (!(new = ft_new_node(check, arg)))
@@ -133,14 +133,16 @@ int			ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
 	return (1);
 }
 
-int			ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
+int				ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
 {
-	int		i;
+	int			i;
 
 	i = 1;
 	FIRST((*a_ctl)) = *node;
 	while (args[i])
 	{
+//		if (ft_strstr("-v", args[i]))
+			// option -v activated
 		if (ft_strchr(args[i], ' '))
 		{
 			if ((ft_arg_got_many_int(a_ctl, args[i])) == -1)
