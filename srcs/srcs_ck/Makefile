@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/26 18:48:37 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/26 20:02:58 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,6 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LIBFT)
-	rm -f $(NAME)
+	rm -f ../../$(NAME)
 
 re: fclean all
