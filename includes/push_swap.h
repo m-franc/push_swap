@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 17:36:13 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 21:41:20 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
 
 int					*ft_list_to_inttab(t_ctl **cpy);
 int					ft_get_medstack(t_ctl **ctl);
+int					ft_sort(t_ctl *a, t_ctl *b);
 
 /*
  **					OPERATIONS FUNCTIONS
