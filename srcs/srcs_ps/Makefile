@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/27 16:13:54 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/27 16:59:56 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ INC_LIB = ../../libft/includes
 ALL_INC = -I $(INC) -I $(INC_LIB)
 SRCS = push_swap.c					\
 	   ../ft_init_node.c			\
+	   ../ft_init_link.c			\
 	   ../ft_putnode.c				\
 	   ../ft_exit.c		\
 	   ../ft_swap.c					\
@@ -43,11 +44,9 @@ $(NAME): $(OBJS)
 	$(CC) -o $@ -c $< $(ALL_INC)
 
 clean:
-	@make clean -C $(LIBFT)
 	rm -f $(OBJS)
 
 fclean: clean
-	@make fclean -C $(LIBFT)
 	rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:19:07 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/26 18:20:47 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 17:03:58 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,24 @@ void		ft_swap(t_ctl **ctl)
 		(*ctl)->first->next->next->prev = (*ctl)->first->next;
 }
 
-void		ft_sa(t_ctl **ctl)
+void		ft_sa(t_ctl **ctl, int ps)
 {
 	ft_swap(ctl);
-	ft_putendl(SA);
+	if (ps == 1)
+		ft_putendl(SA);
 }
 
-void		ft_sb(t_ctl **ctl)
+void		ft_sb(t_ctl **ctl, int ps)
 {
 	ft_swap(ctl);
-	ft_putendl(SB);
+	if (ps == 1)
+		ft_putendl(SB);
 }
 
-void		ft_ss(t_ctl **a, t_ctl **b)
+void		ft_ss(t_ctl **a, t_ctl **b, int ps)
 {
 	ft_swap(a);
 	ft_swap(b);
-	ft_putendl(SS);
+	if (ps == 1)
+		ft_putendl(SS);
 }

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 15:43:06 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 17:01:52 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct		s_ctl
 */
 int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **args);
 t_node				*ft_new_node(t_ctl **a_ctl, char *integer);
+long long			*ft_verif_data(long long *pnum,
+		t_ctl **a_ctl, char *intger);
 void				ft_init_index(t_node *check, t_node *new);
 void				ft_push_back(t_node **node, t_node *new);
 int					ft_check_duplicate(t_node *diplicate, int num);
@@ -88,20 +90,20 @@ int					ft_get_medstack(t_ctl **ctl);
  **					OPERATIONS FUNCTIONS
  */
 void				ft_swap(t_ctl **ctl);
-void				ft_sa(t_ctl **ctl);
-void				ft_sb(t_ctl **ctl);
-void				ft_ss(t_ctl **a, t_ctl **b);
+void				ft_sa(t_ctl **ctl, int ps);
+void				ft_sb(t_ctl **ctl, int ps);
+void				ft_ss(t_ctl **a, t_ctl **b, int ps);
 
 void				ft_push(t_ctl **src_ctl, t_ctl **dest_ctl);
-void				ft_pa(t_ctl **src_ctl, t_ctl **dest_ctl);
-void				ft_pb(t_ctl **src_ctl, t_ctl **dest_ctl);
+void				ft_pa(t_ctl **src_ctl, t_ctl **dest_ctl, int ps);
+void				ft_pb(t_ctl **src_ctl, t_ctl **dest_ctl, int ps);
 
 void				ft_rotate(t_ctl **ctl);
-void				ft_ra(t_ctl **ctl);
-void				ft_rb(t_ctl **ctl);
-void				ft_rr(t_ctl **a, t_ctl **b);
+void				ft_ra(t_ctl **ctl, int ps);
+void				ft_rb(t_ctl **ctl, int ps);
+void				ft_rr(t_ctl **a, t_ctl **b, int ps);
 
 void				ft_reverse_rotate(t_ctl **ctl);
-void				ft_rra(t_ctl **ctl);
-void				ft_rrb(t_ctl **ctl);
-void				ft_rrr(t_ctl **a, t_ctl **b);
+void				ft_rra(t_ctl **ctl, int ps);
+void				ft_rrb(t_ctl **ctl, int ps);
+void				ft_rrr(t_ctl **a, t_ctl **b, int ps);
