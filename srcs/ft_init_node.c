@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 16:12:38 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 16:15:33 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void			ft_push_back(t_node **node, t_node *new)
 
 	if (!*node)
 	{
+
+		ft_putendl("=========")
 		*node = new;
 		(*node)->prev = NULL;
 	}
