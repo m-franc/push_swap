@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/26 20:02:58 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/27 16:14:01 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(SRCS) $(ALL_INC) -L $(LIBFT) -lftprintf; mv $(NAME) ../../$(NAME)
+	$(CC) $^ -o $@ $(ALL_INC) -L $(LIBFT) -lftprintf
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(ALL_INC)
@@ -46,6 +46,6 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LIBFT)
-	rm -f ../../$(NAME)
+	rm -f $(NAME)
 
 re: fclean all
