@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/26 16:51:34 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 12:43:01 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ typedef struct		s_ctl
 **					COMMON FUNCTIONS
 */
 int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **args);
-t_node				*ft_new_node(t_node *check, char *integer);
+t_node				*ft_new_node(t_ctl **a_ctl, t_node *check, char *integer);
+void				ft_init_index(t_node *check, t_node *new);
+void				ft_push_back(t_node *node, t_node *new);
 int					ft_check_duplicate(t_node *diplicate, char *ints);
 void				ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl);
 void				ft_putnode(t_node *a, t_node *b);
