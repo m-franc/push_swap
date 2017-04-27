@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 16:15:33 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 16:42:53 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ t_node			*ft_new_node(t_ctl **a_ctl, char *integer)
 	if (!(new = (t_node*)malloc(sizeof(t_node))))
 		return (NULL);
 	new->data = num;
-	ft_printf("{cyan}%d{eoc}\n", new->data);
 	new->next = NULL;
 	check = FIRST((*a_ctl));
 	ft_init_index(check, new);
 	check = FIRST((*a_ctl));
-	ft_push_back(&check, new);
+	if (!check)
+		ft_push_back(&(FIRST((*a_ctl))), new);
+	else
+		ft_push_back(&check, new);
 	return (new);
 }
 
@@ -94,8 +96,6 @@ void			ft_push_back(t_node **node, t_node *new)
 
 	if (!*node)
 	{
-
-		ft_putendl("=========")
 		*node = new;
 		(*node)->prev = NULL;
 	}
