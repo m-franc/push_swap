@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 21:46:04 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 22:08:08 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_sort(t_ctl *a_ctl, t_ctl *b_ctl)
 			ft_ra(&a_ctl, 0);
 		i++;	
 	}
-	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }
 
