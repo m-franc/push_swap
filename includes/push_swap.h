@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 17:01:52 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 17:36:13 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ size_t				ft_verif_pushswap(t_ctl **ctl);
 /*
  ** 				EXIT FUNCTIONS
  */
-int					ft_exit_begin(t_ctl **a_ctl, t_ctl **b_ctl);
-int					ft_exit_parsing(t_ctl **a_ctl, t_ctl **b_ctl, char ** ints);
-int					ft_exit_checker(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
+int					ft_exit_ps(t_ctl **a_ctl, t_ctl **b_ctl);
+int					ft_exit_parsing(char ** ints);
+int					ft_exit_checker(char *line);
 
 /*
  ** 				CHECKER FUNCTIONS

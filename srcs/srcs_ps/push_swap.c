@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 12:24:43 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 17:36:19 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	if ((ft_init_ctl(&a, &b)) == -1)
-		return (ft_exit_begin(&a, &b));
+		return (ft_exit_ps(&a, &b));
 	if ((ft_fill_node(&stack_a, &a, av)) == -1)
-		return (-1);
+		return (ft_exit_ps(&a, &b));
 	ft_putnode(a->first, b->first);
 	if ((ft_sort(a, b)) == -1)
 		return (-1);

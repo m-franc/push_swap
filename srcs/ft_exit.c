@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:30:04 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/14 18:35:39 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 17:37:00 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
 	}
 }
 
-int			ft_exit_begin(t_ctl **a_ctl, t_ctl **b_ctl)
+int			ft_exit_ps(t_ctl **a_ctl, t_ctl **b_ctl)
 {
 	ft_delcontroller(a_ctl, b_ctl);
 //	(void)a_ctl;
@@ -54,22 +54,16 @@ int			ft_exit_begin(t_ctl **a_ctl, t_ctl **b_ctl)
 	return (-1);
 }
 
-int			ft_exit_parsing(t_ctl **a_ctl, t_ctl **b_ctl, char **tab)
+int			ft_exit_parsing(char **tab)
 {
-	ft_delcontroller(a_ctl, b_ctl);
-//	(void)a_ctl;
-//	(void)b_ctl;
 	if (ft_tablen(tab) != 0)
 		ft_tabdel(tab);
 	ft_putstrcolor("Error\n", RED);
 	return (-1);
 }
 
-int			ft_exit_checker(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
+int			ft_exit_checker(char *line)
 {
-	ft_delcontroller(a_ctl, b_ctl);
-//	(void)a_ctl;
-//	(void)b_ctl;
 	if (line)
 		ft_strdel(&line);
 	ft_putstrcolor("Error\n", RED);

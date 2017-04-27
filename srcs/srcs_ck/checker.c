@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 17:15:48 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/27 17:37:47 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	while ((gnl = get_next_line(0, &line)) == 1)
 	{	
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
-			return (ft_exit_checker(a_ctl, b_ctl, line));
+			return (ft_exit_checker(line));
 		else
 			i++;
 		ft_strdel(&line);
 		ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 	}
 	if (gnl == -1)
-		return (ft_exit_checker(a_ctl, b_ctl, NULL));
+		return (-1);
 	ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 	ft_printf("{grey}%i{eoc} operations.\n", i);
 	if (ft_verif_pushswap(a_ctl) == (*a_ctl)->size)
@@ -80,9 +80,9 @@ int			main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	if ((ft_init_ctl(&a_ctl, &b_ctl)) == -1)
-		return (ft_exit_begin(&a_ctl, &b_ctl));
+		return (ft_exit_ps(&a_ctl, &b_ctl));
 	if ((ft_fill_node(&a, &a_ctl, av)) == -1)
-		return (-1);
+		return (ft_exit_ps(&a_ctl, &b_ctl));
 	if ((ft_checker(&a_ctl, &b_ctl)))
 		return (-1);
 	return (0);
