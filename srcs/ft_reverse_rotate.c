@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:21:21 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/28 19:06:07 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/28 20:00:52 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void		ft_reverse_rotate(t_ctl **ctl)
 
 	tmplast = (*ctl)->last;
 	tmpfirst = (*ctl)->first;
+	(*ctl)->last = (*ctl)->last->prev;
+	(*ctl)->last->next = NULL;
 	(*ctl)->first = tmplast;
 	(*ctl)->first->next = tmpfirst;
 	(*ctl)->first->next->prev = (*ctl)->first;
@@ -54,8 +56,8 @@ void		ft_rrb(t_ctl **ctl, int ps)
 
 void		ft_rrr(t_ctl **a, t_ctl **b, int ps)
 {
-	ft_reverse_rotate(a);
-	ft_reverse_rotate(b);
+	ft_rra(a, 0);
+	ft_rrb(b, 0);
 	if (ps == 1)
 		ft_putendl(RRR);
 }

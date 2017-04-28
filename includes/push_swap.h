@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 21:41:20 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/28 20:04:39 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void				ft_push_back(t_node **node, t_node *new);
 int					ft_check_duplicate(t_node *diplicate, int num);
 void				ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl);
 void				ft_putnode(t_node *a, t_node *b);
+void				ft_putnode_single(t_node *a);
 int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 size_t				ft_verif_pushswap(t_ctl **ctl);
 

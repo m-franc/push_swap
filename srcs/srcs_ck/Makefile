@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/27 17:34:56 by mfranc           ###   ########.fr        #
+#    Updated: 2017/04/28 20:02:51 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS = checker.c					\
 	   ../ft_init_node.c			\
 	   ../ft_init_link.c			\
 	   ../ft_putnode.c				\
+	   ../ft_putnode_single.c		\
 	   ../ft_exit.c					\
 	   ../ft_swap.c					\
 	   ../ft_push.c					\
