@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:32:37 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 17:09:57 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/28 18:23:23 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 void		ft_putnode(t_node *a, t_node *b)
 {
-	ft_printf("|{grey}%s{eoc}|                         |{grey}%s{eoc}|\n", "A", "B");
+	if (!a && !b)
+		return ;
+	ft_printf("{grey}A%14c\n{eoc}", 'B');
 	while (a && b)
 	{
-		ft_printf("index : {red}%d{eoc} |{cyan}%d{eoc}|     index : {red}%d{eoc} |{purple}%d{eoc}|\n", a->index, a->data, b->index, b->data);
+		ft_printf("%-14d%d\n", a->data, b->data);
 		a = a->next;
 		b = b->next;
 	}
 	if (a)
-	{	
+	{
 		while (a)
 		{
-			ft_printf("index : {red}%d{eoc} |{cyan}%d{eoc}|\n", a->index, a->data);
+			ft_printf("%d\n", a->data);
 			a = a->next;
 		}
-	
 	}
 	if (b)
-	{	
+	{
 		while (b)
 		{
-			ft_printf("                  index : {red}%d{eoc} |{purple}%d{eoc}|\n",b->index, b->data);
+			ft_printf("%*d\n", (14 + ft_ilen(b->data, 10)), b->data);
 			b = b->next;
 		}
 	}
-	ENDL
 }

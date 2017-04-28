@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:19:07 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 17:03:58 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/28 12:40:27 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void		ft_swap(t_ctl **ctl)
 
 	if (!*ctl)
 		return ;
-
 	if ((*ctl)->size == 0 || (*ctl)->size == 1)
 		return ;
 	first = (*ctl)->first;
