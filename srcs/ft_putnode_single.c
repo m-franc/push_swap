@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:32:37 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/28 20:04:58 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/28 21:21:03 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void		ft_putnode_single(t_node *node)
 		return ;
 	ft_printf("data : {grey}%d{eoc} - data->prev : {cyan}NULL{eoc}\n",
 			node->data);
-	node = node->next;
+	if (node->next)
+		node = node->next;
 	while (node)
 	{
 		ft_printf("data : {grey}%d{eoc} - data->prev : {cyan}%d{eoc}\n",

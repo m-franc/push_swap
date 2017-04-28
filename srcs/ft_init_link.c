@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 16:53:15 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/28 20:02:15 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/28 21:07:15 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_node			*ft_new_node(t_ctl **a_ctl, char *integer)
 		return (NULL);
 	new->data = num;
 	new->next = NULL;
+	new->prev = NULL;
 	check = FIRST((*a_ctl));
 	ft_init_index(check, new);
 	check = FIRST((*a_ctl));
@@ -106,8 +107,8 @@ void			ft_push_back(t_node **node, t_node *new)
 		tmp = *node;
 		while (tmp && tmp->next)
 		{
-			prev = tmp;
 			tmp = tmp->next;
+			prev = tmp;
 		}
 		new->prev = prev;
 		tmp->next = new;
