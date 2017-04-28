@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:31:41 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/28 12:22:35 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/28 19:06:41 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void		ft_rotate(t_ctl **ctl)
 	t_node	*tmpfirst;
 	t_node	*tmplast;
 
-	if ((*ctl)->size < 2)
-		return ;
 	tmpfirst = (*ctl)->first;
 	tmplast = (*ctl)->last;
 	(*ctl)->first->next->prev = NULL;
@@ -31,6 +29,13 @@ void		ft_rotate(t_ctl **ctl)
 
 void		ft_ra(t_ctl **ctl, int ps)
 {
+	if (SIZE((*ctl)) == 2)
+	{
+		ft_sa(ctl, ps);
+		return ;	
+	}
+	if (SIZE((*ctl)) < 2)
+		return ;
 	ft_rotate(ctl);
 	if (ps == 1)
 		ft_putendl(RA);
@@ -38,6 +43,13 @@ void		ft_ra(t_ctl **ctl, int ps)
 
 void		ft_rb(t_ctl **ctl, int ps)
 {
+	if (SIZE((*ctl)) == 2)
+	{
+		ft_sb(ctl, ps);
+		return ;	
+	}
+	if (SIZE((*ctl)) < 2)
+		return ;
 	ft_rotate(ctl);
 	if (ps == 1)
 		ft_putendl(RB);
