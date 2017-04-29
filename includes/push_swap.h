@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/28 21:21:01 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/29 18:30:34 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct		s_node
 {
 	int				data;
 	int				index;
+	int				median;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -31,11 +32,12 @@ typedef struct		s_ctl
 }					t_ctl;
 
 # define FIRST(x) (x->first)
-# define NEXT(x) (x->first->next)
-# define PREV(x) (x->first->prev)
+# define NEXT(x) (x->next)
+# define PREV(x) (x->prev)
 # define LAST(x) (x->last)
 # define SIZE(x) (x->size)
 # define DATA(x) (x->data)
+# define MEDIAN(x) (x->median)
 # define INDEX(x) (x->index)
 
 # define SA "sa"
@@ -64,7 +66,7 @@ void				ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl);
 void				ft_putnode(t_node *a, t_node *b);
 void				ft_putnode_single(t_node *a);
 int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
-size_t				ft_verif_pushswap(t_ctl **ctl);
+size_t				ft_verif_pushswap(t_ctl **a_ctl);
 
 
 /*

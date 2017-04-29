@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/28 21:21:00 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/29 18:34:17 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	int		i;
 
 	i = 0;
-//	ft_putnode_single((*a_ctl)->first);
 	while ((gnl = get_next_line(0, &line)) == 1)
 	{	
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
@@ -56,13 +55,12 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 		else
 			i++;
 		ft_strdel(&line);
-		ft_putnode((*a_ctl)->first, (*b_ctl)->first);
-//		ft_putnode_single((*a_ctl)->first);
 	}
+	ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 	if (gnl == -1)
 		return (-1);
 	ft_printf("{grey}%i{eoc} operations.\n", i);
-	if (ft_verif_pushswap(a_ctl) == (*a_ctl)->size)
+	if (ft_verif_pushswap(a_ctl) == (*a_ctl)->size && SIZE((*b_ctl)) == 0)
 		ft_putstrcolor("OK !\n", GREEN);
 	else
 		ft_putstrcolor("KO !\n", RED);
