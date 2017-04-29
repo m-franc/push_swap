@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/29 19:32:45 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/29 19:42:54 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		ft_put_med_head(t_ctl *ctl, int b)
 			if (b == 1)
 				ft_rb(&ctl, 1);
 			else
-				ft_rra(&ctl, 1);
+				ft_ra(&ctl, 1);
 		}
 		else
 		{
