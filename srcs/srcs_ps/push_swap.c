@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/30 17:57:07 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/30 18:02:07 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,10 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl, int median)
 		if (DATA(FIRST(a_ctl)) <= median)
 		{
 			if (DATA(FIRST(a_ctl)) == median)
-			{
 				STATUS(FIRST(a_ctl)) = 1;
-				ft_pb(&a_ctl, &b_ctl, 1);
+			ft_pb(&a_ctl, &b_ctl, 1);
+			if (DATA(FIRST(a_ctl)) == median)
 				ft_rb(&b_ctl, 1);
-			}
-			else
-				ft_pb(&a_ctl, &b_ctl, 1);
 		}
 		else
 			ft_ra(&a_ctl, 1);

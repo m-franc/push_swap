@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 16:53:15 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/29 16:19:49 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/30 18:05:43 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_node			*ft_new_node(t_ctl **a_ctl, char *integer)
 	new->next = NULL;
 	check = FIRST((*a_ctl));
 	ft_init_index(check, new);
-	new->median = 0;
+	new->status = 0;
 	check = FIRST((*a_ctl));
 	new->prev = NULL;
 	if (!check)
