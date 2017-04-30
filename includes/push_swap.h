@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/29 18:30:34 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/30 15:45:23 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct		s_node
 {
 	int				data;
 	int				index;
-	int				median;
+	int				status;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -37,7 +37,7 @@ typedef struct		s_ctl
 # define LAST(x) (x->last)
 # define SIZE(x) (x->size)
 # define DATA(x) (x->data)
-# define MEDIAN(x) (x->median)
+# define STATUS(x) (x->status)
 # define INDEX(x) (x->index)
 
 # define SA "sa"
