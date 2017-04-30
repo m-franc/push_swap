@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/30 18:02:07 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/30 18:35:39 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ int			ft_get_med_pad(t_ctl *b_ctl)
 		return (2);
 }
 
-void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl, int median)
+void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		i;
 	int		size;
+	int		median;
 
+	median = ft_get_medstack(&a_ctl);
 	size = SIZE(a_ctl);
 	i = 0;
 	while (i < size)
@@ -66,10 +68,8 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl, int median)
 
 int			ft_sort(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	int		median;
-
-	median = ft_get_medstack(&a_ctl);
-	ft_split_stack(a_ctl, b_ctl, median);
+	ft_split_stack(a_ctl, b_ctl);
+	ft_quick_sort_b(b_ctl);
 	return (1);
 }
 
