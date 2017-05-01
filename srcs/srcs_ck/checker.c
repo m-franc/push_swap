@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/01 11:47:35 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 15:52:33 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 		else
 			i++;
 		ft_strdel(&line);
+		ft_putnode(FIRST((*a_ctl)), FIRST((*b_ctl)));
 	}
 	if (gnl == -1)
 		return (-1);

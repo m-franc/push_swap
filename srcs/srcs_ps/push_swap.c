@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/01 11:44:37 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 15:41:27 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,43 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 		i++;	
 	}
 	ft_rrb(&b_ctl, 1);
-	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 }
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
+	int		padding;
+	int		i;
 	ft_split_stack(a_ctl, b_ctl);
-//	ft_quick_sort_b(b_ctl);
+	padding = 0;
+	ft_printf("Trie ou pas : %d - Taille de b : %d\n", ft_is_dsort(&b_ctl), SIZE(b_ctl) / 2);
+	while (1)
+	{
+		if (ft_is_dsort(&b_ctl) == SIZE(b_ctl))
+			break ;
+		if (ft_is_dsort(&b_ctl) >= (SIZE(b_ctl) / 2))
+		{
+			i = -1;
+			padding = ft_is_dsort(&b_ctl);
+			while (++i <= padding)
+				ft_rrb(&b_ctl, 1);
+			ft_sb(&b_ctl, 1);
+			i = -1;
+			while (++i <= padding)
+				ft_rb(&b_ctl, 1);
+		}
+		else if (ft_is_dsort(&b_ctl) < (SIZE(b_ctl) / 2))
+		{
+			i = -1;
+			padding = ft_is_dsort(&b_ctl);
+			while (++i <= padding)
+				ft_rb(&b_ctl, 1);
+			ft_sb(&b_ctl, 1);
+			i = -1;
+			while (++i <= padding)
+				ft_rrb(&b_ctl, 1);
+		}
+	}
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }
 
