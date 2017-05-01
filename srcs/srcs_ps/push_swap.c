@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/30 18:35:39 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 11:44:37 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 }
 
-int			ft_sort(t_ctl *a_ctl, t_ctl *b_ctl)
+int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	ft_split_stack(a_ctl, b_ctl);
-	ft_quick_sort_b(b_ctl);
+//	ft_quick_sort_b(b_ctl);
 	return (1);
 }
 
@@ -88,7 +88,7 @@ int			main(int ac, char **av)
 		return (ft_exit_ps(&a, &b));
 	if ((ft_fill_node(&stack_a, &a, av)) == -1)
 		return (ft_exit_ps(&a, &b));
-	if ((ft_sort(a, b)) == -1)
+	if ((ft_push_swap(a, b)) == -1)
 		return (-1);
 	return (0);
 }

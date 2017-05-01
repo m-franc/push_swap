@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/27 18:58:22 by mfranc           ###   ########.fr        #
+#    Updated: 2017/05/01 11:47:02 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = push_swap.c					\
 	   ../ft_init_ctl.c				\
 	   ../ft_rotate.c				\
 	   ../ft_reverse_rotate.c		\
-	   ../ft_verif_pushswap.c		\
+	   ../ft_is_sort.c		\
 	   ft_get_medstack.c
 
 OBJS = $(SRCS:%.c=%.o)

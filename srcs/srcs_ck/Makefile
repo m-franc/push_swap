@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/04/28 20:02:51 by mfranc           ###   ########.fr        #
+#    Updated: 2017/05/01 11:46:22 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS = checker.c					\
 	   ../ft_init_ctl.c				\
 	   ../ft_rotate.c				\
 	   ../ft_reverse_rotate.c		\
-	   ../ft_verif_pushswap.c
+	   ../ft_is_sort.c
 
 OBJS = $(SRCS:%.c=%.o)
 

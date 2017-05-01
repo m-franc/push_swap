@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/30 15:45:23 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 11:48:46 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void				ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl);
 void				ft_putnode(t_node *a, t_node *b);
 void				ft_putnode_single(t_node *a);
 int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
-size_t				ft_verif_pushswap(t_ctl **a_ctl);
+size_t				ft_is_asort(t_ctl **ctl);
+size_t				ft_is_dsort(t_ctl **ctl);
 
 
 /*
@@ -88,7 +89,7 @@ int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
 
 int					*ft_list_to_inttab(t_ctl **cpy);
 int					ft_get_medstack(t_ctl **ctl);
-int					ft_sort(t_ctl *a, t_ctl *b);
+int					ft_push_swap(t_ctl *a, t_ctl *b);
 
 /*
  **					OPERATIONS FUNCTIONS
