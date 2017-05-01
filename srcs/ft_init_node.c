@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/27 17:35:44 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 19:27:59 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,22 @@ int				ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
 	return (1);
 }
 
+void			ft_init_dst(t_ctl **a_ctl)
+{
+	t_node	*check;
+	int		i;
+	
+	i = 0;
+	check = FIRST((*a_ctl));
+	while (check)
+	{	
+		DST_BOTTOM(check) += (SIZE((*a_ctl)) - i);
+		DST_TOP(check) += i;
+		check = NEXT(check);
+		i++;
+	}
+}
+
 int				ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
 {
 	int			i;
@@ -64,5 +80,6 @@ int				ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
 		}
 		i++;
 	}
+	ft_init_dst(a_ctl);
 	return (1);
 }

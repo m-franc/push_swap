@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 16:53:15 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/30 18:05:43 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 19:19:18 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ t_node			*ft_new_node(t_ctl **a_ctl, char *integer)
 	if (!(new = (t_node*)malloc(sizeof(t_node))))
 		return (NULL);
 	new->data = num;
-	new->next = NULL;
 	check = FIRST((*a_ctl));
 	ft_init_index(check, new);
+	new->dst_bottom = 0;
+	new->dst_top = 0;
 	new->status = 0;
 	check = FIRST((*a_ctl));
 	new->prev = NULL;
+	new->next = NULL;
 	if (!check)
 		ft_push_back(&(FIRST((*a_ctl))), new);
 	else

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/01 15:41:27 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 17:52:27 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 	i = 0;
 	while (i < size)
 	{
-		if (DATA(FIRST(a_ctl)) <= median)
+		if (INDEX(FIRST(a_ctl)) <= median)
 		{
-			if (DATA(FIRST(a_ctl)) == median)
+			if (INDEX(FIRST(a_ctl)) == median)
 				STATUS(FIRST(a_ctl)) = 1;
 			ft_pb(&a_ctl, &b_ctl, 1);
-			if (DATA(FIRST(a_ctl)) == median)
+			if (INDEX(FIRST(b_ctl)) == median)
 				ft_rb(&b_ctl, 1);
 		}
 		else
@@ -67,38 +67,32 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	int		padding;
-	int		i;
 	ft_split_stack(a_ctl, b_ctl);
-	padding = 0;
-	ft_printf("Trie ou pas : %d - Taille de b : %d\n", ft_is_dsort(&b_ctl), SIZE(b_ctl) / 2);
-	while (1)
+//	ft_printf("C'est trie jusqu a la %d eme valeur - Taille de B : %d\n", ft_is_dsort(&b_ctl), SIZE(b_ctl));
+/*	while ((padding = ft_is_dsort(&b_ctl)) != SIZE(b_ctl))
 	{
-		if (ft_is_dsort(&b_ctl) == SIZE(b_ctl))
-			break ;
 		if (ft_is_dsort(&b_ctl) >= (SIZE(b_ctl) / 2))
 		{
 			i = -1;
 			padding = ft_is_dsort(&b_ctl);
-			while (++i <= padding)
+			while (++i < padding)
 				ft_rrb(&b_ctl, 1);
 			ft_sb(&b_ctl, 1);
 			i = -1;
 			while (++i <= padding)
 				ft_rb(&b_ctl, 1);
 		}
-		else if (ft_is_dsort(&b_ctl) < (SIZE(b_ctl) / 2))
+		if (ft_is_dsort(&b_ctl) < (SIZE(b_ctl) / 2))
 		{
-			i = -1;
-			padding = ft_is_dsort(&b_ctl);
-			while (++i <= padding)
+			i = 0;
+			while (i++ <= padding)
 				ft_rb(&b_ctl, 1);
 			ft_sb(&b_ctl, 1);
-			i = -1;
-			while (++i <= padding)
+			i = 0;
+			while (i++ < padding)
 				ft_rrb(&b_ctl, 1);
 		}
-	}
+	}*/
 	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }

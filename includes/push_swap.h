@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/01 11:48:46 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/01 18:53:55 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ typedef struct		s_node
 {
 	int				data;
 	int				index;
+	int				dst_top;
+	int				dst_bottom;
 	int				status;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -38,6 +40,8 @@ typedef struct		s_ctl
 # define SIZE(x) (x->size)
 # define DATA(x) (x->data)
 # define STATUS(x) (x->status)
+# define DST_TOP(x) (x->dst_top)
+# define DST_BOTTOM(x) (x->dst_bottom)
 # define INDEX(x) (x->index)
 
 # define SA "sa"
