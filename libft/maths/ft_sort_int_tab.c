@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/22 17:47:29 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/24 18:33:31 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/04/22 18:30:53 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_sort_int_tab(int *tab, unsigned int size)
 	int				tmp;
 
 	i = 0;
-	while ((i + 1) < size)
+	while (i < size)
 	{
 		while (tab[i] > tab[i + 1])
 		{
