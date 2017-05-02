@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/02 11:59:06 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/02 12:31:03 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int			ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
 		ft_rrb(b_ctl, 0);
 	else if (ft_strnstr(RRR, line, 3))
 		ft_rrr(a_ctl, b_ctl, 0);
-//	else
-//		return (-1);
+	else
+		return (-1);
 	return (1);
 }
 
@@ -54,7 +54,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 			return (ft_exit_checker(line));
 		else
 			i++;
-		ft_putnode_single(FIRST((*a_ctl)));
+		ft_putnode(FIRST((*a_ctl)), FIRST((*b_ctl)));
 		ft_strdel(&line);
 	}
 	if (gnl == -1)

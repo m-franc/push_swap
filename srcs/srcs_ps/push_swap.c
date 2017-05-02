@@ -6,38 +6,11 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/02 11:36:24 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/02 17:09:10 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int			ft_get_med_pad(t_ctl *b_ctl)
-{
-	t_node	*last;
-	t_node	*first;
-	int		from_last;
-	int		from_first;
-
-	from_last = 0;
-	from_first = 0;
-	first = FIRST(b_ctl);
-	last = LAST(b_ctl);
-	while (STATUS(first) != 1 && first)
-	{
-		from_first++;
-		first = NEXT(first);
-	}
-	while (STATUS(last) != 1 && last)
-	{
-		from_last++;
-		last = PREV(last);
-	}
-	if (from_last >= from_first)
-		return (1);
-	else
-		return (2);
-}
 
 void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 {
@@ -60,10 +33,12 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 		}
 		else
 			ft_ra(&a_ctl, 1);
-//		ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 		i++;	
+		ft_putnode_single(FIRST(b_ctl));
 	}
 	ft_rrb(&b_ctl, 1);
+	ft_putnode_single(FIRST(b_ctl));
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 }
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
