@@ -6,34 +6,11 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/03 12:52:59 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/03 18:00:52 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int			ft_get_value(t_ctl *ctl, char *value)
-{
-	t_node	*tmp;
-	int		value;
-
-	tmp = FIRST(ctl);
-	if (ft_strstr(value, MAX))
-	{
-		value = INDEX(tmp);
-		tmp = NEXT(tmp);
-		while (tmp)
-		{
-			if (INDEX(tmp) > value)
-				value = INDEX(tmp);
-			tmp = NEXT(tmp);
-		}
-	}
-	else if (ft_strstr(value, MIN))
-	{
-		
-	}
-}
 
 void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 {
@@ -64,17 +41,35 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		median;
-	t_node	*cpy;
+	int		padding;
+	int		pdg_cpy;
+	t_node	*max;
 
 	ft_split_stack(a_ctl, b_ctl);
 	median = ft_get_medstack(&b_ctl);
-//	ft_printf("C'est trie jusqu a la %d eme valeur - Taille de B : %d\n", ft_is_dsort(&b_ctl), SIZE(b_ctl));
-//	cpy = FIRST(b_ctl);
-	while ((padding = ft_is_dsort(&b_ctl))) != (int)SIZE(b_ctl)
+	while (ft_is_asort(&a_ctl) != SIZE(a_ctl))
 	{
-		
-	}	
-	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
+		max = ft_get_max_value(a_ctl);
+		if (DST_BOTTOM(max) >= DST_TOP(max))
+		{	
+			padding = DST_TOP(max);
+			pdg_cpy = padding;
+			while (padding-- > 0)
+				ft_ra(&a_ctl, 1);	
+			STATUS(FIRST(a_ctl)) = 2;
+			ft_update_dst_after_r(a_ctl, pdg_cpy);
+		}
+		else
+		{
+			padding = DST_BOTTOM(max);
+			pdg_cpy = padding;
+			while (padding-- > 0)
+				ft_rra(&a_ctl, 1);		
+			STATUS(FIRST(a_ctl)) = 2;
+			ft_update_dst_after_rr(a_ctl, pdg_cpy);
+		}
+		ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
+	}
 	return (1);
 }
 

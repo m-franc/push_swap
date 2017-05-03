@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/02 15:52:27 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/03 17:47:59 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ typedef struct		s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
+
+/*
+ **	int status is a "marker" on a link, 1 == median, 2 == sorted. 
+ */
 
 typedef struct		s_ctl
 {
@@ -91,9 +95,13 @@ int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
  ** 				PUSHSWAP FUNCTIONS
  */
 
-int					*ft_list_to_inttab(t_ctl **cpy);
 int					ft_get_medstack(t_ctl **ctl);
 int					ft_push_swap(t_ctl *a, t_ctl *b);
+void				ft_update_dst_after_r(t_ctl *ctl, int padding);
+void				ft_update_dst_after_rr(t_ctl *ctl, int padding);
+t_node				*ft_get_max_value(t_ctl *ctl);
+t_node				*ft_get_min_value(t_ctl *ctl);
+void				ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl);
 
 /*
  **					OPERATIONS FUNCTIONS
