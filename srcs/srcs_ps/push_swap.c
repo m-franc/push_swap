@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 18:15:29 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 19:22:03 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	t_node	*max;
+//	t_node	*max;
 
-	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	ft_split_stack(a_ctl, b_ctl);
-	while (ft_is_asort(&a_ctl) != SIZE(a_ctl))
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
+/*	while (ft_is_asort(&a_ctl) != SIZE(a_ctl))
 	{
 		max = ft_get_max_value(a_ctl);
 		if (DST_TOP(max) <= DST_BOTTOM(max))
@@ -59,8 +59,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 				ft_rra(&a_ctl, 1);		
 			STATUS(FIRST(a_ctl)) = 2;
 		}
-		ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
-	}
+	}*/
 	return (1);
 }
 

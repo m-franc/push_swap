@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:39:13 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 17:36:26 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 19:05:12 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_node		*ft_get_max_value(t_ctl *ctl)
 	tmp = FIRST(ctl);
 	if (SIZE(ctl) == 1)
 		return (tmp);
-	value = INT_MIN;
+	value = -1;
+	tmp = NEXT(tmp);
 	while (tmp)
 	{
 		if (INDEX(tmp) > value && STATUS(tmp) != 2)
@@ -45,7 +46,8 @@ t_node		*ft_get_min_value(t_ctl *ctl)
 	tmp = FIRST(ctl);
 	if (SIZE(ctl) == 1)
 		return (tmp);
-	value = INT_MAX;
+	value = (SIZE(ctl) + 1);
+	tmp = NEXT(tmp);
 	while (tmp)
 	{
 		if (INDEX(tmp) < value && STATUS(tmp) != 2)

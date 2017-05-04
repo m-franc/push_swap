@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 11:46:45 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 17:41:01 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 18:42:24 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,12 @@ size_t		ft_is_asort(t_ctl **a_ctl)
 		return (1);
 	if (INDEX(stack) != 0)
 		return (0);
-	STATUS(stack) = 2;
 	stack = NEXT(stack);
 	count = 1;
 	while (stack)
 	{
 		if (INDEX(stack) != (INDEX(PREV(stack)) + 1))
-		{
-			STATUS(PREV(stack)) = 0;
-			STATUS(stack) = 0;
 			return (count);	
-		}
 		stack = NEXT(stack);
 		count++;
 	}
@@ -53,17 +48,12 @@ size_t		ft_is_dsort(t_ctl **a_ctl)
 		return (1);
 	if (INDEX(stack) != 0)
 		return (0);
-	STATUS(stack) = 2;
 	stack = NEXT(stack);
 	count = 1;
 	while (stack)
 	{
-		if (INDEX(stack) != (INDEX(PREV(stack)) + 1))
-		{
-			STATUS(PREV(stack)) = 0;
-			STATUS(stack) = 0;
+		if (INDEX(stack) != (INDEX(PREV(stack)) - 1))
 			return (count);
-		}
 		stack = NEXT(stack);
 		count++;
 	}
