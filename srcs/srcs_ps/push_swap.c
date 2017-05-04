@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/03 18:00:52 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 12:45:07 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,25 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		median;
-	int		padding;
-	int		pdg_cpy;
+	int		dst_max;
 	t_node	*max;
 
 	ft_split_stack(a_ctl, b_ctl);
 	median = ft_get_medstack(&b_ctl);
 	while (ft_is_asort(&a_ctl) != SIZE(a_ctl))
 	{
-		max = ft_get_max_value(a_ctl);
-		if (DST_BOTTOM(max) >= DST_TOP(max))
+		dst_max = ft_get_max_value(&max, a_ctl);
+		if (dst_max <= (int)(SIZE(a_ctl) / 2))
 		{	
-			padding = DST_TOP(max);
-			pdg_cpy = padding;
-			while (padding-- > 0)
+			while (dst_max-- > 0)
 				ft_ra(&a_ctl, 1);	
 			STATUS(FIRST(a_ctl)) = 2;
-			ft_update_dst_after_r(a_ctl, pdg_cpy);
 		}
 		else
 		{
-			padding = DST_BOTTOM(max);
-			pdg_cpy = padding;
-			while (padding-- > 0)
+			while (dst_max-- > 0)
 				ft_rra(&a_ctl, 1);		
 			STATUS(FIRST(a_ctl)) = 2;
-			ft_update_dst_after_rr(a_ctl, pdg_cpy);
 		}
 		ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	}
