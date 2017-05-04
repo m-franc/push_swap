@@ -6,52 +6,55 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:39:13 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 12:46:28 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 15:14:56 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			ft_get_max_value(t_node **max, t_ctl *ctl)
+t_node		*ft_get_max_value(t_ctl *ctl)
 {
+	t_node	*tmp;
 	int		value;
 
 	if (SIZE(ctl) < 1)
 		return (0);
-	else if (SIZE(ctl) == 1)
-		return (INDEX(FIRST(ctl)));
-	*max = FIRST(ctl);
+	tmp = FIRST(ctl);
+	if (SIZE(ctl) == 1)
+		return (tmp);
 	value = INT_MIN;
-	while (*max)
+	while (tmp)
 	{
-		if (INDEX((*max)) > value && STATUS((*max)) != 2)
-			value = INDEX((*max));
-		*max = NEXT((*max));
+		if (INDEX(tmp) > value && STATUS(tmp) != 2)
+			value = INDEX(tmp);
+		tmp = NEXT(tmp);
 	}
-	*max = FIRST(ctl);
-	while (*max && INDEX((*max)) != value)
-		*max = NEXT((*max));
-	return (value);
+	tmp = FIRST(ctl);
+	while (tmp && INDEX(tmp) != value)
+		tmp = NEXT(tmp);
+	ft_printf("LE MAX : {green}%d{eoc}\n", DATA(tmp));
+	return (tmp);
 }
 
-int			ft_get_min_value(t_node **max, t_ctl *ctl)
+t_node		*ft_get_min_value(t_ctl *ctl)
 {
+	t_node	*tmp;
 	int		value;
 
 	if (SIZE(ctl) < 1)
 		return (0);
-	else if (SIZE(ctl) == 1)
-		return (INDEX(FIRST(ctl)));
-	*max = FIRST(ctl);
+	tmp = FIRST(ctl);
+	if (SIZE(ctl) == 1)
+		return (tmp);
 	value = INT_MAX;
-	while (*max)
+	while (tmp)
 	{
-		if (INDEX((*max)) < value && STATUS((*max)) != 2)
-			value = INDEX((*max));
-		*max = NEXT((*max));
+		if (INDEX(tmp) < value && STATUS(tmp) != 2)
+			value = INDEX(tmp);
+		tmp = NEXT(tmp);
 	}
-	*max = FIRST(ctl);
-	while (*max && INDEX((*max)) != value)
-		*max = NEXT((*max));
-	return (value);
+	tmp = FIRST(ctl);
+	while (tmp && INDEX(tmp) != value)
+		tmp = NEXT(tmp);
+	return (tmp);
 }

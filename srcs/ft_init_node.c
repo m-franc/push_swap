@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 12:17:42 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 14:57:28 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ int				ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
 	return (1);
 }
 
-void			ft_init_dst(t_ctl **a_ctl)
+void			ft_init_dst(t_ctl **ctl)
 {
 	t_node	*check;
 	int		i;
 	
 	i = 0;
-	check = FIRST((*a_ctl));
+	check = FIRST((*ctl));
 	while (check)
 	{	
-		DST_BOTTOM(check) += (SIZE((*a_ctl)) - i);
+		DST_BOTTOM(check) += (SIZE((*ctl)) - i);
 		DST_TOP(check) += i;
 		check = NEXT(check);
 		i++;

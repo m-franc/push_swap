@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:19:07 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/02 18:24:50 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 15:00:39 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void		ft_swap(t_ctl **ctl)
 
 void		ft_sa(t_ctl **ctl, int ps)
 {
-	ft_swap(ctl);
+	ft_swap(ctl);		
+	ft_init_dst(ctl);	
 	if (ps == 1)
 		ft_putendl(SA);
 }
@@ -45,6 +46,7 @@ void		ft_sa(t_ctl **ctl, int ps)
 void		ft_sb(t_ctl **ctl, int ps)
 {
 	ft_swap(ctl);
+	ft_init_dst(ctl);	
 	if (ps == 1)
 		ft_putendl(SB);
 }

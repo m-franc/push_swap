@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 12:45:07 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 15:32:39 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,21 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	int		median;
-	int		dst_max;
 	t_node	*max;
 
 	ft_split_stack(a_ctl, b_ctl);
-	median = ft_get_medstack(&b_ctl);
 	while (ft_is_asort(&a_ctl) != SIZE(a_ctl))
 	{
-		dst_max = ft_get_max_value(&max, a_ctl);
-		if (dst_max <= (int)(SIZE(a_ctl) / 2))
+		max = ft_get_max_value(a_ctl);
+		if (DST_TOP(max) <= DST_BOTTOM(max))
 		{	
-			while (dst_max-- > 0)
+			while (INDEX(FIRST(a_ctl)) != INDEX(max))
 				ft_ra(&a_ctl, 1);	
 			STATUS(FIRST(a_ctl)) = 2;
 		}
 		else
 		{
-			while (dst_max-- > 0)
+			while (INDEX(FIRST(a_ctl)) != INDEX(max))
 				ft_rra(&a_ctl, 1);		
 			STATUS(FIRST(a_ctl)) = 2;
 		}
