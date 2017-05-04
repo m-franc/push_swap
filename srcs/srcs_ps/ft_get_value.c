@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:39:13 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 15:14:56 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 17:36:26 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_node		*ft_get_max_value(t_ctl *ctl)
 	tmp = FIRST(ctl);
 	while (tmp && INDEX(tmp) != value)
 		tmp = NEXT(tmp);
-	ft_printf("LE MAX : {green}%d{eoc}\n", DATA(tmp));
 	return (tmp);
 }
 

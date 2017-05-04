@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 15:32:39 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 18:15:29 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	t_node	*max;
 
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	ft_split_stack(a_ctl, b_ctl);
 	while (ft_is_asort(&a_ctl) != SIZE(a_ctl))
 	{

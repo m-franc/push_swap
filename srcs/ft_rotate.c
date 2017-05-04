@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:31:41 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 15:02:07 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/04 18:14:59 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void		ft_ra(t_ctl **ctl, int ps)
 	}
 	if (SIZE((*ctl)) < 2)
 		return ;
-	ft_init_dst(ctl);
 	ft_rotate(ctl);
+	ft_init_dst(ctl);
 	if (ps == 1)
 		ft_putendl(RA);
 }
@@ -51,8 +51,8 @@ void		ft_rb(t_ctl **ctl, int ps)
 	}
 	if (SIZE((*ctl)) < 2)
 		return ;
-	ft_init_dst(ctl);
 	ft_rotate(ctl);
+	ft_init_dst(ctl);
 	if (ps == 1)
 		ft_putendl(RB);
 }
