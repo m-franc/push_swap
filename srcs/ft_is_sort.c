@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 11:46:45 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 18:42:24 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/05 16:46:52 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ size_t		ft_is_asort(t_ctl **a_ctl)
 	if (SIZE((*a_ctl)) == 0)
 		return (0);
 	stack = FIRST((*a_ctl));
-	if (!NEXT(stack))
+	if (SIZE((*a_ctl)) == 1)
 		return (1);
 	if (INDEX(stack) != 0)
 		return (0);
 	stack = NEXT(stack);
 	count = 1;
+	PSTR("---")
 	while (stack)
 	{
 		if (INDEX(stack) != (INDEX(PREV(stack)) + 1))
@@ -49,7 +50,7 @@ size_t		ft_is_dsort(t_ctl **a_ctl)
 	if (INDEX(stack) != 0)
 		return (0);
 	stack = NEXT(stack);
-	count = 1;
+	count = 0;
 	while (stack)
 	{
 		if (INDEX(stack) != (INDEX(PREV(stack)) - 1))

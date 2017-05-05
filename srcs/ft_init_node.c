@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 17:54:57 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/05 14:42:00 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void			ft_init_dst(t_ctl **ctl)
 	
 	i = 0;
 	check = FIRST((*ctl));
-	DST_TOP(check) = 0;
-	DST_BOTTOM(check) = 0;
 	while (check)
 	{	
 		DST_TOP(check) = 0;

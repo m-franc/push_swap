@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:39:13 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 19:05:12 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/05 14:42:41 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ t_node		*ft_get_max_value(t_ctl *ctl)
 	tmp = FIRST(ctl);
 	if (SIZE(ctl) == 1)
 		return (tmp);
-	value = -1;
-	tmp = NEXT(tmp);
+	value = INT_MIN;
 	while (tmp)
 	{
 		if (INDEX(tmp) > value && STATUS(tmp) != 2)
@@ -33,6 +32,7 @@ t_node		*ft_get_max_value(t_ctl *ctl)
 	tmp = FIRST(ctl);
 	while (tmp && INDEX(tmp) != value)
 		tmp = NEXT(tmp);
+	STATUS(tmp) = 2;
 	return (tmp);
 }
 
@@ -46,8 +46,7 @@ t_node		*ft_get_min_value(t_ctl *ctl)
 	tmp = FIRST(ctl);
 	if (SIZE(ctl) == 1)
 		return (tmp);
-	value = (SIZE(ctl) + 1);
-	tmp = NEXT(tmp);
+	value = INT_MAX;
 	while (tmp)
 	{
 		if (INDEX(tmp) < value && STATUS(tmp) != 2)
@@ -57,5 +56,6 @@ t_node		*ft_get_min_value(t_ctl *ctl)
 	tmp = FIRST(ctl);
 	while (tmp && INDEX(tmp) != value)
 		tmp = NEXT(tmp);
+	STATUS(tmp) = 2;
 	return (tmp);
 }
