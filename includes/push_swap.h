@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 18:13:47 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/08 16:32:57 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ typedef struct		s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
-
-/*
- **	int status is a "marker" on a link, 1 == median, 2 == sorted. 
- */
 
 typedef struct		s_ctl
 {

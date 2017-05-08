@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/08 11:31:30 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/08 15:35:04 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 
 	while (SIZE(a_ctl) != 0)
 	{
-		max = ft_get_max_value(a_ctl);
+		max = ft_get_min_value(a_ctl);
 		if (DST_TOP(max) <= DST_BOTTOM(max))
 		{	
 			while (INDEX(FIRST(a_ctl)) != INDEX(max))
@@ -57,11 +57,9 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 				ft_rra(&a_ctl, 1);		
 			ft_pb(&a_ctl, &b_ctl, 1);
 		}
-//		ft_putnode_single(FIRST(a_ctl));
 	}
-	while (SIZE(a_ctl) != 0)
+	while (SIZE(b_ctl) != 0)
 		ft_pa(&b_ctl, &a_ctl, 1);
-	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }
 
