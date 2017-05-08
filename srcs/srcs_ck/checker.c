@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/05 16:46:40 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/08 14:48:52 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	int		i;
 
 	i = 0;
+	ft_putnode(FIRST((*a_ctl)), FIRST((*b_ctl)));
 	while ((gnl = get_next_line(0, &line)) == 1)
 	{	
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
@@ -55,6 +56,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 		else
 			i++;
 		ft_strdel(&line);
+		ft_putnode(FIRST((*a_ctl)), FIRST((*b_ctl)));
 	}
 	if (gnl == -1)
 		return (-1);

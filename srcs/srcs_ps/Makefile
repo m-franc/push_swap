@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/05/04 18:19:14 by mfranc           ###   ########.fr        #
+#    Updated: 2017/05/08 14:48:50 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	$(CC) $1 $^ -o $@ $(ALL_INC) -L $(LIBFT) -lftprintf
+
+debug: $(OBJS)
 	$(CC) $^ -o $@ $(ALL_INC) -L $(LIBFT) -lftprintf
 
 %.o: %.c

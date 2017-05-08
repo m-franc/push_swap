@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:21:21 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 18:14:26 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/08 15:22:30 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ void		ft_reverse_rotate(t_ctl **ctl)
 
 	tmplast = (*ctl)->last;
 	tmpfirst = (*ctl)->first;
-	(*ctl)->last = (*ctl)->last->prev;
+	(*ctl)->last = tmplast->prev;
 	(*ctl)->last->next = NULL;
+	tmplast->next = tmpfirst;
+	tmpfirst->prev = tmplast;
 	(*ctl)->first = tmplast;
+	tmpfirst->next->prev = tmpfirst;
+	(*ctl)->first->prev = NULL;
 	(*ctl)->first->next = tmpfirst;
-	(*ctl)->first->next->prev = (*ctl)->first;
 }
 
 void		ft_rra(t_ctl **ctl, int ps)

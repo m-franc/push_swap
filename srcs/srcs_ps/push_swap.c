@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/05 18:11:22 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/08 11:31:30 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,28 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	(void)a_ctl;
-	(void)b_ctl;
-//	t_node	*max;
+	t_node	*max;
 
-//	while (ft_)
-//	{
-//		max = ft_get_max_value(a_ctl);
-//		if (DST_TOP(max) <= DST_BOTTOM(max))
-///		{	
-//			while (INDEX(FIRST(a_ctl)) != INDEX(max))
-//				ft_ra(&a_ctl, 1);	
-//			ft_pb(&a_ctl, &b_ctl, 1);
-//		}
-//		else
-//		{
-//			while (INDEX(FIRST(a_ctl)) != INDEX(max))
-//				ft_rra(&a_ctl, 1);		
-//			ft_pb(&a_ctl, &b_ctl, 1);
-//		}
-//		ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
-//	}
+	while (SIZE(a_ctl) != 0)
+	{
+		max = ft_get_max_value(a_ctl);
+		if (DST_TOP(max) <= DST_BOTTOM(max))
+		{	
+			while (INDEX(FIRST(a_ctl)) != INDEX(max))
+				ft_ra(&a_ctl, 1);	
+			ft_pb(&a_ctl, &b_ctl, 1);
+		}
+		else
+		{
+			while (INDEX(FIRST(a_ctl)) != INDEX(max))
+				ft_rra(&a_ctl, 1);		
+			ft_pb(&a_ctl, &b_ctl, 1);
+		}
+//		ft_putnode_single(FIRST(a_ctl));
+	}
+	while (SIZE(a_ctl) != 0)
+		ft_pa(&b_ctl, &a_ctl, 1);
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }
 

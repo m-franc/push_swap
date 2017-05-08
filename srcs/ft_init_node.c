@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/05 14:42:00 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/08 10:34:15 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void			ft_init_dst(t_ctl **ctl)
 	int		i;
 	
 	i = 0;
+	if (SIZE((*ctl)) == 0)
+		return ;
 	check = FIRST((*ctl));
 	while (check)
 	{	
