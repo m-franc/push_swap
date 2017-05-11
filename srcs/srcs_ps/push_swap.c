@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/11 18:07:08 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/11 19:17:33 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,14 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 	t_node	*a;
 	t_node	*b;
 	t_move	move;
+	int		hit;
 
+	hit = INT_MIN;
 	a = FIRST(a_ctl);
+	move.pad_a = 0;
+	move.pad_b = 0;
+	move.ra = 0;
+	move.rb = 0;
 	while (a)
 	{
 		move.ra = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
@@ -54,48 +60,46 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 			b = NEXT(b);
 		move.rb = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
 		move.pad_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);
-		if ((move.pad_a + move.pad_b) < (hit + pad_a))
-		{
-			*index_a = pad_a;
-			hit = pad_b;	
-		}
+		if ((move.pad_a + move.pad_b) < hit)
+			hit = move.pad_a + move.pad_b;
 		a = NEXT(a);
 	}
-	return (hit);
+	return (move);
 }
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	size_t	hit;
-	int		index_a;
 	t_move	move;
 
 	ft_pb(&a_ctl, &b_ctl, 1);
 	ft_pb(&a_ctl, &b_ctl, 1);
-	index_a = 0;
 	while (SIZE(a_ctl) != 0)
 	{
 		move = ft_get_best_hit(a_ctl, b_ctl);
-		if (index_a > (int)(SIZE(a_ctl) / 2))
-			if (hit > (SIZE(a_ctl) / 2))
-				while (hit-- > 0)
+		if (move.ra == 0)
+		{
+			if (move.rb == 1)
+				while (move.pad_b-- > 0)
 					ft_rb(&b_ctl, 1);
 			else
-				while (hit-- > 0)
+				while (move.pad_b-- > 0)
 					ft_rrb(&b_ctl, 1);	
-			while (index_a-- > 0)
+			while (move.pad_a-- > 0)
 				ft_rra(&a_ctl, 1);
 			ft_pb(&a_ctl, &b_ctl, 1);
+		}
 		else
-			if (hit > (SIZE(a_ctl) / 2))
-				while (hit-- > 0)
+		{
+			if (move.rb == 1)
+				while (move.pad_b-- > 0)
 					ft_rb(&b_ctl, 1);
 			else
-				while (hit-- > 0)
+				while (move.pad_b-- > 0)
 					ft_rrb(&b_ctl, 1);	
-			while (index_a-- > 0)
+			while (move.pad_a-- > 0)
 				ft_ra(&a_ctl, 1);
 			ft_pb(&a_ctl, &b_ctl, 1);
+		}
 	}
 	while (SIZE(b_ctl) != 0)
 		ft_pa(&b_ctl, &a_ctl, 1);
