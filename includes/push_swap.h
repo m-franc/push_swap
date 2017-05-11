@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/08 16:32:57 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/11 17:01:40 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ typedef struct		s_ctl
 	t_node			*first;
 	t_node			*last;
 }					t_ctl;
+
+typedef struct		s_move
+{
+	int				pad_a;
+	int				pad_b;
+	int				ra;
+	int				rb;
+}					t_move;
 
 # define FIRST(x) (x->first)
 # define NEXT(x) (x->next)
