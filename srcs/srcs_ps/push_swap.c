@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/11 17:11:43 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/11 18:07:08 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
 	ft_rrb(&b_ctl, 1);
 }
 
-t_move		ft_get_best_hit(int *index_a, t_ctl *a_ctl, t_ctl *b_ctl)
+t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	t_node	*a;
 	t_node	*b;
@@ -75,9 +75,8 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	index_a = 0;
 	while (SIZE(a_ctl) != 0)
 	{
-		move = ft_get_best_hit(&index_a, a_ctl, b_ctl);
+		move = ft_get_best_hit(a_ctl, b_ctl);
 		if (index_a > (int)(SIZE(a_ctl) / 2))
-		{
 			if (hit > (SIZE(a_ctl) / 2))
 				while (hit-- > 0)
 					ft_rb(&b_ctl, 1);
@@ -87,9 +86,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 			while (index_a-- > 0)
 				ft_rra(&a_ctl, 1);
 			ft_pb(&a_ctl, &b_ctl, 1);
-		}
 		else
-		{
 			if (hit > (SIZE(a_ctl) / 2))
 				while (hit-- > 0)
 					ft_rb(&b_ctl, 1);
@@ -99,7 +96,6 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 			while (index_a-- > 0)
 				ft_ra(&a_ctl, 1);
 			ft_pb(&a_ctl, &b_ctl, 1);
-		}
 	}
 	while (SIZE(b_ctl) != 0)
 		ft_pa(&b_ctl, &a_ctl, 1);
