@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/15 15:40:48 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/15 19:31:31 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,20 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 	a = FIRST(a_ctl);
 	while (a)
 	{
-//		ft_putstrcolor("Passage A\n", YELLOW);
 		move.ra = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
 		hit_a = DST_TOP(a) >= DST_BOTTOM(a) ? DST_BOTTOM(a) : DST_TOP(a);
 		b = FIRST(b_ctl);
-		while (b)
-		{	
-			move.rb = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
-			hit_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);
-			if ((hit_a + hit_b) < hit && INDEX(a) == (INDEX(b) + 1))
-			{
-				move.pad_a = hit_a;
-				move.pad_b = hit_b;
-				hit = move.pad_a + move.pad_b;
-				ft_printf("Coup dans A : {red}%d{eoc} - Coup dans B : {cyan}%d{eoc}\n", move.pad_a, move.pad_b);
-			}
+		PSTR("COUCOU")
+		while (b && INDEX(a) != (INDEX(b) + 1))
 			b = NEXT(b);
+		move.rb = DST_TOP(b) >= DST_BOTTOM(b) ? 1 : 0;
+		hit_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);
+		if ((hit_a + hit_b) < hit)
+		{
+			move.pad_a = hit_a;
+			move.pad_b = hit_b;
+			hit = move.pad_a + move.pad_b;
+			ft_printf("Coup dans A : {red}%d{eoc} - Coup dans B : {cyan}%d{eoc}\n", move.pad_a, move.pad_b);
 		}
 		a = NEXT(a);
 	}
