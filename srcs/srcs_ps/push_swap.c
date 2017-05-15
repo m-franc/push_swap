@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/11 19:17:33 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/15 15:40:48 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,36 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 	t_node	*b;
 	t_move	move;
 	int		hit;
+	int		hit_a;
+	int		hit_b;
 
-	hit = INT_MIN;
-	a = FIRST(a_ctl);
+	hit = INT_MAX;
+	hit_a = 0;
+	hit_b = 0;
 	move.pad_a = 0;
 	move.pad_b = 0;
 	move.ra = 0;
 	move.rb = 0;
+	a = FIRST(a_ctl);
 	while (a)
 	{
+//		ft_putstrcolor("Passage A\n", YELLOW);
 		move.ra = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
-		move.pad_a = DST_TOP(a) >= DST_BOTTOM(a) ? DST_BOTTOM(a) : DST_TOP(a);
+		hit_a = DST_TOP(a) >= DST_BOTTOM(a) ? DST_BOTTOM(a) : DST_TOP(a);
 		b = FIRST(b_ctl);
-		while (b && NEXT(b) && INDEX(a) > INDEX(b))
+		while (b)
+		{	
+			move.rb = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
+			hit_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);
+			if ((hit_a + hit_b) < hit && INDEX(a) == (INDEX(b) + 1))
+			{
+				move.pad_a = hit_a;
+				move.pad_b = hit_b;
+				hit = move.pad_a + move.pad_b;
+				ft_printf("Coup dans A : {red}%d{eoc} - Coup dans B : {cyan}%d{eoc}\n", move.pad_a, move.pad_b);
+			}
 			b = NEXT(b);
-		move.rb = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
-		move.pad_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);
-		if ((move.pad_a + move.pad_b) < hit)
-			hit = move.pad_a + move.pad_b;
+		}
 		a = NEXT(a);
 	}
 	return (move);
@@ -75,7 +87,9 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	ft_pb(&a_ctl, &b_ctl, 1);
 	while (SIZE(a_ctl) != 0)
 	{
-		move = ft_get_best_hit(a_ctl, b_ctl);
+		move = ft_get_best_hit(a_ctl, b_ctl);	
+		sleep(1);
+		ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 		if (move.ra == 0)
 		{
 			if (move.rb == 1)
@@ -103,6 +117,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	}
 	while (SIZE(b_ctl) != 0)
 		ft_pa(&b_ctl, &a_ctl, 1);
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }
 
