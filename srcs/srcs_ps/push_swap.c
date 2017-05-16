@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/15 19:31:31 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/16 13:01:46 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,13 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 		move.ra = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
 		hit_a = DST_TOP(a) >= DST_BOTTOM(a) ? DST_BOTTOM(a) : DST_TOP(a);
 		b = FIRST(b_ctl);
-		PSTR("COUCOU")
 		while (b && INDEX(a) != (INDEX(b) + 1))
+		{	
+			PSTR("COUCOU")
 			b = NEXT(b);
+		}
+		ft_printf("distance top : {grey}%d{eoc} - distance bottom : {grey}%d{eoc}\n", DST_TOP(b), DST_BOTTOM(b));
+		PSTR("======")
 		move.rb = DST_TOP(b) >= DST_BOTTOM(b) ? 1 : 0;
 		hit_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);
 		if ((hit_a + hit_b) < hit)
@@ -79,9 +83,14 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	t_move	move;
+	//t_move	move;
 
-	ft_pb(&a_ctl, &b_ctl, 1);
+	(void)a_ctl;
+	(void)b_ctl;
+	setlocale(LC_ALL, "");
+	ft_printf("{%1C} {%2C} {%3C}\n", 945, 7654, 12345);
+	printf("{%1C} {%2C} {%3C}", 945, 7654, 12345);
+/*	ft_pb(&a_ctl, &b_ctl, 1);
 	ft_pb(&a_ctl, &b_ctl, 1);
 	while (SIZE(a_ctl) != 0)
 	{
@@ -115,7 +124,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	}
 	while (SIZE(b_ctl) != 0)
 		ft_pa(&b_ctl, &a_ctl, 1);
-	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));*/
 	return (1);
 }
 
