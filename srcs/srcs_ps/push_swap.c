@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/16 19:38:06 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/18 17:45:34 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,16 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 		move.ra = DST_TOP(a) >= DST_BOTTOM(a) ? 1 : 0;
 		hit_a = DST_TOP(a) >= DST_BOTTOM(a) ? DST_BOTTOM(a) : DST_TOP(a);
 		b = FIRST(b_ctl);
-		while (b && NEXT(b))
-		{
-			move.rb = DST_TOP(b) >= DST_BOTTOM(b) ? 1 : 0;
-			hit_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);	
-			if ((hit_a + hit_b) < hit)
-			{
-				move.pad_a = hit_a;
-				move.pad_b = hit_b;
-				hit = move.pad_a + move.pad_b;
-				ft_printf("Coup dans A : {red}%d{eoc} - Coup dans B : {cyan}%d{eoc}\n", move.pad_a, move.pad_b);
-			}
+		while (b && NEXT(b) && INDEX(a) > INDEX(b))
 			b = NEXT(b);
+		move.rb = DST_TOP(b) >= DST_BOTTOM(b) ? 1 : 0;
+		hit_b = DST_TOP(b) >= DST_BOTTOM(b) ? DST_BOTTOM(b) : DST_TOP(b);	
+		if (((hit_a + hit_b) < hit))
+		{
+			move.pad_a = hit_a;
+			move.pad_b = hit_b;
+			hit = move.pad_a + move.pad_b;
+	//		ft_printf("Coup dans A : {red}%d{eoc} - Coup dans B : {cyan}%d{eoc}\n", move.pad_a, move.pad_b);
 		}
 		a = NEXT(a);
 	}
@@ -87,8 +85,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	while (SIZE(a_ctl) != 0)
 	{
 		move = ft_get_best_hit(a_ctl, b_ctl);	
-		sleep(1);
-		ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
+//		sleep(1);
 		if (move.ra == 0)
 		{
 			if (move.rb == 1)
@@ -113,10 +110,13 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 				ft_ra(&a_ctl, 1);
 			ft_pb(&a_ctl, &b_ctl, 1);
 		}
+	//	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	}
+	while (INDEX(FIRST(b_ctl)) != ((int)SIZE(b_ctl) - 1))
+		ft_rb(&b_ctl, 1);
 	while (SIZE(b_ctl) != 0)
 		ft_pa(&b_ctl, &a_ctl, 1);
-	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
+//	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }
 
