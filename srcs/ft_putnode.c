@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:32:37 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/05 14:08:45 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/19 18:41:38 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ void		ft_putnode(t_node *a, t_node *b)
 	ft_printf("{grey}A%14c\n{eoc}", 'B');
 	while (a && b)
 	{
-		ft_printf("%-14d%d\n", a->data, b->data);
+		if (a->status && b->status)
+			ft_printf("{green}%-14d%d{eoc}\n", a->data, b->data);
+		else if (b->status)
+			ft_printf("%-14d{green}%d{eoc}\n", a->data, b->data);
+		else if (a->status)
+			ft_printf("{green}%-14d{eoc}%d\n", a->data, b->data);
+		else
+			ft_printf("%-14d%d\n", a->data, b->data);
 		a = a->next;
 		b = b->next;
 	}
@@ -27,7 +34,10 @@ void		ft_putnode(t_node *a, t_node *b)
 	{
 		while (a)
 		{
-			ft_printf("%d\n", a->data);
+			if (a->status)
+				ft_printf("{green}%d{eoc}%d\n", a->data);
+			else
+				ft_printf("%d\n", a->data);
 			a = a->next;
 		}
 	}
@@ -35,7 +45,10 @@ void		ft_putnode(t_node *a, t_node *b)
 	{
 		while (b)
 		{
-			ft_printf("%*d\n", (14 + ft_ilen(b->data, 10)), b->data);
+			if (b->status)
+				ft_printf("{green}%*d{eoc}\n", (14 + ft_ilen(b->data, 10)), b->data);
+			else
+				ft_printf("%*d\n", (14 + ft_ilen(b->data, 10)), b->data);
 			b = b->next;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/24 10:58:46 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/19 12:17:27 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/19 19:11:13 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int		ft_get_medstack(t_ctl **ctl)
 	
 	if (!*ctl)
 		return (0);
-	node = FIRST((*ctl));
-	index_max = INDEX(node);
-	index_min = INDEX(node);
+	node = (*ctl)->first;
+	index_max = node->index;
+	index_min = node->index;
 	while (node)
 	{
-		if (INDEX(node) > index_max)
-			index_max = INDEX(node);
-		if (INDEX(node) < index_min)
-			index_min = INDEX(node);
-		node = NEXT(node);
+		if (node->index > index_max)
+			index_max = node->index;
+		if (node->index < index_min)
+			index_min = node->index;
+		node = node->next;
 	}
-	node = FIRST((*ctl));
+	node = (*ctl)->first;
 	median_index = (index_max + index_min) / 2;
 	return (median_index);
 }

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/19 11:05:54 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/19 18:46:47 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,6 @@ typedef struct		s_move
 	int				ra;
 	int				rb;
 }					t_move;
-
-# define FIRST(x) (x->first)
-# define NEXT(x) (x->next)
-# define PREV(x) (x->prev)
-# define LAST(x) (x->last)
-# define SIZE(x) (x->size)
-# define DATA(x) (x->data)
-# define STATUS(x) (x->status)
-# define DST_TOP(x) (x->dst_top)
-# define DST_BOTTOM(x) (x->dst_bottom)
-# define INDEX(x) (x->index)
 
 # define SA "sa"
 # define SB "sb"
