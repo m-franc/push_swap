@@ -6,39 +6,42 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/18 17:45:34 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/19 12:53:45 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		ft_split_stack(t_ctl *a_ctl, t_ctl *b_ctl)
+void		ft_split_stack(t_ctl **a_ctl, t_ctl **b_ctl)
 {
 	int		i;
 	int		size;
 	int		median;
 
-	median = ft_get_medstack(&a_ctl);
-	size = SIZE(a_ctl);
+	if (SIZE((*a_ctl)) == 0)
+		return ;
+	median = ft_get_medstack(a_ctl);
+	ft_printf("Median : {green}%d{eoc}\n", median);
+	size = SIZE((*a_ctl));
 	i = 0;
 	while (i < size)
 	{
-		if (INDEX(FIRST(a_ctl)) <= median)
+		if (INDEX(FIRST((*a_ctl))) <= median)
 		{
-			if (INDEX(FIRST(a_ctl)) == median)
-				STATUS(FIRST(a_ctl)) = 1;
-			ft_pb(&a_ctl, &b_ctl, 1);
-			if (INDEX(FIRST(b_ctl)) == median)
-				ft_rb(&b_ctl, 1);
+			if (INDEX(FIRST((*a_ctl))) == median)
+				STATUS(FIRST((*a_ctl))) = 1;
+			ft_pb(a_ctl, b_ctl, 1);
+			if (INDEX(FIRST((*b_ctl))) == median)
+				ft_rb(b_ctl, 1);
 		}
 		else
-			ft_ra(&a_ctl, 1);
+			ft_ra(a_ctl, 1);
 		i++;	
 	}
-	ft_rrb(&b_ctl, 1);
+	ft_rrb(b_ctl, 1);
 }
 
-t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
+/*t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	t_node	*a;
 	t_node	*b;
@@ -75,14 +78,26 @@ t_move		ft_get_best_hit(t_ctl *a_ctl, t_ctl *b_ctl)
 	}
 	return (move);
 }
-
+*/
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
-	t_move	move;
+//	t_move	move;
 
-	ft_pb(&a_ctl, &b_ctl, 1);
-	ft_pb(&a_ctl, &b_ctl, 1);
-	while (SIZE(a_ctl) != 0)
+//	ft_pb(&a_ctl, &b_ctl, 1);
+//	ft_pb(&a_ctl, &b_ctl, 1);
+//	t_node	*max;
+
+	while (SIZE(a_ctl) != 1)
+		ft_split_stack(&a_ctl, &b_ctl);
+//	while (SIZE(b_ctl) != 0)
+	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
+/*	ft_split_stack(a_ctl, b_ctl);
+	ft_split_stack(a_ctl, b_ctl);
+	ft_split_stack(a_ctl, b_ctl);
+	ft_split_stack(a_ctl, b_ctl);
+	ft_split_stack(a_ctl, b_ctl);*/
+
+/*	while (SIZE(a_ctl) != 0)
 	{
 		move = ft_get_best_hit(a_ctl, b_ctl);	
 //		sleep(1);
@@ -115,7 +130,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	while (INDEX(FIRST(b_ctl)) != ((int)SIZE(b_ctl) - 1))
 		ft_rb(&b_ctl, 1);
 	while (SIZE(b_ctl) != 0)
-		ft_pa(&b_ctl, &a_ctl, 1);
+		ft_pa(&b_ctl, &a_ctl, 1);*/
 //	ft_putnode(FIRST(a_ctl), FIRST(b_ctl));
 	return (1);
 }
