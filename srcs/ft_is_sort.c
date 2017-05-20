@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 11:46:45 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/05 16:46:52 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/20 12:54:37 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,20 @@ size_t		ft_is_asort(t_ctl **a_ctl)
 	t_node	*stack;
 	size_t	count;
 
-	if (SIZE((*a_ctl)) == 0)
+	if ((*a_ctl)->size == 0)
 		return (0);
-	stack = FIRST((*a_ctl));
-	if (SIZE((*a_ctl)) == 1)
+	stack = (*a_ctl)->first;
+	if ((*a_ctl)->size == 1)
 		return (1);
-	if (INDEX(stack) != 0)
+	if (stack->index != 0)
 		return (0);
-	stack = NEXT(stack);
+	stack = stack->next;
 	count = 1;
-	PSTR("---")
 	while (stack)
 	{
-		if (INDEX(stack) != (INDEX(PREV(stack)) + 1))
+		if (stack->index != (stack->prev->index + 1))
 			return (count);	
-		stack = NEXT(stack);
+		stack = stack->next;
 		count++;
 	}
 	return (count);
@@ -42,20 +41,20 @@ size_t		ft_is_dsort(t_ctl **a_ctl)
 	t_node	*stack;
 	size_t	count;
 
-	if (SIZE((*a_ctl)) == 0)
+	if ((*a_ctl)->size == 0)
 		return (0);
-	stack = FIRST((*a_ctl));
-	if (!NEXT(stack))
+	stack = (*a_ctl)->first;
+	if (!stack->next)
 		return (1);
-	if (INDEX(stack) != 0)
+	if (stack->index != 0)
 		return (0);
-	stack = NEXT(stack);
+	stack = stack->next;
 	count = 0;
 	while (stack)
 	{
-		if (INDEX(stack) != (INDEX(PREV(stack)) - 1))
+		if (stack->index != (stack->prev->index - 1))
 			return (count);
-		stack = NEXT(stack);
+		stack = stack->next;
 		count++;
 	}
 	return (count);

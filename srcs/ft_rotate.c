@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:31:41 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/08 13:22:04 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/20 12:51:13 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void		ft_rotate(t_ctl **ctl)
 
 void		ft_ra(t_ctl **ctl, int ps)
 {
-	if (SIZE((*ctl)) == 2)
+	if ((*ctl)->size == 2)
 	{
 		ft_sa(ctl, ps);
 		return ;	
 	}
-	if (SIZE((*ctl)) < 2)
+	if ((*ctl)->size < 2)
 		return ;
 	ft_rotate(ctl);
 	ft_init_dst(ctl);
@@ -44,12 +44,12 @@ void		ft_ra(t_ctl **ctl, int ps)
 
 void		ft_rb(t_ctl **ctl, int ps)
 {
-	if (SIZE((*ctl)) == 2)
+	if ((*ctl)->size == 2)
 	{
 		ft_sb(ctl, ps);
 		return ;	
 	}
-	if (SIZE((*ctl)) < 2)
+	if ((*ctl)->size < 2)
 		return ;
 	ft_rotate(ctl);
 	ft_init_dst(ctl);

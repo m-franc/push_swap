@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 15:19:07 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/04 15:00:39 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/20 12:50:23 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void		ft_swap(t_ctl **ctl)
 	second->next = second;
 	(*ctl)->first = second;
 	(*ctl)->first->next = first;
-	if (SIZE((*ctl)) == 2)
-		LAST((*ctl)) = (*ctl)->first->next;
+	if ((*ctl)->size == 2)
+		(*ctl)->last = (*ctl)->first->next;
 	if ((*ctl)->first->next->next)
 		(*ctl)->first->next->next->prev = (*ctl)->first->next;
 }

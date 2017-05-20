@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 16:53:15 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/08 14:53:30 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/20 12:49:42 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ long long		*ft_verif_data(long long *pnum, t_ctl **a_ctl, char *integer)
 {
 	t_node		*check;
 
-	check = FIRST((*a_ctl));
+	check = (*a_ctl)->first;
 	*pnum = ft_atoi(integer);
 	if (ft_ilen(*pnum, 10) != (int)ft_strlen(integer))
 		if (((ft_ilen(*pnum, 10) - 1) == (int)ft_strlen(integer))
@@ -27,7 +27,7 @@ long long		*ft_verif_data(long long *pnum, t_ctl **a_ctl, char *integer)
 			return (NULL);
 	if (*pnum > INT_MAX || *pnum < INT_MIN)
 		return (NULL);
-	check = FIRST((*a_ctl));
+	check = (*a_ctl)->first;
 	if ((ft_check_duplicate(check, *pnum)) == -1)
 		return (NULL);
 	return (pnum);
@@ -48,15 +48,15 @@ t_node			*ft_new_node(t_ctl **a_ctl, char *integer)
 		return (NULL);
 	new->data = num;
 	new->next = NULL;
-	check = FIRST((*a_ctl));
+	check = (*a_ctl)->first;
 	ft_init_index(check, new);
 	new->dst_bottom = 0;
 	new->dst_top = 0;
 	new->status = 0;
 	new->prev = NULL;
-	check = FIRST((*a_ctl));
+	check = (*a_ctl)->first;
 	if (!check)
-		ft_push_back(&(FIRST((*a_ctl))), new);
+		ft_push_back(&(*a_ctl)->first, new);
 	else
 		ft_push_back(&check, new);
 	return (new);
@@ -82,18 +82,18 @@ void			ft_init_index(t_node *check, t_node *new)
 	i = 0;
 	if (!new->prev)
 	{
-		INDEX(new) = i;
+		new->index = i;
 		return ;
 	}
 	while (tmp)
 	{
-		if (DATA(tmp) < DATA(new))
+		if (tmp->data < new->data)
 			i++;
-		else if (DATA(tmp) > DATA(new))
-			INDEX(tmp) += 1;
+		else if (tmp->data > new->data)
+			tmp->index += 1;
 		tmp = tmp->next;
 	}
-	INDEX(new) = i;
+	new->index = i;
 }
 
 void			ft_push_back(t_node **node, t_node *new)

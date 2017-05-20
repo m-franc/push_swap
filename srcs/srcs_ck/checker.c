@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/18 17:46:16 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/20 15:54:25 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	}
 	if (gnl == -1)
 		return (-1);
+	ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 	ft_printf("{grey}%i{eoc} operations.\n", i);
-	ft_putnode(FIRST((*a_ctl)), FIRST((*b_ctl)));
-	if (ft_is_asort(a_ctl) == (*a_ctl)->size && SIZE((*b_ctl)) == 0)
+	ENDL
+	if (ft_is_asort(a_ctl) == (*a_ctl)->size && (*b_ctl)->size == 0)
 		ft_putstrcolor("OK !\n", GREEN);
 	else
 		ft_putstrcolor("KO !\n", RED);

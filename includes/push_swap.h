@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/19 18:46:47 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/20 16:42:27 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
  ** 				PUSHSWAP FUNCTIONS
  */
 
-int					ft_get_medstack(t_ctl **ctl);
+int					ft_get_medstack(t_ctl **ctl, int part);
 int					ft_push_swap(t_ctl *a, t_ctl *b);
 t_node				*ft_get_max_value(t_ctl *ctl);
 t_node				*ft_get_min_value(t_ctl *ctl);

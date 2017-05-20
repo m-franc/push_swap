@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:31:34 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/16 12:42:27 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/20 12:48:37 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int				ft_arg_got_many_int(t_ctl **a_ctl, char *arg)
 	{
 		if (!(new = ft_new_node(a_ctl, ints[i])))
 			return (ft_exit_parsing(ints));
-		ft_putnode(FIRST((*a_ctl)), NULL);
-		SIZE((*a_ctl))++;
-		LAST((*a_ctl)) = new;
+		(*a_ctl)->size++;
+		(*a_ctl)->last = new;
 	}
 	ft_tabdel(ints);
 	return (1);
@@ -39,8 +38,8 @@ int				ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
 
 	if (!(new = ft_new_node(a_ctl, arg)))
 		return (-1);
-	SIZE((*a_ctl))++;
-	LAST((*a_ctl)) = new;
+	(*a_ctl)->size++;
+	(*a_ctl)->last = new;
 	return (1);
 }
 
@@ -50,16 +49,16 @@ void			ft_init_dst(t_ctl **ctl)
 	int		i;
 	
 	i = 0;
-	if (SIZE((*ctl)) == 0)
+	if ((*ctl)->size == 0)
 		return ;
-	check = FIRST((*ctl));
+	check = (*ctl)->first;
 	while (check)
 	{	
-		DST_TOP(check) = 0;
-		DST_BOTTOM(check) = 0;
-		DST_BOTTOM(check) += (SIZE((*ctl)) - i);
-		DST_TOP(check) += i;
-		check = NEXT(check);
+		check->dst_top = 0;
+		check->dst_bottom = 0;
+		check->dst_bottom += ((*ctl)->size - i);
+		check->dst_top += i;
+		check = check->next;
 		i++;
 	}
 }
@@ -69,7 +68,7 @@ int				ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
 	int			i;
 
 	i = 1;
-	FIRST((*a_ctl)) = *node;
+	(*a_ctl)->first = *node;
 	while (args[i])
 	{
 		if (ft_strchr(args[i], ' '))
