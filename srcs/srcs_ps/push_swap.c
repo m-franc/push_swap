@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/20 18:39:01 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/22 16:40:29 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,28 @@ void	ft_set_med_status(t_ctl *ctl, int pos)
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		stack_part;
-	int		median;
 
 	while (a_ctl->size != 1)
 		ft_split_stack(&a_ctl, &b_ctl);
 	while (b_ctl->size != 0)
 	{
-		while ((stack_part = ft_get_stack_part(b_ctl) > 2))
-			median = ft_get_medstack(&b_ctl, stack_part);
-		ft_set_med_status(b_ctl, median);
-		if (ft_is_dsort(&b_ctl) < 2)
+		if (b_ctl->first->status == 1)
+			ft_pa(&b_ctl, &a_ctl, 1);
+		else if ((stack_part = ft_get_stack_part(b_ctl)) > 2)
+		{
+			while (stack_part-- > 0)
+				ft_pa(&b_ctl, &a_ctl, 1);
+			while (a_ctl->size != 1)
+				ft_split_stack(&a_ctl, &b_ctl);
+		}
+		else
+		{
 			ft_sb(&b_ctl, 1);
-		ft_pa(&b_ctl, &a_ctl, 1);
-		ft_pa(&b_ctl, &a_ctl, 1);
-		ft_putnode(a_ctl->first, b_ctl->first);
+			ft_pa(&b_ctl, &a_ctl, 1);
+			ft_pa(&b_ctl, &a_ctl, 1);
+		}
 	}
+	ft_putnode(a_ctl->first, b_ctl->first);
 	return (1);
 }
 
