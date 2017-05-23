@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/23 13:03:36 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/23 19:27:10 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ int			ft_get_stack_part(t_ctl *ctl)
 	return (stack_part);
 }
 
+void		ft_debugread(void)
+{
+	char	line[5];
+	int		ret;
+
+	ret = read(0, line, 5);
+	line[ret] = '\0';
+}
+
+
 int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		stack_part;
@@ -64,28 +74,31 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	while (b_ctl->size != 0)
 	{
 		if (b_ctl->first->status == 1)
+		{
+			PSTR("ON PUSH DIRECT")	
 			ft_pa(&b_ctl, &a_ctl, 1);
+		}
 		else if ((stack_part = ft_get_stack_part(b_ctl)) > 2)
 		{
+			PSTR("ON REPUSH SUR A")	
+			ft_printf("Le nombre d'element a repush sur A : {purple}%d{eoc}\n", stack_part);
 			stack_part_cpy = stack_part;
 			stack_part_cpy2 = stack_part;
 			while (stack_part-- > 0)
 				ft_pa(&b_ctl, &a_ctl, 1);
-			PSTR("========")
-			while (stack_part_cpy2-- > 0)
-				ft_split_stack(&a_ctl, &b_ctl, stack_part_cpy);
+			ft_split_stack(&a_ctl, &b_ctl, stack_part_cpy);
 		}
 		else
 		{
-			if (ft_is_dsort(&b_ctl) < 2)
+			PSTR("ON PEUT TRIER ")	
+			if (ft_printf("nombre de chiffres triees : {red}%d{eoc}\n", ft_is_dsort(&b_ctl) < 2))
 				ft_sb(&b_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
-		}
-//		sleep(1);
+		}	
+		ft_putnode(a_ctl->first, b_ctl->first);
+		ft_debugread();
 	}
-
-	ft_putnode(a_ctl->first, b_ctl->first);
 	return (1);
 }
 

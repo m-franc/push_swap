@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 11:46:45 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/20 12:54:37 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/23 15:24:01 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ size_t		ft_is_asort(t_ctl **a_ctl)
 	stack = (*a_ctl)->first;
 	if ((*a_ctl)->size == 1)
 		return (1);
-	if (stack->index != 0)
-		return (0);
 	stack = stack->next;
 	count = 1;
 	while (stack)
@@ -46,8 +44,6 @@ size_t		ft_is_dsort(t_ctl **a_ctl)
 	stack = (*a_ctl)->first;
 	if (!stack->next)
 		return (1);
-	if (stack->index != 0)
-		return (0);
 	stack = stack->next;
 	count = 0;
 	while (stack)
