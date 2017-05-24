@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/24 12:41:22 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/24 16:03:56 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ int					ft_get_medstack(t_ctl **ctl, int part);
 int					ft_push_swap(t_ctl *a, t_ctl *b);
 t_node				*ft_get_max_value(t_ctl *ctl);
 t_node				*ft_get_min_value(t_ctl *ctl);
-void				ft_split_stack(t_ctl **a_ctl, t_ctl **b_ctl, int size);
+void				ft_split_a(t_ctl **a_ctl, t_ctl **b_ctl, int size);
+void				ft_split_part(t_ctl **a_ctl, t_ctl **b_ctl, int size);
 void				ft_init_dst(t_ctl **ctl);
 
 /*
