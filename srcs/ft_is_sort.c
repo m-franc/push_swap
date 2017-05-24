@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 11:46:45 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/23 15:24:01 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/24 11:42:09 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ size_t		ft_is_dsort(t_ctl **a_ctl)
 	if (!stack->next)
 		return (1);
 	stack = stack->next;
-	count = 0;
+	count = 1;
 	while (stack)
 	{
 		if (stack->index != (stack->prev->index - 1))
