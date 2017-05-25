@@ -6,13 +6,13 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 15:23:05 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/24 16:17:33 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 18:48:42 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		ft_split_a(t_ctl **a_ctl, t_ctl **b_ctl, int size)
+void		ft_split_stack(t_ctl **a_ctl, t_ctl **b_ctl, int size)
 {
 	int		i;
 	int		median;
@@ -38,7 +38,7 @@ void		ft_split_a(t_ctl **a_ctl, t_ctl **b_ctl, int size)
 	ft_rrb(b_ctl, 1);
 }
 
-void		ft_split_part(t_ctl **a_ctl, t_ctl **b_ctl, int size)
+void		ft_split_part_b(t_ctl **a_ctl, t_ctl **b_ctl, int size)
 {
 	int		i;
 	int		o;
@@ -66,8 +66,40 @@ void		ft_split_part(t_ctl **a_ctl, t_ctl **b_ctl, int size)
 		}
 		i++;
 	}
-	ft_rrr(b_ctl, a_ctl, 1);
-	o--;
+	ft_rra(a_ctl, 1);
 	while (o-- > 0)
 		ft_rrb(b_ctl, 1);
+}
+
+void		ft_split_part_a(t_ctl **a_ctl, t_ctl **b_ctl, int size)
+{
+	int		i;
+	int		o;
+	int		median;
+
+	if ((*a_ctl)->size == 0)
+		return ;
+	median = ft_get_medstack(a_ctl, size);
+	i = 0;
+	o = 0;
+	while (i < size)
+	{
+		if ((*a_ctl)->first->index <= median)
+		{
+			if ((*a_ctl)->first->index == median)
+				(*a_ctl)->first->status = 1;
+			ft_pb(a_ctl, a_ctl, 1);
+			if ((*b_ctl)->first->index == median)
+				ft_rb(b_ctl, 1);
+		}
+		else
+		{
+			o++;
+			ft_ra(a_ctl, 1);
+		}
+		i++;
+	}
+	ft_rrb(b_ctl, 1);
+	while (o-- > 0)
+		ft_rra(b_ctl, 1);
 }
