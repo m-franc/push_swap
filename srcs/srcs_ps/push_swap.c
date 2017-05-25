@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/24 19:11:36 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 12:59:27 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		stack_part;
 	int		stack_part_cpy;
+	int		stack_part_a;
 	int		nbs_sorted;
 
 	while (a_ctl->size != 1)
@@ -48,32 +49,39 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	{
 		if (b_ctl->first->status == 1)
 		{
-			PSTR("ON PUSH DIRECT")	
+//			PSTR("ON PUSH DIRECT")	
 			ft_pa(&b_ctl, &a_ctl, 1);
-			ft_putnode(a_ctl->first, b_ctl->first);
+//			ft_putnode(a_ctl->first, b_ctl->first);
 		}
 		else if ((stack_part = ft_get_stack_part(b_ctl)) > 2)
 		{
-			PSTR("ON REPUSH SUR A")	
-			stack_part_cpy = stack_part;
-			ft_putnode(a_ctl->first, b_ctl->first);
-			PSTR("ON RECALCULE UNE MEDIANE SUR NOTRE PORTION DE STACK : ")	
+//			PSTR("ON REPUSH SUR A")	
+//			ft_putnode(a_ctl->first, b_ctl->first);
+//			PSTR("ON RECALCULE UNE MEDIANE SUR NOTRE PORTION DE STACK : ")	
 			while ((stack_part = ft_get_stack_part(b_ctl)) > 2)
 			{
+				stack_part_cpy = stack_part;
 				ft_split_part(&a_ctl, &b_ctl, stack_part_cpy);
+				if ((stack_part_a = ft_get_stack_part(a_ctl)) > 2)
+					ft_split_part(&b_ctl, &a_ctl, stack_part_cpy);
+				else
+				{
+					if ((nbs_sorted = ft_is_asort(&a_ctl) < 2))
+						ft_sa(&b_ctl, 1);	
+				}
 			}
-			ft_putnode(a_ctl->first, b_ctl->first);
+		//	ft_putnode(a_ctl->first, b_ctl->first);
 		}
 		else
 		{
-			PSTR("ON TRIE DIRECT")
+		//	PSTR("ON TRIE DIRECT")
 			if ((nbs_sorted = ft_is_dsort(&b_ctl) < 2))
 				ft_sb(&b_ctl, 1);	
 			ft_pa(&b_ctl, &a_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
-			ft_putnode(a_ctl->first, b_ctl->first);
+//			ft_putnode(a_ctl->first, b_ctl->first);
 		}	
-		ft_debugread();
+//		ft_debugread();
 	}
 	return (1);
 }
