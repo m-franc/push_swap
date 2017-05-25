@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 18:54:41 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/25 21:57:56 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		stack_part_b;
 	int		stack_part_a;
-	int		nbs_sorted;
 
 	while (a_ctl->size != 1)
 		ft_split_stack(&a_ctl, &b_ctl, a_ctl->size);
@@ -70,13 +69,9 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 			ft_putnode(a_ctl->first, b_ctl->first);
 			ft_debugread();
 		}
-		else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) > 2)
+		else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) > 2 && (ft_is_dsort(&b_ctl) >= (size_t)stack_part_b))
 		{
-			PSTR("ON PUSH UNE PARTIE DE B A PARTIR DUNE NEW MED : ")	
-			ft_split_part_b(&a_ctl, &b_ctl, stack_part_b);
-			ft_putnode(a_ctl->first, b_ctl->first);			
-			ft_debugread();
-			if ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
+			if ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2 && (ft_is_asort(&a_ctl) >= (size_t)stack_part_a))
 			{
 				PSTR("ON REMETS LA MOITIE SUR A, NOTAMENT : ")
 				ft_split_part_a(&a_ctl, &b_ctl, stack_part_a);
@@ -85,7 +80,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 			}
 			else
 			{
-				if ((nbs_sorted = ft_is_asort(&a_ctl) < 2))
+				if (ft_is_asort(&a_ctl) < 2)
 				{
 					PSTR("ON TRIE DIRECT")	
 					ft_sa(&b_ctl, 1);	
@@ -93,17 +88,26 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 					ft_debugread();
 				}
 			}
+			PSTR("ON PUSH UNE PARTIE DE B A PARTIR DUNE NEW MED : ")
+			ft_split_part_b(&a_ctl, &b_ctl, stack_part_b);
+			ft_putnode(a_ctl->first, b_ctl->first);
+			ft_debugread();
+			PSTR("ON REMETS LA MOITIE SUR A, NOTAMENT : ")
+			ft_split_part_a(&a_ctl, &b_ctl, stack_part_a);
+			ft_putnode(a_ctl->first, b_ctl->first);			
+			ft_debugread();
 		}
 		else
 		{
 			PSTR("ON TRIE DIRECT")
-			if ((nbs_sorted = ft_is_dsort(&b_ctl) < 2))
+			if (ft_is_dsort(&b_ctl) < 2)
 				ft_sb(&b_ctl, 1);	
 			ft_pa(&b_ctl, &a_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
 			ft_putnode(a_ctl->first, b_ctl->first);
 			ft_debugread();
 		}	
+
 	}
 	ft_putnode(a_ctl->first, b_ctl->first);
 	return (1);
