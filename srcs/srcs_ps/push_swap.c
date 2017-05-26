@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 21:57:56 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 12:28:24 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,35 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 			ft_putnode(a_ctl->first, b_ctl->first);
 			ft_debugread();
 		}
-		else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) > 2 && (ft_is_dsort(&b_ctl) >= (size_t)stack_part_b))
+		else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) > 2)
 		{
-			if ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2 && (ft_is_asort(&a_ctl) >= (size_t)stack_part_a))
+			if (stack_part_b > ft_is_dsort(&b_ctl))
 			{
-				PSTR("ON REMETS LA MOITIE SUR A, NOTAMENT : ")
-				ft_split_part_a(&a_ctl, &b_ctl, stack_part_a);
-				ft_putnode(a_ctl->first, b_ctl->first);			
+				PSTR("ON PUSH UNE PARTIE DE B A PARTIR DUNE NEW MED : ")
+				ft_split_part_b(&a_ctl, &b_ctl, stack_part_b);
+				ft_putnode(a_ctl->first, b_ctl->first);
 				ft_debugread();
-			}
-			else
-			{
-				if (ft_is_asort(&a_ctl) < 2)
+				if ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
 				{
-					PSTR("ON TRIE DIRECT")	
-					ft_sa(&b_ctl, 1);	
-					ft_putnode(a_ctl->first, b_ctl->first);			
-					ft_debugread();
+					if (stack_part_a > ft_is_asort(&a_ctl))
+					{
+						PSTR("ON REMETS LA MOITIE SUR A, NOTAMENT : ")
+						ft_split_part_a(&a_ctl, &b_ctl, stack_part_a);
+						ft_putnode(a_ctl->first, b_ctl->first);			
+						ft_debugread();
+					}
+				}
+				else
+				{
+					if (ft_is_asort(&a_ctl) < 2)
+					{
+						PSTR("ON TRIE DIRECT")	
+						ft_sa(&b_ctl, 1);	
+						ft_putnode(a_ctl->first, b_ctl->first);			
+						ft_debugread();
+					}
 				}
 			}
-			PSTR("ON PUSH UNE PARTIE DE B A PARTIR DUNE NEW MED : ")
-			ft_split_part_b(&a_ctl, &b_ctl, stack_part_b);
-			ft_putnode(a_ctl->first, b_ctl->first);
-			ft_debugread();
-			PSTR("ON REMETS LA MOITIE SUR A, NOTAMENT : ")
-			ft_split_part_a(&a_ctl, &b_ctl, stack_part_a);
-			ft_putnode(a_ctl->first, b_ctl->first);			
-			ft_debugread();
 		}
 		else
 		{
@@ -107,7 +109,6 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 			ft_putnode(a_ctl->first, b_ctl->first);
 			ft_debugread();
 		}	
-
 	}
 	ft_putnode(a_ctl->first, b_ctl->first);
 	return (1);
