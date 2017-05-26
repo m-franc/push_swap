@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 18:15:59 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 18:30:41 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 						}
 						else
 							break ;
+						PSTR("=======")
 					}
 					if (ft_is_asort(&a_ctl) < 2)
 						ft_sa(&a_ctl, 1);
@@ -118,7 +119,6 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 //			ft_putnode(a_ctl->first, b_ctl->first);
 //			ft_debugread();
 		}
-		PSTR("=======")
 	}
 //	ft_putnode(a_ctl->first, b_ctl->first);
 	return (1);
