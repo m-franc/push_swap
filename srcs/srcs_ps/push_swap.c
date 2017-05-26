@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 15:56:59 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 17:45:26 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 {
 	int		stack_part_b;
 	int		stack_part_a;
+	int		size_a;
 
+	size_a = a_ctl->size;
 	while (a_ctl->size != 1)
 		ft_split_stack(&a_ctl, &b_ctl, a_ctl->size);
-	while (b_ctl->size != 0)
+	while (ft_is_asort(&a_ctl) != size_a)
 	{
 		if (b_ctl->first->status == 1 || b_ctl->size == 1)
 		{
@@ -69,7 +71,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 //			ft_putnode(a_ctl->first, b_ctl->first);
 //			ft_debugread();
 		}
-		else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) >= 2)
+		else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) > 2)
 		{
 			if (stack_part_b > ft_is_dsort(&b_ctl))
 			{
@@ -77,9 +79,9 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 				ft_split_part_b(&a_ctl, &b_ctl, stack_part_b);
 //				ft_putnode(a_ctl->first, b_ctl->first);
 //				ft_debugread();
-				if ((stack_part_a = ft_get_stack_part_a(a_ctl)) >= 2)
+				if ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
 				{
-					while ((stack_part_a = ft_get_stack_part_a(a_ctl)) >= 2)
+					while ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
 					{
 						if (stack_part_a > ft_is_asort(&a_ctl))
 						{
@@ -91,14 +93,16 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 						else
 							break ;
 					}
+					if (ft_is_asort(&a_ctl) < 2)
+						ft_sa(&a_ctl, 1);
 				}
 				else
 				{
 					if (ft_is_asort(&a_ctl) < 2)
 					{
-//						PSTR("ON TRIE DIRECT")	
-						ft_sa(&b_ctl, 1);	
-//						ft_putnode(a_ctl->first, b_ctl->first);			
+//						PSTR("ON TRIE DIRECT")
+						ft_sa(&b_ctl, 1);
+//						ft_putnode(a_ctl->first, b_ctl->first);
 //						ft_debugread();
 					}
 				}
@@ -108,12 +112,13 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 		{
 //			PSTR("ON TRIE DIRECT")
 			if (ft_is_dsort(&b_ctl) < 2)
-				ft_sb(&b_ctl, 1);	
+				ft_sb(&b_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
 //			ft_putnode(a_ctl->first, b_ctl->first);
 //			ft_debugread();
-		}	
+		}
+		PSTR("=======")
 	}
 //	ft_putnode(a_ctl->first, b_ctl->first);
 	return (1);
