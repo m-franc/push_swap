@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 12:27:32 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 14:11:42 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct		s_node
 
 typedef struct		s_ctl
 {
-	size_t			size;
+	int				size;
 	t_node			*first;
 	t_node			*last;
 }					t_ctl;

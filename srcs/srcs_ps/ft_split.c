@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 15:23:05 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/25 18:48:42 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/26 14:54:06 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		ft_split_part_a(t_ctl **a_ctl, t_ctl **b_ctl, int size)
 		{
 			if ((*a_ctl)->first->index == median)
 				(*a_ctl)->first->status = 1;
-			ft_pb(a_ctl, a_ctl, 1);
+			ft_pb(a_ctl, b_ctl, 1);
 			if ((*b_ctl)->first->index == median)
 				ft_rb(b_ctl, 1);
 		}
@@ -101,5 +101,5 @@ void		ft_split_part_a(t_ctl **a_ctl, t_ctl **b_ctl, int size)
 	}
 	ft_rrb(b_ctl, 1);
 	while (o-- > 0)
-		ft_rra(b_ctl, 1);
+		ft_rra(a_ctl, 1);
 }
