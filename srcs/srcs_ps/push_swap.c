@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 20:27:15 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 23:30:30 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,78 @@ void		ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b)
 			ft_pa(&b_ctl, &a_ctl, 1);
 }
 
-void		ft_little_sort(t_ctl **a_ctl, int size_a)
+void		ft_little_sort(t_ctl **a_ctl, t_ctl **b_ctl, int size_a)
 {
+	t_node	*max;
 	int		max_dst;
-	int		min_dst;
-	int		sort;
+	int		i;
+	int		o;
 
-	while ((sort = ft_is_asort(a_ctl)) != size_a)
+	i = 0;
+	while (ft_is_asort(a_ctl) != size_a)
 	{
-		while (max->index != (*a_ctl)->last->index)
-			ft_ra(a_ctl, 1);
-		while (min->index != (*a_ctl)->first->index)
-			ft_ra(a_ctl, 1);
+		max = ft_get_max_value(*a_ctl);
+		if (max->dst_bottom > max->dst_top)
+		{
+			max_dst = max->dst_top;
+			if (i < 0)
+			{
+				o = i;
+				while (o-- > 0)
+				{
+					ft_rra(a_ctl, 1);
+					ft_pb(a_ctl, b_ctl, 1);
+				}
+			}
+			if (max_dst == 0)	
+				ft_ra(a_ctl, 1);	
+			else
+			{	
+				while (max_dst-- > 0)
+					ft_rra(a_ctl, 1);
+			}
+			if (i < 0)
+			{
+				o = i;
+				while (o-- > 0)
+				{
+					ft_pa(b_ctl, a_ctl, 1);	
+					ft_ra(a_ctl, 1);
+				}
+			}
+		}
+		else
+		{
+			if (i < 0)
+			{
+				o = i;
+				while (o-- > 0)
+				{
+					ft_rra(a_ctl, 1);
+					ft_pb(a_ctl, b_ctl, 1);	
+				}
+			}
+			max_dst = max->dst_bottom;
+			while (max_dst-- > 1)
+				ft_ra(a_ctl, 1);
+			max_dst = max->dst_bottom;
+			if (i < 0)
+				while (max_dst-- > 1)
+					ft_rra(a_ctl, 1);
+			if (i < 0)
+			{
+				o = i;
+				while (o-- > 0)
+				{
+					ft_pa(b_ctl, a_ctl, 1);	
+					ft_ra(a_ctl, 1);	
+				}
+			}
+		}
+		if (ft_is_asort(a_ctl) < 2)
+			ft_sa(a_ctl, 1);
+		ft_putnode_single((*a_ctl)->first);
+		i++;
 	}
 }
 
@@ -62,7 +122,7 @@ void		ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 
 	size_a = a_ctl->size;
 	if (size_a <= 5)
-		ft_little_sort(&a_ctl, size_a);
+		ft_little_sort(&a_ctl, &b_ctl, size_a);
 	else
 	{	
 		while (a_ctl->size != 1)

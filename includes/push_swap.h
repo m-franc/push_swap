@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 20:28:24 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 23:19:14 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
  */
 int					ft_get_medstack(t_ctl **ctl, int part);
 void				ft_push_swap(t_ctl *a, t_ctl *b);
-void				ft_little_sort(t_ctl **a_ctl, int size_a);
-int					ft_get_max_value(t_ctl *ctl);
-int					ft_get_min_value(t_ctl *ctl);
+void				ft_little_sort(t_ctl **a_ctl, t_ctl **b_ctl, int size_a);
+t_node				*ft_get_max_value(t_ctl *ctl);
+t_node				*ft_get_min_value(t_ctl *ctl);
 void				ft_split_stack(t_ctl **a_ctl, t_ctl **b_ctl, int size);
 void				ft_split_part_a(t_ctl **a_ctl, t_ctl **b_ctl, int size);
 void				ft_split_part_b(t_ctl **a_ctl, t_ctl **b_ctl, int size);
