@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 19:27:58 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 20:27:15 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,15 @@ void		ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b)
 
 void		ft_little_sort(t_ctl **a_ctl, int size_a)
 {
-	t_node	*max;
+	int		max_dst;
+	int		min_dst;
+	int		sort;
 
-	while (ft_is_asort(a_ctl) != size_a)
+	while ((sort = ft_is_asort(a_ctl)) != size_a)
 	{
-		max = ft_get_max_value(*a_ctl);
-		while (max->index != (*a_ctl)->first->index)
+		while (max->index != (*a_ctl)->last->index)
+			ft_ra(a_ctl, 1);
+		while (min->index != (*a_ctl)->first->index)
 			ft_ra(a_ctl, 1);
 	}
 }
