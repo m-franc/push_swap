@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 19:56:10 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 13:31:24 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,31 +65,18 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	while (ft_is_asort(&a_ctl) != size_a)
 	{
 		if (b_ctl->first->status == 1 || b_ctl->size == 1)
-		{
-//			PSTR("ON PUSH DIRECT")	
 			ft_pa(&b_ctl, &a_ctl, 1);			
-//			ft_putnode(a_ctl->first, b_ctl->first);
-//			ft_debugread();
-		}
 		else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) > 2)
 		{
 			if (stack_part_b > ft_is_dsort(&b_ctl))
 			{
-//				PSTR("ON PUSH UNE PARTIE DE B A PARTIR DUNE NEW MED : ")
 				ft_split_part_b(&a_ctl, &b_ctl, stack_part_b);
-//				ft_putnode(a_ctl->first, b_ctl->first);
-//				ft_debugread();
 				if ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
 				{
 					while ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
 					{
 						if (stack_part_a > ft_is_asort(&a_ctl))
-						{
-//							PSTR("ON REMETS LA MOITIE SUR A ")
 							ft_split_part_a(&a_ctl, &b_ctl, stack_part_a);
-//							ft_putnode(a_ctl->first, b_ctl->first);			
-//							ft_debugread();
-						}
 						else
 							break ;
 					}
@@ -99,12 +86,7 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 				else
 				{
 					if (ft_is_asort(&a_ctl) < 2)
-					{
-//						PSTR("ON TRIE DIRECT")
 						ft_sa(&b_ctl, 1);
-//						ft_putnode(a_ctl->first, b_ctl->first);
-//						ft_debugread();
-					}
 				}
 			}
 			else
@@ -115,16 +97,12 @@ int			ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 		}
 		else
 		{
-//			PSTR("ON TRIE DIRECT")
 			if (ft_is_dsort(&b_ctl) < 2)
 				ft_sb(&b_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
 			ft_pa(&b_ctl, &a_ctl, 1);
-//			ft_putnode(a_ctl->first, b_ctl->first);
-//			ft_debugread();
 		}
 	}
-//	ft_putnode(a_ctl->first, b_ctl->first);
 	return (1);
 }
 
