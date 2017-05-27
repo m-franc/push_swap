@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 16:53:15 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 16:47:15 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 19:25:34 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,13 @@ void			ft_push_back(t_node **node, t_node *new)
 	else
 	{
 		tmp = *node;
+		prev = tmp;
 		while (tmp && tmp->next)
 		{
 			tmp = tmp->next;
 			prev = tmp;
 		}
-		new->prev = prev;
 		tmp->next = new;
+		new->prev = prev;
 	}
 }

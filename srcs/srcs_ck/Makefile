@@ -6,12 +6,12 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/05/27 17:34:13 by mfranc           ###   ########.fr        #
+#    Updated: 2017/05/27 18:18:06 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = checker
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 CC = clang $(FLAGS)
 INC = ../../includes
 LIBFT = ../../libft/
