@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 16:53:15 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/20 12:49:42 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 16:47:15 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ t_node			*ft_new_node(t_ctl **a_ctl, char *integer)
 		return (NULL);
 	new->data = num;
 	new->next = NULL;
-	check = (*a_ctl)->first;
-	ft_init_index(check, new);
+	ft_init_index(a_ctl, new);
 	new->dst_bottom = 0;
 	new->dst_top = 0;
 	new->status = 0;
@@ -73,14 +72,14 @@ int				ft_check_duplicate(t_node *duplicate, int num)
 	return (0);
 }
 
-void			ft_init_index(t_node *check, t_node *new)
+void			ft_init_index(t_ctl **ctl, t_node *new)
 {
 	int			i;
 	t_node		*tmp;
 
-	tmp = check;
+	tmp = (*ctl)->first;
 	i = 0;
-	if (!new->prev)
+	if ((*ctl)->size == 0)
 	{
 		new->index = i;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 14:11:42 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 17:02:16 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **args);
 t_node				*ft_new_node(t_ctl **a_ctl, char *integer);
 long long			*ft_verif_data(long long *pnum,
 		t_ctl **a_ctl, char *intger);
-void				ft_init_index(t_node *check, t_node *new);
+void				ft_init_index(t_ctl **ctl, t_node *new);
 void				ft_push_back(t_node **node, t_node *new);
 int					ft_check_duplicate(t_node *diplicate, int num);
 void				ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl);
@@ -88,12 +88,16 @@ int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
  ** 				PUSHSWAP FUNCTIONS
  */
 int					ft_get_medstack(t_ctl **ctl, int part);
-int					ft_push_swap(t_ctl *a, t_ctl *b);
+void				ft_push_swap(t_ctl *a, t_ctl *b);
+void				ft_little_sort(t_ctl **a_ctl, int size_a);
 t_node				*ft_get_max_value(t_ctl *ctl);
 t_node				*ft_get_min_value(t_ctl *ctl);
 void				ft_split_stack(t_ctl **a_ctl, t_ctl **b_ctl, int size);
 void				ft_split_part_a(t_ctl **a_ctl, t_ctl **b_ctl, int size);
 void				ft_split_part_b(t_ctl **a_ctl, t_ctl **b_ctl, int size);
+int					ft_get_stack_part_a(t_ctl *ctl);
+int					ft_get_stack_part_b(t_ctl *ctl);
+void				ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b);
 void				ft_init_dst(t_ctl **ctl);
 
 /*

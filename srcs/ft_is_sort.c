@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 11:46:45 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 12:28:02 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 17:35:53 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int			ft_is_asort(t_ctl **a_ctl)
 
 	if ((*a_ctl)->size == 0)
 		return (0);
-	stack = (*a_ctl)->first;
 	if ((*a_ctl)->size == 1)
 		return (1);
-	stack = stack->next;
+	stack = (*a_ctl)->first->next;
 	count = 1;
 	while (stack)
 	{

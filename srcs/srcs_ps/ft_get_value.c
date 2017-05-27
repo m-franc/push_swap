@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:39:13 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/20 15:33:28 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/27 14:40:52 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,4 @@ t_node		*ft_get_min_value(t_ctl *ctl)
 	while (tmp && tmp->index != value)
 		tmp = tmp->next;
 	return (tmp);
-	}
+}
