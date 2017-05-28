@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 11:30:35 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/26 17:42:01 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/28 19:43:15 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
 	else if (ft_strnstr(RA, line, 2))
 		ft_ra(a_ctl, 0);
 	else if (ft_strnstr(RB, line, 2))
-		ft_rb(b_ctl,0);
+		ft_rb(b_ctl, 0);
 	else if (ft_strnstr(RR, line, 2))
 		ft_rr(a_ctl, b_ctl, 0);
 	else if (ft_strnstr(RRA, line, 3))
@@ -36,8 +36,8 @@ int			ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line)
 		ft_rrb(b_ctl, 0);
 	else if (ft_strnstr(RRR, line, 3))
 		ft_rrr(a_ctl, b_ctl, 0);
-///	else
-//		return (-1);
+	else
+		return (-1);
 	return (1);
 }
 
@@ -49,7 +49,7 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 
 	i = 0;
 	while ((gnl = get_next_line(0, &line)) == 1)
-	{	
+	{
 		if ((ft_find_op(a_ctl, b_ctl, line)) == -1)
 			return (ft_exit_checker(line));
 		else
@@ -58,7 +58,6 @@ int			ft_checker(t_ctl **a_ctl, t_ctl **b_ctl)
 	}
 	if (gnl == -1)
 		return (-1);
-//	ft_putnode((*a_ctl)->first, (*b_ctl)->first);
 	ft_printf("{grey}%i{eoc} operations.\n", i);
 	if (ft_is_asort(a_ctl) == (*a_ctl)->size && (*b_ctl)->size == 0)
 		ft_putstrcolor("OK !\n", GREEN);

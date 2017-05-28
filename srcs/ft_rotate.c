@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:31:41 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/20 12:51:13 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/28 19:40:16 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_ra(t_ctl **ctl, int ps)
 	if ((*ctl)->size == 2)
 	{
 		ft_sa(ctl, ps);
-		return ;	
+		return ;
 	}
 	if ((*ctl)->size < 2)
 		return ;
@@ -47,7 +47,7 @@ void		ft_rb(t_ctl **ctl, int ps)
 	if ((*ctl)->size == 2)
 	{
 		ft_sb(ctl, ps);
-		return ;	
+		return ;
 	}
 	if ((*ctl)->size < 2)
 		return ;

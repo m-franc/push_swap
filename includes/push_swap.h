@@ -6,14 +6,18 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 23:19:14 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/28 19:11:57 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "get_next_line.h"
-#include <limits.h>
+#ifndef PUSH_SWAP_H
+
+# define PUSH_SWAP_H
+
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include <limits.h>
 
 typedef struct		s_node
 {
@@ -53,9 +57,6 @@ typedef struct		s_move
 # define RRB "rrb"
 # define RRR "rrr"
 
-/*
-**					COMMON FUNCTIONS
-*/
 int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **args);
 t_node				*ft_new_node(t_ctl **a_ctl, char *integer);
 long long			*ft_verif_data(long long *pnum,
@@ -69,24 +70,11 @@ void				ft_putnode_single(t_node *a);
 int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 int					ft_is_asort(t_ctl **ctl);
 int					ft_is_dsort(t_ctl **ctl);
-
-
-/*
- ** 				EXIT FUNCTIONS
- */
 int					ft_exit_ps(t_ctl **a_ctl, t_ctl **b_ctl);
-int					ft_exit_parsing(char ** ints);
+int					ft_exit_parsing(char **ints);
 int					ft_exit_checker(char *line);
-
-/*
- ** 				CHECKER FUNCTIONS
- */
 int					ft_checker(t_ctl **a_ctl, t_ctl **b_ctl);
 int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);
-
-/*
- ** 				PUSHSWAP FUNCTIONS
- */
 int					ft_get_medstack(t_ctl **ctl, int part);
 void				ft_push_swap(t_ctl *a, t_ctl *b);
 void				ft_little_sort(t_ctl **a_ctl, t_ctl **b_ctl, int size_a);
@@ -99,25 +87,20 @@ int					ft_get_stack_part_a(t_ctl *ctl);
 int					ft_get_stack_part_b(t_ctl *ctl);
 void				ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b);
 void				ft_init_dst(t_ctl **ctl);
-
-/*
- **					OPERATIONS FUNCTIONS
- */
 void				ft_swap(t_ctl **ctl);
 void				ft_sa(t_ctl **ctl, int ps);
 void				ft_sb(t_ctl **ctl, int ps);
 void				ft_ss(t_ctl **a, t_ctl **b, int ps);
-
 void				ft_push(t_ctl **src_ctl, t_ctl **dest_ctl);
 void				ft_pa(t_ctl **src_ctl, t_ctl **dest_ctl, int ps);
 void				ft_pb(t_ctl **src_ctl, t_ctl **dest_ctl, int ps);
-
 void				ft_rotate(t_ctl **ctl);
 void				ft_ra(t_ctl **ctl, int ps);
 void				ft_rb(t_ctl **ctl, int ps);
 void				ft_rr(t_ctl **a, t_ctl **b, int ps);
-
 void				ft_reverse_rotate(t_ctl **ctl);
 void				ft_rra(t_ctl **ctl, int ps);
 void				ft_rrb(t_ctl **ctl, int ps);
 void				ft_rrr(t_ctl **a, t_ctl **b, int ps);
+
+#endif

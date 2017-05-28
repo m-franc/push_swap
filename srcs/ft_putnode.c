@@ -6,11 +6,35 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:32:37 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/20 15:31:30 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/28 19:38:58 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	ft_put_a(t_node *a)
+{
+	while (a)
+	{
+		if (a->status)
+			ft_printf("{green}%d{eoc}\n", a->data);
+		else
+			ft_printf("%d\n", a->data);
+		a = a->next;
+	}
+}
+
+static void	ft_put_b(t_node *b)
+{
+	while (b)
+	{
+		if (b->status)
+			ft_printf("{green}%d{eoc}\n", b->data);
+		else
+			ft_printf("%d\n", b->data);
+		b = b->next;
+	}
+}
 
 void		ft_putnode(t_node *a, t_node *b)
 {
@@ -31,26 +55,7 @@ void		ft_putnode(t_node *a, t_node *b)
 		b = b->next;
 	}
 	if (a)
-	{
-		while (a)
-		{
-			if (a->status)
-				ft_printf("{green}%d{eoc}\n", a->data);
-			else
-				ft_printf("%d\n", a->data);
-			a = a->next;
-		}
-	}
+		ft_put_a(a);
 	if (b)
-	{
-		while (b)
-		{
-			if (b->status)
-				ft_printf("{green}%*d{eoc}\n", (14 + ft_ilen(b->data, 10)), b->data);
-			else
-				ft_printf("%*d\n", (14 + ft_ilen(b->data, 10)), b->data);
-			b = b->next;
-		}
-	}
-	ENDL
+		ft_put_b(b);
 }

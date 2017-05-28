@@ -6,7 +6,7 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/05/27 18:18:14 by mfranc           ###   ########.fr        #
+#    Updated: 2017/05/28 19:48:39 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ SRCS = push_swap.c					\
 	   ../ft_init_node.c			\
 	   ../ft_init_link.c			\
 	   ../ft_putnode.c				\
-	   ../ft_putnode_single.c		\
 	   ../ft_exit.c					\
 	   ../ft_swap.c					\
 	   ../ft_push.c					\

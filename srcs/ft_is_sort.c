@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 11:46:45 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 17:35:53 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/28 19:34:31 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_is_asort(t_ctl **a_ctl)
 	while (stack)
 	{
 		if (stack->index != (stack->prev->index + 1))
-			return (count);	
+			return (count);
 		stack = stack->next;
 		count++;
 	}

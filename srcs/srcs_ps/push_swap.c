@@ -6,116 +6,73 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/28 17:52:46 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/28 20:02:04 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		ft_debugread(void)
+void		ft_store_min_value(t_ctl **a_ctl, t_ctl **b_ctl)
 {
-	char	line[5];
-	int		ret;
+	t_node	*min;
+	int		min_dst;
 
-	ret = read(0, line, 5);
-	line[ret] = '\0';
+	min = ft_get_min_value(*a_ctl);
+	if (min->dst_bottom > min->dst_top)
+	{
+		min_dst = min->dst_top;
+		while (min_dst-- > 0)
+			ft_ra(a_ctl, 1);
+		ft_pb(a_ctl, b_ctl, 1);
+	}
+	else
+	{
+		min_dst = min->dst_bottom;
+		while (min_dst-- > 0)
+			ft_rra(a_ctl, 1);
+		ft_pb(a_ctl, b_ctl, 1);
+	}
 }
 
 void		ft_little_sort(t_ctl **a_ctl, t_ctl **b_ctl, int size_a)
 {
-	//	t_node	*max;
-	t_node	*min;
-	//	int		max_dst;
 	int		i;
-	int		min_dst;
 
-	/*
-	   while (ft_is_asort(a_ctl) != size_a)
-	   {
-	   max = ft_get_max_value(*a_ctl);
-	   if (max->dst_bottom > max->dst_top)
-	   {
-	   max_dst = max->dst_top;
-	   if (max_dst == 0)	
-	   ft_ra(a_ctl, 1);	
-	   else
-	   while (max_dst-- > 0)
-	   ft_rra(a_ctl, 1);
-	   }
-	   else
-	   max_dst = max->dst_bottom;
-	   while (max_dst-- > 1)
-	   ft_ra(a_ctl, 1);
-	   if (ft_is_asort(a_ctl) < 2)
-	   ft_sad(a_ctl, 1);
-	   c*/
-	//	ft_putnode_single((*a_ctl)->first);
-
-	i = -1;
-	while (ft_is_asort(a_ctl) != size_a)
+	if (size_a > 1 && size_a < 4)
 	{
-		ft_putnode_single((*a_ctl)->first);
-		while (++i < (size_a / 2))
-		{
-			min = ft_get_min_value(*a_ctl);
-			if (min->dst_bottom > min->dst_top)
-			{
-				min_dst = min->dst_top;
-				ft_printf("Distance : {grey}%d{eoc}\n", min_dst);
-				while (min_dst-- > 0)
-					ft_rra(a_ctl, 1);
-				ft_putnode_single((*a_ctl)->first);
-				ENDL
-				ft_debugread();
-					ft_pb(a_ctl, b_ctl, 1);
-				ft_putnode_single((*a_ctl)->first);
-				ENDL
-				ft_debugread();
-			}
-			else
-			{
-				min_dst = min->dst_bottom;
-				ft_printf("Distance : {grey}%d{eoc}\n", min_dst);
-				while (min_dst-- > 0)
-					ft_ra(a_ctl, 1);
-				ft_putnode_single((*a_ctl)->first);
-				ENDL
-				ft_debugread();
-				ft_pb(a_ctl, b_ctl, 1);
-				ft_putnode_single((*a_ctl)->first);
-				ENDL
-				ft_debugread();
-			}
-		}
+		if ((*a_ctl)->first->index == (size_a - 1))
+			ft_ra(a_ctl, 1);
+		else if ((*a_ctl)->last->index != (size_a - 1))
+			ft_rra(a_ctl, 1);
 		if (ft_is_asort(a_ctl) < 2)
 			ft_sa(a_ctl, 1);
-		ft_putnode_single((*a_ctl)->first);
-		ENDL
-		ft_debugread();
-			while ((*b_ctl)->size != 0)
-				ft_pb(b_ctl, a_ctl, 1);
-		ft_putnode_single((*a_ctl)->first);
-		ENDL
-		ft_debugread();
+	}
+	else
+	{
+		i = -1;
+		while (ft_is_asort(a_ctl) != size_a)
+		{
+			while (++i <= (size_a / 2))
+				ft_store_min_value(a_ctl, b_ctl);
+			if (ft_is_asort(a_ctl) < 2)
+				ft_sa(a_ctl, 1);
+			while (i-- > 0)
+				ft_pa(b_ctl, a_ctl, 1);
+		}
 	}
 }
 
-
-
-
 void		ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b)
 {
-	int		stack_part_a;
-
 	if (stack_part_b > ft_is_dsort(&b_ctl))
 	{
 		ft_split_part_b(&a_ctl, &b_ctl, stack_part_b);
-		if ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
+		if ((ft_get_stack_part_a(a_ctl)) > 2)
 		{
-			while ((stack_part_a = ft_get_stack_part_a(a_ctl)) > 2)
+			while ((ft_get_stack_part_a(a_ctl)) > 2)
 			{
-				if (stack_part_a > ft_is_asort(&a_ctl))
-					ft_split_part_a(&a_ctl, &b_ctl, stack_part_a);
+				if (ft_get_stack_part_a(a_ctl) > ft_is_asort(&a_ctl))
+					ft_split_part_a(&a_ctl, &b_ctl, ft_get_stack_part_a(a_ctl));
 				else
 					break ;
 			}
@@ -123,8 +80,10 @@ void		ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b)
 				ft_sa(&a_ctl, 1);
 		}
 		else
+		{
 			if (ft_is_asort(&a_ctl) < 2)
 				ft_sa(&b_ctl, 1);
+		}
 	}
 	else
 		while (stack_part_b-- > 0)
@@ -140,13 +99,13 @@ void		ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	if (size_a <= 5)
 		ft_little_sort(&a_ctl, &b_ctl, size_a);
 	else
-	{	
+	{
 		while (a_ctl->size != 1)
 			ft_split_stack(&a_ctl, &b_ctl, a_ctl->size);
 		while (ft_is_asort(&a_ctl) != size_a)
 		{
 			if (b_ctl->first->status == 1 || b_ctl->size == 1)
-				ft_pa(&b_ctl, &a_ctl, 1);			
+				ft_pa(&b_ctl, &a_ctl, 1);
 			else if ((stack_part_b = ft_get_stack_part_b(b_ctl)) > 2)
 				ft_quick_sort(a_ctl, b_ctl, stack_part_b);
 			else
@@ -175,6 +134,9 @@ int			main(int ac, char **av)
 		return (ft_exit_ps(&a, &b));
 	if ((ft_fill_node(&stack_a, &a, av)) == -1)
 		return (ft_exit_ps(&a, &b));
-	ft_push_swap(a, b);
+	if (a->size == 1 || ft_is_asort(&a) == a->size)
+		return (0);
+	else
+		ft_push_swap(a, b);
 	return (0);
 }
