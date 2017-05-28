@@ -6,11 +6,102 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 23:30:30 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/28 17:52:46 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void		ft_debugread(void)
+{
+	char	line[5];
+	int		ret;
+
+	ret = read(0, line, 5);
+	line[ret] = '\0';
+}
+
+void		ft_little_sort(t_ctl **a_ctl, t_ctl **b_ctl, int size_a)
+{
+	//	t_node	*max;
+	t_node	*min;
+	//	int		max_dst;
+	int		i;
+	int		min_dst;
+
+	/*
+	   while (ft_is_asort(a_ctl) != size_a)
+	   {
+	   max = ft_get_max_value(*a_ctl);
+	   if (max->dst_bottom > max->dst_top)
+	   {
+	   max_dst = max->dst_top;
+	   if (max_dst == 0)	
+	   ft_ra(a_ctl, 1);	
+	   else
+	   while (max_dst-- > 0)
+	   ft_rra(a_ctl, 1);
+	   }
+	   else
+	   max_dst = max->dst_bottom;
+	   while (max_dst-- > 1)
+	   ft_ra(a_ctl, 1);
+	   if (ft_is_asort(a_ctl) < 2)
+	   ft_sad(a_ctl, 1);
+	   c*/
+	//	ft_putnode_single((*a_ctl)->first);
+
+	i = -1;
+	while (ft_is_asort(a_ctl) != size_a)
+	{
+		ft_putnode_single((*a_ctl)->first);
+		while (++i < (size_a / 2))
+		{
+			min = ft_get_min_value(*a_ctl);
+			if (min->dst_bottom > min->dst_top)
+			{
+				min_dst = min->dst_top;
+				ft_printf("Distance : {grey}%d{eoc}\n", min_dst);
+				while (min_dst-- > 0)
+					ft_rra(a_ctl, 1);
+				ft_putnode_single((*a_ctl)->first);
+				ENDL
+				ft_debugread();
+					ft_pb(a_ctl, b_ctl, 1);
+				ft_putnode_single((*a_ctl)->first);
+				ENDL
+				ft_debugread();
+			}
+			else
+			{
+				min_dst = min->dst_bottom;
+				ft_printf("Distance : {grey}%d{eoc}\n", min_dst);
+				while (min_dst-- > 0)
+					ft_ra(a_ctl, 1);
+				ft_putnode_single((*a_ctl)->first);
+				ENDL
+				ft_debugread();
+				ft_pb(a_ctl, b_ctl, 1);
+				ft_putnode_single((*a_ctl)->first);
+				ENDL
+				ft_debugread();
+			}
+		}
+		if (ft_is_asort(a_ctl) < 2)
+			ft_sa(a_ctl, 1);
+		ft_putnode_single((*a_ctl)->first);
+		ENDL
+		ft_debugread();
+			while ((*b_ctl)->size != 0)
+				ft_pb(b_ctl, a_ctl, 1);
+		ft_putnode_single((*a_ctl)->first);
+		ENDL
+		ft_debugread();
+	}
+}
+
+
+
 
 void		ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b)
 {
@@ -38,81 +129,6 @@ void		ft_quick_sort(t_ctl *a_ctl, t_ctl *b_ctl, int stack_part_b)
 	else
 		while (stack_part_b-- > 0)
 			ft_pa(&b_ctl, &a_ctl, 1);
-}
-
-void		ft_little_sort(t_ctl **a_ctl, t_ctl **b_ctl, int size_a)
-{
-	t_node	*max;
-	int		max_dst;
-	int		i;
-	int		o;
-
-	i = 0;
-	while (ft_is_asort(a_ctl) != size_a)
-	{
-		max = ft_get_max_value(*a_ctl);
-		if (max->dst_bottom > max->dst_top)
-		{
-			max_dst = max->dst_top;
-			if (i < 0)
-			{
-				o = i;
-				while (o-- > 0)
-				{
-					ft_rra(a_ctl, 1);
-					ft_pb(a_ctl, b_ctl, 1);
-				}
-			}
-			if (max_dst == 0)	
-				ft_ra(a_ctl, 1);	
-			else
-			{	
-				while (max_dst-- > 0)
-					ft_rra(a_ctl, 1);
-			}
-			if (i < 0)
-			{
-				o = i;
-				while (o-- > 0)
-				{
-					ft_pa(b_ctl, a_ctl, 1);	
-					ft_ra(a_ctl, 1);
-				}
-			}
-		}
-		else
-		{
-			if (i < 0)
-			{
-				o = i;
-				while (o-- > 0)
-				{
-					ft_rra(a_ctl, 1);
-					ft_pb(a_ctl, b_ctl, 1);	
-				}
-			}
-			max_dst = max->dst_bottom;
-			while (max_dst-- > 1)
-				ft_ra(a_ctl, 1);
-			max_dst = max->dst_bottom;
-			if (i < 0)
-				while (max_dst-- > 1)
-					ft_rra(a_ctl, 1);
-			if (i < 0)
-			{
-				o = i;
-				while (o-- > 0)
-				{
-					ft_pa(b_ctl, a_ctl, 1);	
-					ft_ra(a_ctl, 1);	
-				}
-			}
-		}
-		if (ft_is_asort(a_ctl) < 2)
-			ft_sa(a_ctl, 1);
-		ft_putnode_single((*a_ctl)->first);
-		i++;
-	}
 }
 
 void		ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
