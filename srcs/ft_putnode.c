@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:32:37 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 10:53:37 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 20:08:58 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	ft_put_b(t_node *b)
 	while (b)
 	{
 		if (b->status)
-			ft_printf("{green}%*d{eoc}\n", (14 + ft_ilen(b->data, 10)), b->data);
+			ft_printf("{green}%*d{eoc}\n",
+					(14 + ft_ilen(b->data, 10)), b->data);
 		else
 			ft_printf("%*d\n", (14 + ft_ilen(b->data, 10)), b->data);
 		b = b->next;

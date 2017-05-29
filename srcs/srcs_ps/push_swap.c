@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 19:32:22 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 20:08:36 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,10 @@ int			main(int ac, char **av)
 	if (a->size == 1 || ft_is_asort(&a) == a->size)
 	{
 		ft_delcontroller(&a, &b);
-		return (0);	
+		return (0);
 	}
 	else
-	{	
+	{
 		ft_push_swap(a, b);
 		ft_delcontroller(&a, &b);
 	}

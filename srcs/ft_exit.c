@@ -6,13 +6,13 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:30:04 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 18:43:08 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 20:09:53 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
+void		ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
 {
 	t_node	*a;
 	t_node	*b;
@@ -22,7 +22,7 @@ void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
 		a = (*a_ctl)->first;
 		if (a)
 			while (a)
-			{	
+			{
 				free(a);
 				a = a->next;
 			}
