@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 19:33:39 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:31:09 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 19:41:50 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			ft_init_dst(t_ctl **ctl)
 	}
 }
 
-int				ft_fill_node(t_ctl **a_ctl, char **args)
+int				ft_fill_node(t_ctl **a_ctl, char **args, int nb_args)
 {
 	int			i;
 
@@ -75,7 +75,9 @@ int				ft_fill_node(t_ctl **a_ctl, char **args)
 			if ((ft_arg_got_many_int(a_ctl, args[i])) == -1)
 				return (-1);
 		}
-		else
+		else if (ft_strcmp(args[i], "-i") == 0 && i == (nb_args -1))
+			(*a_ctl)->counter = 1;
+		else 
 		{
 			if ((ft_arg_got_one_int(a_ctl, args[i])) == -1)
 				return (-1);

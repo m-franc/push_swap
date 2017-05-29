@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 16:17:29 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 19:32:22 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int			main(int ac, char **av)
 		return (0);
 	if ((ft_init_ctl(&a, &b)) == -1)
 		return (ft_exit_ps(&a, &b));
-	if ((ft_fill_node(&a, av)) == -1)
+	if ((ft_fill_node(&a, av, ac)) == -1)
 		return (ft_exit_ps(&a, &b));
 	if (a->size == 1 || ft_is_asort(&a) == a->size)
 	{

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 20:02:18 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:19:06 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 18:39:25 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_tabdel(char ***tab)
 	char	**cpy;
 	int		i;
 
-	if (!tab)
+	if (!tab || !*tab)
 		return ;
 	cpy = *tab;
 	i = 0;

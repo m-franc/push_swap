@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 19:30:04 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 18:03:33 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 18:43:08 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ void			ft_delcontroller(t_ctl **a_ctl, t_ctl **b_ctl)
 int			ft_exit_ps(t_ctl **a_ctl, t_ctl **b_ctl)
 {
 	ft_delcontroller(a_ctl, b_ctl);
+	ft_putstrcolor("Error\n", RED);
 	return (-1);
 }
 
 int			ft_exit_parsing(char ***tab)
 {
-	if (ft_tablen(*tab) != 0)
-		ft_tabdel(tab);
-	ft_putstrcolor("Error\n", RED);
+	ft_tabdel(tab);
 	return (-1);
 }
 
@@ -59,6 +58,5 @@ int			ft_exit_checker(char *line)
 {
 	if (line)
 		ft_strdel(&line);
-	ft_putstrcolor("Error\n", RED);
 	return (-1);
 }

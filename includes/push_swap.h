@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 17:15:22 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 19:08:50 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_node
 typedef struct		s_ctl
 {
 	int				size;
+	int				counter;
 	t_node			*first;
 	t_node			*last;
 }					t_ctl;
@@ -57,7 +58,7 @@ typedef struct		s_move
 # define RRB "rrb"
 # define RRR "rrr"
 
-int					ft_fill_node(t_ctl **a_ctl, char **args);
+int					ft_fill_node(t_ctl **a_ctl, char **args, int nb_args);
 t_node				*ft_new_node(t_ctl **a_ctl, char *integer);
 long long			*ft_verif_data(long long *pnum,
 		t_ctl **a_ctl, char *intger);

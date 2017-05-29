@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 14:27:56 by mfranc            #+#    #+#             */
-/*   Updated: 2017/04/12 16:00:38 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 19:07:20 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl)
 	(*b_ctl)->first = NULL;
 	(*a_ctl)->last = NULL;
 	(*b_ctl)->last = NULL;
+	(*a_ctl)->counter = 0;
 	(*a_ctl)->size = 0;
 	(*b_ctl)->size = 0;
 	return (1);
