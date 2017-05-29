@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/28 20:02:04 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 16:17:29 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void		ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	int		size_a;
 
 	size_a = a_ctl->size;
-	if (size_a <= 5)
+	if (size_a <= 6)
 		ft_little_sort(&a_ctl, &b_ctl, size_a);
 	else
 	{
@@ -121,22 +121,26 @@ void		ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 
 int			main(int ac, char **av)
 {
-	t_node	*stack_a;
 	t_ctl	*a;
 	t_ctl	*b;
 
-	stack_a = NULL;
 	a = NULL;
 	b = NULL;
 	if (ac == 1)
 		return (0);
 	if ((ft_init_ctl(&a, &b)) == -1)
 		return (ft_exit_ps(&a, &b));
-	if ((ft_fill_node(&stack_a, &a, av)) == -1)
+	if ((ft_fill_node(&a, av)) == -1)
 		return (ft_exit_ps(&a, &b));
 	if (a->size == 1 || ft_is_asort(&a) == a->size)
-		return (0);
+	{
+		ft_delcontroller(&a, &b);
+		return (0);	
+	}
 	else
+	{	
 		ft_push_swap(a, b);
+		ft_delcontroller(&a, &b);
+	}
 	return (0);
 }

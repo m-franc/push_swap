@@ -6,12 +6,12 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/05/28 19:48:31 by mfranc           ###   ########.fr        #
+#    Updated: 2017/05/29 12:34:40 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = checker
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 CC = clang $(FLAGS)
 INC = ../../includes
 LIBFT = ../../libft/
@@ -36,7 +36,7 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $1 $^ -o $@ $(ALL_INC) -L $(LIBFT) -lftprintf
+	$(CC) $^ -o $@ $(ALL_INC) -L $(LIBFT) -lftprintf
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(ALL_INC)

@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:16:26 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/28 19:11:57 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:15:22 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct		s_move
 # define RRB "rrb"
 # define RRR "rrr"
 
-int					ft_fill_node(t_node **node, t_ctl **a_ctl, char **args);
+int					ft_fill_node(t_ctl **a_ctl, char **args);
 t_node				*ft_new_node(t_ctl **a_ctl, char *integer);
 long long			*ft_verif_data(long long *pnum,
 		t_ctl **a_ctl, char *intger);
@@ -71,7 +71,7 @@ int					ft_init_ctl(t_ctl **a_ctl, t_ctl **b_ctl);
 int					ft_is_asort(t_ctl **ctl);
 int					ft_is_dsort(t_ctl **ctl);
 int					ft_exit_ps(t_ctl **a_ctl, t_ctl **b_ctl);
-int					ft_exit_parsing(char **ints);
+int					ft_exit_parsing(char ***ints);
 int					ft_exit_checker(char *line);
 int					ft_checker(t_ctl **a_ctl, t_ctl **b_ctl);
 int					ft_find_op(t_ctl **a_ctl, t_ctl **b_ctl, char *line);

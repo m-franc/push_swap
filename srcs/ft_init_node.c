@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 19:33:39 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/28 19:34:18 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:31:09 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int				ft_arg_got_many_int(t_ctl **a_ctl, char *arg)
 	while (ints[++i])
 	{
 		if (!(new = ft_new_node(a_ctl, ints[i])))
-			return (ft_exit_parsing(ints));
+			return (ft_exit_parsing(&ints));
 		(*a_ctl)->size++;
 		(*a_ctl)->last = new;
 	}
-	ft_tabdel(ints);
+	ft_tabdel(&ints);
 	return (1);
 }
 
@@ -37,7 +37,7 @@ int				ft_arg_got_one_int(t_ctl **a_ctl, char *arg)
 	t_node		*new;
 
 	if (!(new = ft_new_node(a_ctl, arg)))
-		return (-1);
+		return (ft_exit_parsing(NULL));
 	(*a_ctl)->size++;
 	(*a_ctl)->last = new;
 	return (1);
@@ -63,12 +63,11 @@ void			ft_init_dst(t_ctl **ctl)
 	}
 }
 
-int				ft_fill_node(t_node **node, t_ctl **a_ctl, char **args)
+int				ft_fill_node(t_ctl **a_ctl, char **args)
 {
 	int			i;
 
 	i = 1;
-	(*a_ctl)->first = *node;
 	while (args[i])
 	{
 		if (ft_strchr(args[i], ' '))

@@ -6,12 +6,12 @@
 #    By: mfranc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/10 11:20:45 by mfranc            #+#    #+#              #
-#    Updated: 2017/05/28 19:48:39 by mfranc           ###   ########.fr        #
+#    Updated: 2017/05/29 12:34:22 by mfranc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 CC = clang $(FLAGS)
 INC = ../../includes
 LIBFT = ../../libft/
@@ -40,9 +40,6 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $1 $^ -o $@ $(ALL_INC) -L $(LIBFT) -lftprintf
-
-debug: $(OBJS)
 	$(CC) $^ -o $@ $(ALL_INC) -L $(LIBFT) -lftprintf
 
 %.o: %.c

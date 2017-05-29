@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 18:04:22 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/02 19:12:53 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 16:26:58 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int					ft_tolower(int c);
 
 void				*ft_memalloc(size_t n);
 void				ft_memdel(void **ap);
-void				ft_tabdel(char **tab);
+void				ft_tabdel(char ***tab);
 char				*ft_strnew(size_t n);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);

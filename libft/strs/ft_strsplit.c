@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 17:10:28 by mfranc            #+#    #+#             */
-/*   Updated: 2016/11/23 12:31:08 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:43:46 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ char			**ft_strsplit(char const *s, char c)
 			i++;
 		if (s[i] != c && s[i])
 		{
-			if (!(tab[j] = ft_strnew(ft_slen_untilc(s + i, c))))
-				return (NULL);
+//			if (!(tab[j] = ft_strnew(ft_slen_untilc(s + i, c))))
+//				return (NULL);
 			if (!(tab[j++] = ft_strsub(s, i, ft_slen_untilc(s + i, c))))
 				return (NULL);
 			while (s[i] != c && s[i])

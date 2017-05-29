@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 16:53:15 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/27 19:25:34 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 17:28:38 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ long long		*ft_verif_data(long long *pnum, t_ctl **a_ctl, char *integer)
 	check = (*a_ctl)->first;
 	*pnum = ft_atoi(integer);
 	if (ft_ilen(*pnum, 10) != (int)ft_strlen(integer))
-		if (((ft_ilen(*pnum, 10) - 1) == (int)ft_strlen(integer))
+		if (((ft_ilen(*pnum, 10) - 1) != (int)ft_strlen(integer))
 			&& integer[0] != '0')
 			return (NULL);
 	if (*pnum == 0 && integer[0] != '0')
