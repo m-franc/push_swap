@@ -6,7 +6,7 @@
 /*   By: mfranc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 17:04:23 by mfranc            #+#    #+#             */
-/*   Updated: 2017/05/29 20:08:36 by mfranc           ###   ########.fr       */
+/*   Updated: 2017/05/29 20:24:03 by mfranc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void		ft_push_swap(t_ctl *a_ctl, t_ctl *b_ctl)
 	int		size_a;
 
 	size_a = a_ctl->size;
-	if (size_a <= 6)
+	if (size_a <= 5)
 		ft_little_sort(&a_ctl, &b_ctl, size_a);
 	else
 	{
